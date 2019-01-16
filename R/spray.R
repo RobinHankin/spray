@@ -122,7 +122,12 @@ setGeneric("deriv")
 
 
 `spray_missing_accessor` <- function(S,dots){
-  return(0)
+
+ ## This function is a placeholder for a discussion of why idiom such
+ ## as     S[1,,p,1:3]  is problematic.
+ 
+
+ return(0)
 ##  browser()
 
 
