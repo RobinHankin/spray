@@ -157,9 +157,9 @@ spray prod //
             x2 = it2->second;
             vsum.clear();
             for(i=0; i<v1.size(); i++){
-                vsum.push_back(v1[i] + v2[i]);  // meat 1
+                vsum.push_back(v1[i] + v2[i]);  // meat 1: powers add
             }
-            Sout[vsum] += x1*x2;       // meat 2
+            Sout[vsum] += x1*x2;                // meat 2: coefficients multiply
         }
     }
     //    for(spray::iterator it=S3.begin(); it != S3.end(); ++it){
