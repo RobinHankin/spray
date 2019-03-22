@@ -73,7 +73,7 @@ options(prompt = "R> ", continue = "+  ", width = 70, useFancyQuotes = FALSE)
 The \pkg{multipol} package~\citep{hankin2008} furnishes the
 \proglang{R} programming language with functionality for multivariate
 polynomials.  However, the \pkg{multipol} package was noted as being
-inefficient in many common cases: The package stores multivariate
+inefficient in many common cases: the package stores multivariate
 polynomials as arrays and this often involves storing many zero
 elements which consume computational and memory resources
 unnecessarily.
@@ -107,6 +107,8 @@ variables.  As~\citeauthor{kahle2013} points out, naming the variables
 allows a richer and more natural suite of functionality;
 straightforward \pkg{mpoly} idiom is somewhat strained in \pkg{spray}.
 
+(The \code{mvp} package~\citep{hankin2019} is now available; this uses
+a more powerful concept of sparsity).
 
 
 \section{Sparse arrays}
@@ -203,10 +205,10 @@ dput(A)
 A
 @ 
 
-\noindent But again see how the R object thus created stores zero
-elements, which can be problematic if the polynomial in question is
-large degree and sparse.  Similar issues arise in the case of
-multivariate polynomials.  The~\pkg{multipol}
+\noindent But again see how the \proglang{R} object thus created
+stores zero elements, which can be problematic if the polynomial in
+question is large degree and sparse.  Similar issues arise in the case
+of multivariate polynomials.  The~\pkg{multipol}
 package~\citep{hankin2008} uses a similar methodology, storing
 coefficients as an arbitrary-dimensional array.  However, as noted
 above, this often leads to inefficient computation.
@@ -282,10 +284,10 @@ One problematic object is the empty array.  Zero multinomials are
 represented with a zero-row index matrix and zero-length numeric
 vector of values.  Because a spray object is a sparse array, a zero
 multinomial must have a specific arity\footnote{This philosophy is
-different from earlier versions of the software which treated the
-empty array as the zero multinomial, with which addition and
-multiplication were defined algebraically.  I would like to thank an
-anonymous R Journal referee for this insight.}.
+  different from earlier versions of the software which treated the
+  empty array as the zero multinomial, with which addition and
+  multiplication were defined algebraically.  I would like to thank an
+  anonymous \emph{R Journal} referee for this insight.}.
 
 \subsection{Algebraic identities}
 
@@ -337,7 +339,7 @@ aderiv((xyz(3) + linear(1:3))^3, 1:3)
 @ 
 
 
-\section{The package in use: Some examples}
+\section{The package in use: some examples}
 
 Multivariate polynomials are useful and efficient structures in a
 variety of applications.  Here I give two examples of the package in
@@ -364,11 +366,12 @@ The entity typically moves between adjacent nodes according to a
 the moves.  Periodicity may be enforced simply by wrapping the
 polynomial using modular arithmetic.
 
-In many cases, entities are not necessarily conserved: The entity may
+In many cases, entities are not necessarily conserved: the entity may
 decay (usually with a fixed probability per timestep), or be
 annihilated when it encounters a particular node in the lattice (a
 `trap'~\citep{scheunders1989}, corresponding to the formation of sugar
-in the cell); and work on a~$17\times 17$ lattice.
+in the cell).  Here, we work on a~$17\times 17$ lattice as a large but
+computationally tractable domain.
 
 All these processes have natural and efficient~\proglang{R} idiom in
 the \pkg{spray} package.  We may specify a kernel allowing movement to
@@ -569,7 +572,8 @@ spray(a)
 of sparseness which \pkg{mpoly} takes advantage of and \code{spray}
 does not.  Further work might include the development of name-based
 multivariate polynomials using concepts from \proglang{STL} to provide
-the best of both worlds.
+the best of both worlds (and indeed the \pkg{mvp}
+package~\citep{hankin2019} does just this, and more).
 
 \bibliography{spray}
 \newpage
