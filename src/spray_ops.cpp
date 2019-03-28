@@ -45,6 +45,8 @@ spray prepare(const IntegerMatrix M, const NumericVector d){
     spray S;
     mycont v;
     unsigned int i,j;
+    spray::iterator it;
+
     for(i=0; i<M.nrow() ; i++){
         if(d[i] != 0){
                 v.clear();
@@ -52,7 +54,16 @@ spray prepare(const IntegerMatrix M, const NumericVector d){
                     v.push_back(M(i,j));
                 }
                 S[v] += d[i];
-            }
+        }
+    }  // i loop closes
+    
+    // Now remove zero entries:
+    for(it=S.begin(); it != S.end(); /* nop (sic) */){
+        if(it->second == 0){  // if a zero entry...
+            S.erase(it++);   // remove entry and increment
+        } else {
+            ++it;  // else just increment
+        }
     }
     return(S);
 }

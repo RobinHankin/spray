@@ -4,3 +4,6 @@ stopifnot(value(subs(product(1:3),3,10))==1000)
 
 a <- spray(diag(5))
 stopifnot(is.empty(a[2,3,4,1,5]))
+
+
+stopifnot(is.zero(spray(matrix(c(1,1,2,2),2,2),c(1,-1),addrepeats=TRUE)))
