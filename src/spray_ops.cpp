@@ -59,12 +59,9 @@ spray prepare(const IntegerMatrix M, const NumericVector d){
 
     // Now remove zero entries:
     it = S.begin();
-
     while(it != S.end()){
-        if(it->second == 0){  // if a zero entry...
-            it = S.erase(it); // remove entry; in C++11, erase()
-                              // returns *next* iterator
- 
+        if(it->second == 0){
+            it = S.erase(it); //  in C++11, erase() returns *next* iterator
         } else {
             ++it;  // else just increment the iterator
         }
