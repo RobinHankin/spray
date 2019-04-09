@@ -124,7 +124,7 @@ setGeneric("deriv")
 `spray_missing_accessor` <- function(S,dots){
 
  ## This function is a placeholder for a discussion of why idiom such
- ## as     S[1,,p,1:3]  is problematic.
+ ## as S[1,,p,1:3] is problematic (note the adjacent commas).
  
 
  return(0)
@@ -143,7 +143,7 @@ setGeneric("deriv")
 
 
 
-## Then loading the package and typing
+## Then load the package and type
 ##
 ##
 ## R>      p <- 1:3
@@ -191,9 +191,7 @@ setGeneric("deriv")
 
 }
 
-
 `[.spray` <- function(S, ...,drop=FALSE){
-
 
     dots <- list(...)
     first <- dots[[1]]
