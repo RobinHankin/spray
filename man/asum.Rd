@@ -26,7 +26,7 @@ process_dimensions(S,dims)
 }
 \details{
 
-  Function \code{asum.spray()} is the method for \code{asum()}.  This
+Function \code{asum.spray()} is the method for \code{asum()}.  This
 takes a spray, and a vector of integers corresponding to dimensions to
 be summed over.
 
