@@ -513,3 +513,5 @@ setGeneric("deriv")
   out <- spray(expand.grid(replicate(d,list(c(-1L,0L,1L)))))
   return(out-1)
 }
+
+`nterms` <- function(S){ nrow(index(S)) }

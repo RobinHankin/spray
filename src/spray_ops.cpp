@@ -156,17 +156,16 @@ spray prod //
  ){
     spray Sout;
     spray::const_iterator it1,it2;
-    mycont v1,v2,vsum;
-    double x1,x2;
+    mycont vsum;
     unsigned int i;
 
     // the "meat" of this function:  Sout=S1*S2
     for (it1=S1.begin(); it1 != S1.end(); ++it1){
-        v1 = it1->first;
-        x1 = it1->second;
+        const mycont v1 = it1->first;
+        const double x1 = it1->second;
         for (it2=S2.begin(); it2 != S2.end(); ++it2){
-            v2 = it2->first;
-            x2 = it2->second;
+            const mycont v2 = it2->first;
+            const double x2 = it2->second;
             vsum.clear();
             for(i=0; i<v1.size(); i++){
                 vsum.push_back(v1[i] + v2[i]);  // meat 1: powers add
@@ -419,20 +418,19 @@ List spray_pmax
  const IntegerMatrix &M2, const NumericVector &d2 
  ){
     spray S1,S2;
-    mycont v;
     spray::const_iterator it;   // it iterates through a sparse array
     
     S1 = prepare(M1, d1);
     S2 = prepare(M2, d2);
 
     for (it=S1.begin(); it != S1.end(); ++it){
-        v = it->first;
+        const mycont v = it->first;
         if(S2[v] > S1[v]){ S1[v] = S2[v];} // S1[v] = max(S1[v],S2[v]);
         S2.erase(v); // not S2[v] = 0;  // OK because the iterator is it1 and this line modifies S2
     }
             
     for (it=S2.begin(); it != S2.end(); ++it){ //iterate through S2 keys not in S1
-        v = it->first;
+        const mycont v = it->first;
         if(S2[v] > 0){ S1[v] = S2[v]; }
     }
 
@@ -446,20 +444,19 @@ List spray_pmin
  const IntegerMatrix &M2, const NumericVector &d2 
  ){
     spray S1,S2;
-    mycont v;
     spray::const_iterator it;   // it iterates through a sparse array
     
     S1 = prepare(M1, d1);
     S2 = prepare(M2, d2);
 
     for (it=S1.begin(); it != S1.end(); ++it){
-        v = it->first;
+        const mycont v = it->first;
         if(S2[v] < S1[v]){ S1[v] = S2[v]; }// S1[v] = min(S1[v],S2[v]);
         S2.erase(v);
     }
             
     for (it=S2.begin(); it != S2.end(); ++it){
-        v = it->first;
+        const mycont v = it->first;
         if(S2[v] < 0){S1[v] = S2[v]; } // S1[v] = min(S2[v],0);
     }
 
@@ -473,7 +470,7 @@ List spray_power
  const IntegerMatrix &M, const NumericVector &d, const NumericVector &pow
  ){
     spray out = unit(M.ncol());
-    spray S = prepare(M,d);
+    const spray S = prepare(M,d);
     unsigned int n=pow[0];
 
     if(n == 0){
