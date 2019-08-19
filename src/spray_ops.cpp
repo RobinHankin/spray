@@ -156,17 +156,16 @@ spray prod //
  ){
     spray Sout;
     spray::const_iterator it1,it2;
-    mycont v1,v2,vsum;
-    double x1,x2;
+    mycont vsum;
     unsigned int i;
 
     // the "meat" of this function:  Sout=S1*S2
     for (it1=S1.begin(); it1 != S1.end(); ++it1){
-        v1 = it1->first;
-        x1 = it1->second;
+        const mycont v1 = it1->first;
+        const double x1 = it1->second;
         for (it2=S2.begin(); it2 != S2.end(); ++it2){
-            v2 = it2->first;
-            x2 = it2->second;
+            const mycont v2 = it2->first;
+            const double x2 = it2->second;
             vsum.clear();
             for(i=0; i<v1.size(); i++){
                 vsum.push_back(v1[i] + v2[i]);  // meat 1: powers add
