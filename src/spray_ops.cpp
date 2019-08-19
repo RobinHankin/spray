@@ -444,20 +444,19 @@ List spray_pmin
  const IntegerMatrix &M2, const NumericVector &d2 
  ){
     spray S1,S2;
-    mycont v;
     spray::const_iterator it;   // it iterates through a sparse array
     
     S1 = prepare(M1, d1);
     S2 = prepare(M2, d2);
 
     for (it=S1.begin(); it != S1.end(); ++it){
-        v = it->first;
+        const mycont v = it->first;
         if(S2[v] < S1[v]){ S1[v] = S2[v]; }// S1[v] = min(S1[v],S2[v]);
         S2.erase(v);
     }
             
     for (it=S2.begin(); it != S2.end(); ++it){
-        v = it->first;
+        const mycont v = it->first;
         if(S2[v] < 0){S1[v] = S2[v]; } // S1[v] = min(S2[v],0);
     }
 
@@ -471,7 +470,7 @@ List spray_power
  const IntegerMatrix &M, const NumericVector &d, const NumericVector &pow
  ){
     spray out = unit(M.ncol());
-    spray S = prepare(M,d);
+    const spray S = prepare(M,d);
     unsigned int n=pow[0];
 
     if(n == 0){
