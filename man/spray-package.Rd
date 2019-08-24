@@ -9,8 +9,25 @@ Functionality for sparse arrays, with emphasis on sparse arrays
 interpreted as multivariate polynomials.
 }
 \details{
-Sparse arrays are a dictionary with keys being (unsigned) integer
-vectors, and values floats.
+
+Base R has the capability of dealing with arbitrary dimensioned
+numerical arrays, with the \code{array} class.
+  
+A sparse array is a type of array in which nonzero elements are stored
+along with an index vector describing their coordinates---instead of
+arrays.  This allows for efficient storage and manipulation as base
+arrays often require the storing of many zero elements which consume
+computational and memory resources.
+
+One natural application for sparse arrays is multivariate polynomials
+and the package vignette presents an extended discussion.
+
+In the package, sparse arrays are represented as objects of class
+\code{spray}.  They use the \code{C++} standard template library (STL)
+\code{map} class, with keys being (unsigned) integer vectors, and values
+floats.
+
+
 
 }
 \author{
