@@ -8,7 +8,6 @@ before_install:
     - tlmgr install yfonts
     - tlmgr install scheme-full
     - sudo apt-get install texlive
-    - sudo apt install texlive-latex-extra
     - sudo apt-get install texlive-fonts-recommended texlive-fonts-extra texlive-latex-recommended
 language: R
 cache: packages
