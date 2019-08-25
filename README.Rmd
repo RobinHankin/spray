@@ -34,7 +34,7 @@ polynomials.
 
 # Installation
 
-You can install the released version of wedge from
+You can install the released version of `spray` from
 [CRAN](https://CRAN.R-project.org) with:
 
 ```{r, message=FALSE}
