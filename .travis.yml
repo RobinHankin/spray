@@ -2,7 +2,7 @@
 
 before_install:
     - tlmgr install scheme-full
-    - sudo apt-get install texlive-fonts-recommended texlive-fonts-extra
+    - sudo apt-get install texlive-fonts-extra
 language: R
 cache: packages
 branches:
