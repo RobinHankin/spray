@@ -5,7 +5,7 @@
     lclass <- nchar(.Method[1]) > 0
     rclass <- !unary && (nchar(.Method[2]) > 0)
     
-    if (!is.element(.Generic, c("+", "-", "*", "/", "^", "=="))){
+    if (!is.element(.Generic, c("+", "-", "*", "/", "^", "==", "!="))){
         stop("operator '", .Generic, "' is not implemented for sprays")
     }
 
@@ -58,6 +58,8 @@
     } else if (.Generic == "==") {
         if(lclass && rclass){
             return(spray_eq_spray(e1,e2))
+        } else if (.Generic == "!="){
+            return(!spray_eq_spray(e1,e2))
         } else {
             stop("Generic '==' only compares two spray objects with one another")
         }          
