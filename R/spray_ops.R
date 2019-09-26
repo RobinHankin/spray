@@ -58,18 +58,22 @@
     } else if (.Generic == "==") {
         if(lclass && rclass){
             return(spray_eq_spray(e1,e2))
-        } else if (.Generic == "!="){
-            return(!spray_eq_spray(e1,e2))
         } else {
             stop("Generic '==' only compares two spray objects with one another")
-        }          
+        }
+    } else if (.Generic == "!="){
+        if(lclass && rclass){
+            return(!spray_eq_spray(e1,e2))
+        } else {
+            stop("Generic '!=' only compares two spray objects with one another")
+        }
     } else if (.Generic == "/") {
         if(lclass && !rclass){
             return(spray_times_scalar(e1,1/e2))
-          } else {
-        stop("don't use '/', use ooom() instead")
+        } else {
+            stop("don't use '/', use ooom() instead")
+        }
     }
-  }
 }
 
 spray_negative <- function(S){
