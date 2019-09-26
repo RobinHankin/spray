@@ -1,5 +1,6 @@
 \name{print.spray}
 \alias{print.spray}
+\alias{sprayvars}
 \alias{print_spray_matrixform}
 \alias{print_spray_polyform}
 \title{
