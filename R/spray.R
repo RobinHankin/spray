@@ -65,7 +65,10 @@
 `index` <- function(S){S[[1]]}    # these two functions are the only
 `value` <- function(S){S[[2]]}    # 'accessor' functions in the package
 
-`value<-` <- function(S,value){ spray(index(S),value) }
+`value<-` <- function(S,value){
+    stopifnot(length(value)==1)
+    spray(index(S),value)
+}
 
 `as.spray` <- function(arg1, arg2, addrepeats=FALSE, offbyone=FALSE){  # tries quite hard to coerce things to a spray
     if(is.spray(arg1)){
