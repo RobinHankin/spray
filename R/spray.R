@@ -74,7 +74,7 @@
     if(is.spray(arg1)){
         return(arg1)  
     } else if(is.list(arg1)){
-        return(spraymaker(arg1),addrepeats=addrepeats)
+        return(spraymaker(arg1,addrepeats=addrepeats))
     } else if(is.matrix(arg1) & !missing(arg2)){
         return(spraymaker(list(arg1,arg2),addrepeats=addrepeats))
     } else if(is.array(arg1)){
