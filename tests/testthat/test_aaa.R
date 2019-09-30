@@ -17,4 +17,25 @@ test_that("test suite aaa",{
     ## Following test checks a big-ish spray where multiple index rows
     ## cancel to zero:
     expect_true(is.zero(spray(kronecker(matrix(1,16,4),1+diag(2)),rep(c(1,1,-1,-1),length=32),addrepeats=TRUE)))
+
+    ## test the addrepeats error:
+    expect_error(spray(matrix(1,2,3)))
+    expect_error(spray(spray(1:4)))
+    expect_silent(spray(spray(1:4),3))
+    
+    expect_silent(spray(1:4,5))
+    expect_error(spray(spray(1:4,5),x=1:2))
+
+
+    expect_silent(S <- spray(matrix(1:7,5,7)))
+    expect_error(value(S) <- 1:2)
+    expect_silent(value(S) <- 13)
+
+    expect_silent(as.spray(spray(diag(7))))
+    expect_silent(as.spray(list(diag(9),seq_len(9))))
+    expect_silent(as.spray(diag(9),seq_len(9)))
+    expect_silent(as.spray(array(seq_len(24),2:4)))
+    expect_silent(as.spray(array(seq_len(24),2:4),offbyone=TRUE))
+    expect_error(as.spray(sin))
+    
 })
