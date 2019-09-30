@@ -72,7 +72,7 @@ S1 <- spray(M,7:8)
 S1
 ``` 
 
-Note that object ``S1` is rather compact by comparison with plain
+Note that object `S1` is rather compact by comparison with plain
 array `a`, as it needs to record only a 18-element index array of
 integers and two double-precision entries.  The order in which the
 elements are stored is implementation-specific (see the vignette for
@@ -171,6 +171,6 @@ aderiv((xyz(3) + linear(1:3))^3, 1:3)
 ```
 
 The package vignette offers a detailed discussion of the package
-design philosophy; also, the `mvp` package provdies a further
+design philosophy; also, the `mvp` package provides a further
 interpretation of the concept of "sparse" in the context of
 multivariate polynomials.
