@@ -103,9 +103,13 @@ setGeneric("deriv")
 }
 
 `as.array.spray` <- function(x, offbyone=FALSE, compact=FALSE, ...){
-    if(compact){ind <- sweep(ind,2,apply(ind,2,min)) }
-    dS <- dim(x) 
     ind <- index(x)
+    dS <- dim(x) 
+    if(compact){
+        jj <- apply(ind,2,min)
+        dS <- dS-jj+1
+        ind <- 1+sweep(ind,2,jj)
+    } 
     if(offbyone) {
       ind <- ind+1
       dS <- dS + 1
