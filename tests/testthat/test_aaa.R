@@ -37,5 +37,27 @@ test_that("test suite aaa",{
     expect_silent(as.spray(array(seq_len(24),2:4)))
     expect_silent(as.spray(array(seq_len(24),2:4),offbyone=TRUE))
     expect_error(as.spray(sin))
+
+
+    expect_silent(dim(spray(diag(5),1:5)))
+    expect_error(dim(spray(diag(5)-1,1:5)))
+
+    expect_silent(as.array(spray(diag(5)+1,1:5)))
+    expect_silent(as.array(spray(diag(5)+1,1:5),compact=TRUE))
+    expect_silent(as.array(spray(diag(5)+1,1:5),compact=TRUE,offbyone=TRUE))
+
+    expect_error(as.array(spray(diag(5),1:5)))
+    expect_error(as.array(spray(diag(5)-4,1:5)))
     
+
+    expect_silent(spray_missing_accessor(0))
+
+    S1 <- rspray(5)
+    S2 <- rspray(5)
+    expect_silent(S1[S2])
+    expect_silent(S1[S2,drop=TRUE])
+
+    expect_error(S1[rspray(n=3,arity=4)])
+
 })
+
