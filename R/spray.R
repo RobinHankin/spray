@@ -115,9 +115,7 @@ setGeneric("deriv")
       dS <- dS + 1
     }
 
-    if(any(ind<0)){
-        stop("There are negative index elements")
-    } else if(any(ind==0)){
+    if(any(ind==0)){  # ind<0 detected by dS <- dim(x) above
         stop("There are zero index elements")
     }
     
