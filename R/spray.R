@@ -354,9 +354,7 @@ setGeneric("deriv")
         vars <- variables[which(jj !=0)]
         powers <- jj[jj!=0]
         lv <- length(vars)
-        if(lv==0){ # constant; already printed
-            ignore <- 3  # do nothing
-        } else if(lv==1){   # just one variable
+        if(lv==1){   # just one variable
             if(powers==1){
                 term <- paste(term, vars, sep="") 
             } else {
