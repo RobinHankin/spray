@@ -101,14 +101,24 @@ test_that("test suite aaa",{
     expect_output(print(100-rspray(6)))
     expect_output(print(S1-S1))
 
-    print(spray(diag(9)))
+    expect_output(print(spray(diag(9))))
+    expect_output(print(2.2*spray(diag(9))))
+    expect_output(print(2.2*spray(diag(9))))
     options(sprayvars=letters)
     a <- diag(26)
-    print(spray(a))
+    expect_output(print(spray(a)))
+    expect_output(print(spray(matrix(0,2,3),5,addrepeats=TRUE)))
+
 
     
     S <- spray(matrix(sample(0:2,60,replace=TRUE),ncol=3),addrepeats=TRUE)
     expect_equal(arity(asum(S,1)),2)
+
+    ## NB: following three tests must use '=='; expect_equal(asum(S,1),asum_inverted(S,c(2,3))) returns FALSE!
+    expect_true(asum(S,1) == asum_inverted(S,c(2,3)))
+    expect_true(asum(S,2) == asum_inverted(S,c(1,3)))
+    expect_true(asum(S,3) == asum_inverted(S,c(1,2)))
+    
     expect_equal(process_dimensions(S,c(TRUE,TRUE,FALSE)),1:2)
     expect_equal(constant(asum(S,1:3,drop=TRUE),drop=TRUE),20)
     expect_equal(constant(asum(S,1:3,drop=FALSE),drop=TRUE),20)
