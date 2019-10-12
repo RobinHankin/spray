@@ -92,6 +92,27 @@ test_that("test suite aaa",{
     expect_true(sum(rowSums(index(jj))==0)==1) 
     expect_true(all(rowSums(index(jj)) %in% c(0,8)))
 
+    expect_output(print(rspray(6)))
+    expect_output(print(S1-S1))
+
+    options(polyform=TRUE)
+    expect_output(print(rspray(6)))
+    expect_output(print(100+rspray(6)))
+    expect_output(print(100-rspray(6)))
+    expect_output(print(S1-S1))
+
+    print(spray(diag(9)))
+    options(sprayvars=letters)
+    a <- diag(26)
+    print(spray(a))
+
     
+    S <- spray(matrix(sample(0:2,60,replace=TRUE),ncol=3),addrepeats=TRUE)
+    expect_equal(arity(asum(S,1)),2)
+    expect_equal(process_dimensions(S,c(TRUE,TRUE,FALSE)),1:2)
+    expect_equal(constant(asum(S,1:3,drop=TRUE),drop=TRUE),20)
+    expect_equal(constant(asum(S,1:3,drop=FALSE),drop=TRUE),20)
+    
+
 })
 
