@@ -122,7 +122,47 @@ test_that("test suite aaa",{
     expect_equal(process_dimensions(S,c(TRUE,TRUE,FALSE)),1:2)
     expect_equal(constant(asum(S,1:3,drop=TRUE),drop=TRUE),20)
     expect_equal(constant(asum(S,1:3,drop=FALSE),drop=TRUE),20)
+
+
+    ## Leibniz's rule:
+    S1 <- spray(matrix(sample(0:3,replace=TRUE,21),ncol=3),sample(7),addrepeats=TRUE)
+    S2 <- spray(matrix(sample(0:3,replace=TRUE,15),ncol=3),sample(5),addrepeats=TRUE)
     
+    expect_true(S1*deriv(S2,1) + deriv(S1,1)*S2 == deriv(S1*S2,1))
+
+
+    S1 <- rspray(100,vals=sample(100)-50)
+    S2 <- rspray(100,vals=sample(100)-50)
+    S3 <- rspray(100,vals=sample(100)-50)
+    
+     
+    jj <- pmax(S1,S2,S3)
+    expect_true(jj ==  maxpair_spray(S1,maxpair_spray(S2,S3)))
+    expect_true(jj ==  maxpair_spray(maxpair_spray(S1,S2),S3))
+    
+    expect_true(pmax(S1,S2,S3)  == -pmin(-S1,-S2,-S3))
+    expect_true(pmin(S1,S2,S3)  == -pmax(-S1,-S2,-S3))
+    
+    expect_true(pmax(S1,-Inf) == S1)
+    expect_true(pmin(S1, Inf) == S1)
+
+    expect_silent(jj <- minpair_spray(S1,S2))
+    expect_silent(jj <- maxpair_spray(S1,S2))
+
+    expect_true(minpair_spray(S1) == S1)
+    expect_true(maxpair_spray(S1) == S1)
+
+    expect_error(minpair_spray(S1,1:3))
+    expect_error(maxpair_spray(S1,1:3))
+
+    expect_error(minpair_spray(S1,-1))
+    expect_error(maxpair_spray(S1,+1))
+
+    expect_equal(constant(knight()^5,drop=TRUE),0)
+    expect_equal(constant(king()^5,drop=TRUE),1200)
+
+    expect_true(nterms(spray(diag(7)))==7)
+
 
 })
 
