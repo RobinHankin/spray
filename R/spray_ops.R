@@ -128,7 +128,7 @@ spray_power_scalar <- function(S,n){
 `spray_eq_spray` <- function(S1,S2){
     if(arity(S1) != arity(S2)){
         return(FALSE)
-    } else if(length(S1) != length(S2)){
+    } else if(nterms(S1) != nterms(S2)){
         return(FALSE)
     } else {
         return(spray_equality(index(S1),value(S1),index(S2),value(S2)))
