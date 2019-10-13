@@ -39,7 +39,6 @@ automatically generated \code{RcppExports.R} file.
 spray_maker(M, d)
 spray_add(M1, d1, M2, d2)
 spray_mult(M1, d1, M2, d2)
-spray_crush(M, d)
 spray_overwrite(M1, d1, M2, d2)
 spray_accessor(M, d, Mindex)
 spray_setter(M1, d1, M2, d2)
@@ -54,7 +53,6 @@ spray_spray_accessor()
 spray_spray_add()
 spray_spray_asum_exclude()
 spray_spray_asum_include()
-spray_spray_crush()
 spray_spray_deriv()
 spray_spray_equality()
 spray_spray_maker()
@@ -84,7 +82,8 @@ an object of class \code{spray}  by function \code{spraymaker()}.
 
   Function \code{spray_equality()} cannot simply check for equality of
   \code{$value} because the order of the index rows is not specified in
-  a spray object
+  a spray object.  Function \code{spray_crush()} has been removed as it
+  is redundant.
 }
 \seealso{
 \code{\link{spraymaker}},\code{\link{spray}}

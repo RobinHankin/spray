@@ -13,10 +13,6 @@ spray_mult <- function(M1, d1, M2, d2) {
     .Call('spray_spray_mult', PACKAGE = 'spray', M1, d1, M2, d2)
 }
 
-spray_crush <- function(M, d) {
-    .Call('spray_spray_crush', PACKAGE = 'spray', M, d)
-}
-
 spray_overwrite <- function(M1, d1, M2, d2) {
     .Call('spray_spray_overwrite', PACKAGE = 'spray', M1, d1, M2, d2)
 }

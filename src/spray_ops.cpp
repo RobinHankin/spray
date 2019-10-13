@@ -201,28 +201,6 @@ List spray_mult  // multiply two sprays
 }
 
 // [[Rcpp::export]]
-List spray_crush  // rationalize a spray (If M has repeated rows, sum the values)
-(
- const IntegerMatrix &M, const NumericVector &d
- ){
-    spray S;
-    unsigned int i,j;
-    mycont v;
-
-    for(i=0; i<M.nrow() ; i++){
-        if(d[i] != 0){
-            v.clear();
-            for(j=0; j<M.ncol(); j++){
-                v.push_back(M(i,j));
-            }
-            S[v] += d[i];   // the meat
-        }
-    }
-
-    return retval(S);
-}
-
-// [[Rcpp::export]]
 List spray_overwrite // something like S1[ind(S2)] <- S2
 (
  const IntegerMatrix &M1, const NumericVector &d1,

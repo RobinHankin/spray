@@ -45,18 +45,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// spray_crush
-List spray_crush(const IntegerMatrix& M, const NumericVector& d);
-RcppExport SEXP spray_spray_crush(SEXP MSEXP, SEXP dSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const IntegerMatrix& >::type M(MSEXP);
-    Rcpp::traits::input_parameter< const NumericVector& >::type d(dSEXP);
-    rcpp_result_gen = Rcpp::wrap(spray_crush(M, d));
-    return rcpp_result_gen;
-END_RCPP
-}
 // spray_overwrite
 List spray_overwrite(const IntegerMatrix& M1, const NumericVector& d1, const IntegerMatrix& M2, const NumericVector& d2);
 RcppExport SEXP spray_spray_overwrite(SEXP M1SEXP, SEXP d1SEXP, SEXP M2SEXP, SEXP d2SEXP) {
