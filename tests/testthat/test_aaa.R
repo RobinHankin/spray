@@ -164,5 +164,10 @@ test_that("test suite aaa",{
     expect_true(nterms(spray(diag(7)))==7)
 
 
+    expect_true(S1^0 == one(arity(S1)))
+    expect_true(S1^1 == S1)
+    expect_true(S2^0 == one(arity(S2)))
+    expect_true(S2^1 == S2)
+
 })
 
