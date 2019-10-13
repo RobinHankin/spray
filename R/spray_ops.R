@@ -5,10 +5,6 @@
     lclass <- nchar(.Method[1]) > 0
     rclass <- !unary && (nchar(.Method[2]) > 0)
     
-    if (!is.element(.Generic, c("+", "-", "*", "/", "^", "==", "!="))){
-        stop("operator '", .Generic, "' is not implemented for sprays")
-    }
-
     if(unary){
         if (.Generic == "+") {
             return(e1)
@@ -17,6 +13,10 @@
         } else {
             stop("Unary operator '", .Generic, "' is not implemented for sprays")
         }
+    }
+
+    if (!is.element(.Generic, c("+", "-", "*", "/", "^", "==", "!="))){
+        stop("operator '", .Generic, "' is not implemented for sprays")
     }
     
     if (.Generic == "*") {
