@@ -85,7 +85,7 @@ spray_negative <- function(S){
 }
 
 spray_times_spray <- function(S1,S2){
-    if(is.zero(S1) || is.zero(S2)){return(zero)}
+    if(is.zero(S1) || is.zero(S2)){return(spray_times_scalar(S1,0))}
     stopifnot(arity(S1) == arity(S2))
     spraymaker(spray_mult(
         index(S1),value(S1),
