@@ -14,5 +14,5 @@ r_packages:
   - covr
 
 after_success:
-  - Rscript -e 'library(covr); codecov(line_exclusions=list("R/spray_ops.R" = c(3,30,40,50), "src/spray_ops.cpp" = 286))'
+  - Rscript -e 'library(covr); codecov(line_exclusions=list("R/spray_ops.R" = c(3,30,40,50), "src/spray_ops.cpp" = c(286,303)))'
   
