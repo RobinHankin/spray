@@ -146,6 +146,7 @@ test_that("test suite aaa",{
     expect_true(pmax(S1,-Inf) == S1)
     expect_true(pmin(S1, Inf) == S1)
 
+
     expect_silent(jj <- minpair_spray(S1,S2))
     expect_silent(jj <- maxpair_spray(S1,S2))
 
@@ -158,6 +159,14 @@ test_that("test suite aaa",{
     expect_error(minpair_spray(S1,-1))
     expect_error(maxpair_spray(S1,+1))
 
+    SS1 <- rspray(5,arity=119)
+    SS2 <- rspray(7,arity=119)
+    expect_silent(minpair_spray(SS1,SS2))
+    expect_silent(minpair_spray(SS2,SS1))
+    expect_silent(maxpair_spray(SS1,SS2))
+    expect_silent(maxpair_spray(SS2,SS1))
+
+    
     expect_equal(constant(knight()^5,drop=TRUE),0)
     expect_equal(constant(king()^5,drop=TRUE),1200)
 
