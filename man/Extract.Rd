@@ -1,5 +1,9 @@
 \name{Extract.spray}
 \alias{[.spray}
+\alias{extract.spray}
+\alias{extract}
+\alias{replace.spray}
+\alias{replace}
 \alias{[<-.spray}
 \title{Extract or Replace Parts of a spray}
 \description{
@@ -51,9 +55,12 @@ a
 
 S1 <- spray(diag(5),1:5)
 S2 <- spray(1-diag(5),1:5)
+S3 <- spray(rbind(c(1,0,0,0,0),c(1,2,1,1,1)))
+
 S1[] <- 3
 S1[] <- S2
 
+S1[S3] <- 99
 
 
 
