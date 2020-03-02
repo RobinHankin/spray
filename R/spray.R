@@ -518,3 +518,8 @@ setGeneric("deriv")
 }
 
 `nterms` <- function(S){ nrow(index(S)) }
+
+
+`zap` <- function(x, digits=getOption("digits")){
+  spray(index(x),base::zapsmall(value(x),digits=digits))
+}

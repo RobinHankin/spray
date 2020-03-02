@@ -4,7 +4,6 @@ exportPattern("^[[:alpha:]]+")
 importFrom(Rcpp, evalCpp)
 importFrom(magic,adiag)
 importFrom(partitions,compositions)
-
 import(methods)
 
 export(spray_add)
