@@ -44,7 +44,7 @@ typedef map<mycont, double > spray;
 spray prepare(const IntegerMatrix M, const NumericVector d){
     spray S;
     mycont v;
-    unsigned int i,j;
+    signed int i,j;
     spray::iterator it;
 
     for(i=0; i<M.nrow() ; i++){
@@ -229,7 +229,7 @@ NumericVector spray_accessor // returns S1[]
  ){
     spray S;
     mycont v;
-    unsigned int i,j,k=0;
+    signed int i,j,k=0;
     NumericVector out(Mindex.nrow());
     
     S = prepare(M, d);
@@ -253,7 +253,7 @@ List spray_setter // effectively S[M] <- d; return S
  ){
     spray S1,S2;
     mycont v;
-    unsigned int i,j;
+    signed int i,j;
     
     S1 = prepare(M1, d1);
     S2 = prepare(M2, d2);
@@ -312,7 +312,7 @@ List spray_asum_include
  ){
     spray S;
     mycont v;
-    unsigned int i,j,k;
+    signed int i,j,k;
 
     for(i=0; i<M.nrow() ; i++){
         v.clear();
@@ -336,7 +336,7 @@ List spray_asum_exclude
  ){
     spray S;
     mycont v;
-    unsigned int i,j;
+    signed int i,j;
 
     for(i=0; i<M.nrow() ; i++){
         v.clear();
@@ -358,7 +358,7 @@ List spray_deriv
 ){
     spray S;
     mycont v;
-    unsigned int i,j,nn;
+    signed int i,j,nn;
 
     IntegerMatrix Mout(M.nrow(),M.ncol());
     NumericVector dout(d.size());
