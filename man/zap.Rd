@@ -3,10 +3,15 @@
 \alias{zapsmall}
 \alias{zaptiny}
 \alias{zap.spray}
+\alias{zapsmall.spray}
+\alias{zapsmall,spray-method}
+\alias{zapsmall,ANY-method}
 \title{Zap small values in a spray object}
 \description{Generic version of \code{zapsmall()}}
 \usage{
 zap(x, digits = getOption("digits"))
+\method{zapsmall}{spray}(x, digits = getOption("digits"))
+\S4method{zapsmall}{spray}(x, digits = getOption("digits"))
 }
 \arguments{
   \item{x}{spray object}
@@ -15,11 +20,13 @@ zap(x, digits = getOption("digits"))
 \details{
   
   Given a spray object, coefficients close to zero are \sQuote{zapped},
-  i.e., replaced by \sQuote{0} in much the same way as
-  \code{base::zapsmall()}.
+  i.e., replaced by \sQuote{0}, using \code{base::zapsmall()}.  Function
+  \code{zap()} is an easily-typed alias; \code{zapsmall()} is the
+  \code{S4} generic.
 
-  Note, this function actually changes the numeric value, it is not just
+  Note, \code{zap()} actually changes the numeric value, it is not just
   a print method.
+  
 }
 \author{Robin K. S. Hankin}
 \examples{
