@@ -178,5 +178,10 @@ test_that("test suite aaa",{
     expect_true(S2^0 == one(arity(S2)))
     expect_true(S2^1 == S2)
 
+    Sz <- spray(matrix(sample(1:50),ncol=2),10^-(1:25))
+    expect_true(length(value(Sz)) >= length(value(zap(Sz))))
+    expect_true(length(value(Sz)) >= length(value(zapsmall(Sz))))
+    expect_true(length(value(Sz)) >= length(zapsmall(value(Sz))))
+
 })
 

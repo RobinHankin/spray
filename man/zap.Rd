@@ -10,7 +10,6 @@
 \description{Generic version of \code{zapsmall()}}
 \usage{
 zap(x, digits = getOption("digits"))
-\method{zapsmall}{spray}(x, digits = getOption("digits"))
 \S4method{zapsmall}{spray}(x, digits = getOption("digits"))
 }
 \arguments{

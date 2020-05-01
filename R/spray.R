@@ -533,10 +533,6 @@ setMethod("zapsmall","ANY",function(x,digits){
     base::zapsmall(x,digits=digits)
 })
 
-`zapsmall.spray` <- function(x,digits=getOption("digits")){
-    zap(x,digits=digits)
-}
-
 `zap` <- function(x, digits=getOption("digits")){
   spray(index(x),base::zapsmall(value(x),digits=digits))
 }
