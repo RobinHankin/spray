@@ -6,6 +6,9 @@
 \alias{is_valid_spray}
 \alias{index}
 \alias{value}
+\alias{values}
+\alias{coeffs}
+\alias{coeff}
 \alias{value<-}
 \title{
 Create sparse array objects
