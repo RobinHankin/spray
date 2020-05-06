@@ -1,8 +1,8 @@
 ---
 title: "The spray package: sparse arrays in R"
 output:
-  github_document:
-    pandoc_args: --webtex
+  md_document:
+    variant: gfm
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -26,7 +26,7 @@ knitr::opts_chunk$set(
 
 # Overview
 
-The ```spray``` package provides functionality for sparse arrays.  
+The `spray` package provides functionality for sparse arrays.  
 In a sparse arrays, nonzero elements are stored along with an index
 vector describing their coordinates.  The `spray` package provides
 functionality for sparse arrays and interprets them as multivariate
