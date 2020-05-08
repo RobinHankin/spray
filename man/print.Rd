@@ -23,7 +23,7 @@ print_spray_polyform(S)
 
  The print method, \code{print.spray()}, dispatches to helper functions
   \code{print_spray_matrixform()} and \code{print_spray_polyform()}
-  depending on the value of option \code{polyform}; see examples
+  depending on the value of option \code{polyform}; see the examples
   section.
 
   Option \code{sprayvars} is a character vector with entries
@@ -31,8 +31,6 @@ print_spray_polyform(S)
 
   Note that printing a spray object (in either matrix form or polynomial
   form) generally takes much longer than calculating it.
-  
-  
 }
 \value{
 Returns its argument invisibly.

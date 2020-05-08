@@ -5,8 +5,9 @@
 \title{
 Partial differentiation of spray objects
 }
-\description{
-Partial differentiation of spray objects interpreted as multivariate polynomials
+\description{\loadmathjax
+  Partial differentiation of spray objects interpreted as multivariate
+  polynomials
 }
 \usage{
 \method{deriv}{spray}(expr, i , derivative = 1, ...)
@@ -20,16 +21,17 @@ aderiv(S,orders)
   \item{S}{spray object}
   \item{orders}{The orders of the differentials}
 }
-\details{
+\details{\loadmathjax
+
 Function \code{deriv.spray()} is the method for generic \code{spray()};
 if \code{S} is a spray object, then \code{spray(S,i,n)} returns
-\eqn{\partial^n S/\partial x_i^n = S^{\left(x_i,\ldots,x_i\right)}}{d^n
-  S/dx_i^n = S^(x_i...x_i)}.
+\mjeqn{\partial^n S/\partial x_i^n =
+S^{\left(x_i,\ldots,x_i\right)}}{d^n S/dx_i^n = S^(x_i...x_i)}.
 
 Function \code{aderiv()} is the generalized derivative; if \code{S} is a
 spray of arity 3, then \code{aderiv(S,c(i,j,k))} returns
-\eqn{\frac{\partial^{i+j+k} S}{\partial x_1^i\partial
-x_2^j\partial x_3^k}}{d^(i+j+k)S/dx_1^i dx_2^j dx_3^k}.
+\mjeqn{\frac{\partial^{i+j+k} S}{\partial x_1^i\partial x_2^j\partial
+x_3^k}}{d^(i+j+k)S/dx_1^i dx_2^j dx_3^k}.
 
 }
 \value{
