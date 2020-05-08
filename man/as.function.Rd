@@ -16,10 +16,8 @@ Returns a function; this function returns a numeric vector.
 Robin K. S. Hankin
 }
 \note{
-
-Coercion is possible even if some indices are zero or negative.
-  
-The function is not vectorized in the arity of its argument.  
+Coercion is possible even if some indices are zero or negative.  The
+function is not vectorized in the arity of its argument.
 }
 \examples{
 

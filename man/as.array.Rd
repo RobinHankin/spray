@@ -39,7 +39,7 @@ option \code{offbyone}.
   Returns an array of dimension \code{dim(S)}.  The \dQuote{meat} of the
   function is
 
-\code{
+\preformatted{
     out <- array(0, dS)
     out[ind] <- value(S)
 }
