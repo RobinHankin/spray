@@ -49,9 +49,8 @@ a[2,3:5,4,3,3] <- 9
 options(polyform = TRUE)   # print as a multivariate polynomial
 a
 
-options(polyform = FALSE)  # print is sparse array form
+options(polyform = FALSE)  # print in sparse array form
 a
-
 
 S1 <- spray(diag(5),1:5)
 S2 <- spray(1-diag(5),1:5)
@@ -61,8 +60,6 @@ S1[] <- 3
 S1[] <- S2
 
 S1[S3] <- 99
-
-
 
 }
 \keyword{symbolmath}
