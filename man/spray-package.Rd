@@ -26,19 +26,10 @@ In the package, sparse arrays are represented as objects of class
 \code{spray}.  They use the \code{C++} standard template library (STL)
 \code{map} class, with keys being (unsigned) integer vectors, and values
 floats.
-
-
-
 }
-\author{
-Robin K. S. Hankin
-}
+\author{Robin K. S. Hankin}
 \keyword{ package }
-\seealso{
-\code{\link[multipol:multipol-package]{multipol}}
-}
 \examples{
-
 
 # define a spray using a matrix of indices and a vector of values:
 M <- matrix(sample(0:3,21,replace=TRUE),ncol=3)
