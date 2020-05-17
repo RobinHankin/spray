@@ -59,16 +59,8 @@ is_valid_spray(L)
   cannot deal with).  In this case, we need some way to tell R the arity
   of the corresponding spray object.
 
-  Functions \code{index()} and \code{value()} are accessor methods.
-
-  
-  
+  Functions \code{index()} and \code{value()} are accessor methods.  
 }
-\note{
-Idiom such as \code{spray(S,x)} is not defined if \code{length(x)>1}
-because the elements of a spray are not stored in any specific order.
-
-  }
 \author{
 Robin K. S. Hankin
 }
