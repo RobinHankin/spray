@@ -21,7 +21,7 @@ aderiv(S,orders)
   \item{S}{spray object}
   \item{orders}{The orders of the differentials}
 }
-\details{\loadmathjax
+\details{
 
 Function \code{deriv.spray()} is the method for generic \code{spray()};
 if \code{S} is a spray object, then \code{spray(S,i,n)} returns
