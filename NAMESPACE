@@ -5,6 +5,7 @@ importFrom(Rcpp, evalCpp)
 importFrom(magic,adiag)
 importFrom(partitions,compositions)
 import(methods)
+import(mathjaxr)
 
 export(spray_add)
 export(pmax)
