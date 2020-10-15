@@ -283,7 +283,7 @@ bool spray_equality // S1 == S2
     S2 = prepare(M2, d2);
 
     if(S1.size() != S2.size()){
-        return FALSE;
+        return FALSE;  // this line is never executed because different-sized objects are trapped by R
     }
 
     for (it=S1.begin(); it != S1.end(); ++it){
