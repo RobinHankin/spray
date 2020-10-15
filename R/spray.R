@@ -506,7 +506,7 @@ setGeneric("deriv")
     }
 }
 
-`rspray` <- function(n,vals=1,arity=3,powers=0:2){
+`rspray` <- function(n=9,vals=seq_len(n),arity=3,powers=0:2){
     return(spray(matrix(sample(powers,n*arity,replace=TRUE),ncol=arity),addrepeats=TRUE,vals))
 }
 

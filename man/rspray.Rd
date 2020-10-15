@@ -7,7 +7,7 @@ Random spray objects
 Creates random spray objects as quick-and-dirty examples of multivariate polynomials
 }
 \usage{
-rspray(n, vals = 1, arity = 3, powers = 0:2)
+rspray(n=9, vals = seq_len(n), arity = 3, powers = 0:2)
 }
 \arguments{
   \item{n}{
@@ -30,7 +30,7 @@ will  contain fewer than \code{n} entries
 \seealso{\code{\link{spray}}}
 \examples{
 
-rspray(10)
+rspray()
 
 rspray(4)*rspray(3,rnorm(3))
 
