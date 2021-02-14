@@ -25,6 +25,29 @@ Functions \code{is.empty()} and \code{is.zero()} are synonyms.  If spray
 objects are interpreted as multivariate polynomials,
 \dQuote{\code{is.zero()}} is more intuitive, if sprays are interpreted
 as sparse arrays, \dQuote{\code{is.empty()}} is better (for me).
+
+If \code{spray()} is passed a zero-row index matrix, the return value
+does not remember the dimensionality of the input:
+
+\preformatted{
+> dput(spray(matrix(0,1,5),0))
+structure(list(index = NULL, value = NULL), class = "spray")
+}
+
+Arguably, the output should include the fact that we are dealing with a
+5-dimensional array; but the index matrix is \code{NULL} so this
+information is lost (note that the value is \code{NULL} too).  However,
+observe that the following works:
+
+\preformatted{
+> a1 <- spray(matrix(0,1,5),0)
+> a2 <- spray(t(1:5))
+> a1+a2
+               val
+ 1 2 3 4 5  =    1
+ >
+}
+
 }
 \examples{
 
