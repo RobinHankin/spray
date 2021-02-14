@@ -50,7 +50,7 @@ test_that("test suite aaa",{
     expect_error(as.array(spray(diag(5)-4,1:5)))
     
 
-    expect_silent(spray_missing_accessor(0))
+    expect_error(spray_missing_accessor(0))
 
     S1 <- rspray(5)
     S2 <- rspray(5)

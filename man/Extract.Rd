@@ -32,6 +32,11 @@
   If \code{a <- spray(diag(3))}, for example, then idiom such as
   \code{a[c(1,2,3)]} cannot work, because one would like \code{a[1,2,3]}
   and \code{a[1:3,2,3]} to work.
+
+  If \code{p <- 1:3}, then one might expect idiom such as
+  \code{S[1,,p,1:3]} to work but this is problematic and a discussion is
+  given in \code{inst/missing_accessor.txt}.
+
   
 }
 \examples{

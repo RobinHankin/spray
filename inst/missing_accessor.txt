@@ -1,0 +1,58 @@
+Here I discuss why idiom such as S[1,,p,1:3] is problematic (note the
+adjacent commas).
+
+First, overwrite spray_missing_accessor():
+
+
+`spray_missing_accessor` <- function(S,dots){
+  browser()
+}	
+
+Then change the first line of the body of `[.spray`() to something like
+
+`[.spray` <- function(S, ...,drop=FALSE){
+   spray_missing_accessor(S,dots=match.call())
+}	
+
+ Then load the package and type
+
+
+   p <- 1:3
+   S <- spray(diag(1:6)) ;
+   S[1,,p,1:3]
+
+
+On typing this, you enter the browser; `dots' is a 6-element list.
+The first, dots[[1]], is the function name `[.spray` and the second,
+dots[[2]], is just S.  This is the *symbol* S, not the variable.  You
+can evaluate the symbol by typing eval(dots[[2]]) which shows the
+value of S.
+
+The third element, dots[[3]], is just a numeric "1".  The next
+element, dots[[4]], corresponding to the gap between the two
+consecutive commas, is some sort of ghostly not NULL, not a list,
+nothing that I can make sense of.  For example, 'dput(dots[[4]])'
+gives an empty line; 'dput(dots[4])' gives "()" ... previous versions
+of R gave things like structure(list(), .Names = ""); but note that
+structure(list(), .Names = "") will not parse on the commandline.
+
+So, at least prior to R-3.0.0, one cannot use constructions such as
+'identical(dots[2], structure(list(), .Names = ""))'.
+
+Now dots[[5]] and indeed dput(dots[[5]]) both return the string `p`.
+This can be evaluated with something like eval(dots[[5]]) but you need
+to be careful about the environment in which p is to be evaluated.
+This is why Jonty had to resort to peculiar tricks with eval.parent()
+in Oarray.
+
+Also note that dots[[4]] and dput(dots[[4]]) show "1:3"; note that
+class(dots[[6]])is "call", not "numeric" as one might expect.
+
+... quite apart from all this, there is another reason why I have not
+implemented things like S[1,,1:3].  Such constructions simply do not
+fit nicely into the STL map methods in spray_ops.cpp.  At least I
+can't see any nice way.  You'd need some sort of partial matching
+system.
+
+I also need to fix OArray.
+
