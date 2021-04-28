@@ -3,6 +3,7 @@
 #define container vector         // Could be 'vector' or 'deque' (both work but there may be performance differences)
 #define USE_UNORDERED_MAP true   // set to true for unordered_map; comment out to use plain stl map.
 
+#define STRICT_R_HEADERS
 #include <Rcpp.h>
 #include <cmath>
 

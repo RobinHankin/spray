@@ -1,7 +1,7 @@
 Package: spray
 Type: Package
 Title: Sparse Arrays and Multivariate Polynomials
-Version: 1.0-11
+Version: 1.0-12
 Authors@R: person(given=c("Robin", "K. S."), family="Hankin", role = c("aut","cre"), email="hankin.robin@gmail.com", comment = c(ORCID = "0000-0001-5982-0415"))
 Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
 Description: Sparse arrays interpreted as multivariate polynomials.
