@@ -468,3 +468,22 @@ setMethod("zapsmall","ANY",function(x,digits){
 `zap` <- function(x, digits=getOption("digits")){
   spray(index(x),base::zapsmall(value(x),digits=digits))
 }
+
+`spraycross2` <- function(S1,S2){
+    M1 <- index(S1)
+    M2 <- index(S2)
+    jj <- as.matrix(expand.grid(seq_len(nrow(M1)),seq_len(nrow(M2))))
+    f <- function(i){c(M1[jj[i,1],],M2[jj[i,2],])}
+    spray(t(sapply(seq_len(nrow(jj)),f)),c(outer(value(S1),value(S2))))
+}
+
+`spraycross` <- function(S, ...) {
+   if(nargs()<3){
+     spraycross2(S, ...)
+   } else {
+     spraycross2(S, Recall(...))
+   }
+}
+
+
+
