@@ -21,7 +21,7 @@ sprays interpreted as multivariate polynomials.  The function is used in
 the \pkg{stokes} package.
 
 Function \code{spraycross2()} is a helper function that takes exactly
-two arguments.  Function \code{spraycros()} is a more general function
+two arguments.  Function \code{spraycross()} is a more general function
 that takes any number of arguments.
 
 }
