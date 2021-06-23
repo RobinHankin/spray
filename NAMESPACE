@@ -25,4 +25,6 @@ S3method(pmax,spray)
 S3method(pmin,spray)
 S3method(pmax,default)
 S3method(pmin,default)
+S3method(constant,spray)
+S3method("constant<-",spray)
 

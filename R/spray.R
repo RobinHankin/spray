@@ -197,11 +197,13 @@ setGeneric("deriv")
     }
 }
 
-`constant` <- function(S,drop=FALSE){ # returns 'the constant (term) of S'
-  S[t(rep(0,arity(S))),drop=drop]
+`constant` <- function(x,drop=FALSE){UseMethod("constant")}
+`constant.spray` <- function(x,drop=FALSE){ # returns 'the constant (term) of x'
+  x[t(rep(0,arity(x))),drop=drop]
 }
 
-`constant<-` <- function(S,value){ "[<-"(S,t(rep(0,arity(S))),value=value)}
+`constant<-` <- function(x, value){UseMethod("constant<-")}
+`constant<-.spray` <- function(x,value){ "[<-"(x,t(rep(0,arity(x))),value=value)}
 
 `zero` <- function(d){spray(matrix(0,0,d),numeric(0))}
 `product` <- function(power){spray(rbind(power))}
