@@ -7,8 +7,11 @@
 \alias{index}
 \alias{value}
 \alias{values}
-\alias{coeffs}
 \alias{coeff}
+\alias{coeffs}
+\alias{coeffs<-}
+\alias{coeffs.spray}
+\alias{coeffs<-.spray}
 \alias{coeffs,spray-method}
 \alias{value<-}
 \alias{coeffs<-,spray-method}
@@ -63,9 +66,11 @@ is_valid_spray(L)
 
   Functions \code{index()} and \code{coeffs()} are accessor methods.  
 }
-\author{
-Robin K. S. Hankin
+\author{Robin K. S. Hankin}
+\note{
+  Function \code{coeffs()} was formerly known as \code{value()}.
 }
+  
 \examples{
 
 S <- spray(diag(5))    # missing second argument interpreted as '1'.

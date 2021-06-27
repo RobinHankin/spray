@@ -68,11 +68,20 @@ setClass("spray",
 }
 
 `index` <- function(S){S[[1]]}    # these two functions are the only
-`coeffs` <- function(S){disord(S[[2]])}    # 'accessor' functions in the package
 
-`coeffs<-` <- function(S,value){
-    stopifnot(length(value)==1)
-    spray(index(S),value)
+`coeffs` <- function(S){UseMethod("coeffs")}
+`coeffs.spray` <- function(S){disord(S[[2]])}    # 'accessor' functions in the package
+
+`coeffs<-` <- function(S,value){UseMethod("coeffs<-")}
+`coeffs<-.spray` <- function(S,value){
+   jj <- coeffs(S)
+   if(is.disord(value)){
+     stopifnot(consistent(coeffs(S),value))
+     jj <- value
+   } else {
+     jj[] <- value  # the meat
+   }
+  spray(index(S),jj)
 }
 
 `as.spray` <- function(arg1, arg2, addrepeats=FALSE, offbyone=FALSE){  # tries quite hard to coerce things to a spray

@@ -35,5 +35,5 @@ zap(S)
 
 
 S-zap(S)        # print method will probably print zeros...
-value(S-zap(S)) # ...but they are nevertheless nonzero
+coeffs(S-zap(S)) # ...but they are nevertheless nonzero
 }
