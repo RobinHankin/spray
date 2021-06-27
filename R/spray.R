@@ -29,7 +29,7 @@ setClass("spray",
         return(TRUE)
     } else {
         stopifnot(is.matrix(L[[1]]))
-        stopifnot(is.vector(L[[2]]))
+        stopifnot(is.vector(L[[2]])| is.disord(L[[2]]))
         stopifnot(nrow(L[[1]])==length(L[[2]]))
         return(TRUE)
     }
@@ -68,7 +68,7 @@ setClass("spray",
 }
 
 `index` <- function(S){S[[1]]}    # these two functions are the only
-`value` <- function(S){S[[2]]}    # 'accessor' functions in the package
+`value` <- function(S){disord(S[[2]])}    # 'accessor' functions in the package
 
 `value<-` <- function(S,value){
     stopifnot(length(value)==1)
@@ -268,7 +268,7 @@ setGeneric("deriv")
   }
   
   ind <- index(S)
-  val <- value(S)
+  val <- elements(value(S))
 
     for(i in seq_len(nrow(ind))){ 
         coeff <- val[i]
@@ -367,9 +367,8 @@ setGeneric("deriv")
   a <- index(S)[,-dims,drop=FALSE]
   b <- index(S)[, dims,drop=FALSE]
   
-  jj <- apply(sweep(b,2,x,function(x,y){y^x}),1,prod)* value(S)
+  jj <- apply(sweep(b,2,x,function(x,y){y^x}),1,prod)* elements(value(S))
   spray(a, jj, addrepeats=TRUE)
-
 }
 
 `deriv.spray` <- function(expr, i, derivative=1, ...){
@@ -416,10 +415,15 @@ setGeneric("deriv")
         } else if (S2>0){
             stop("pmax(S,x) not defined if x>0")
         } else {
-            return(spray(index(S1),pmax(value(S1),S2)))
+            return(spray(index(S1),pmax(elements(value(S1)),S2)))
         }
     } else {
-        return(spraymaker(spray_pmax(index(S1),value(S1),index(S2),value(S2))))
+        return(
+            spraymaker(spray_pmax(
+                index(S1),elements(value(S1)),
+                index(S2),elements(value(S2))
+            ))
+        )
     }
 }
 
@@ -431,10 +435,15 @@ setGeneric("deriv")
         } else if (S2<0){
             stop("pmin(S,x) not defined if x<0")
         } else {
-            return(spray(index(S1),pmin(value(S1),S2)))
+            return(spray(index(S1),pmin(elements(value(S1)),S2)))
         }
     } else {
-        return(spraymaker(spray_pmin(index(S1),value(S1),index(S2),value(S2))))
+        return(
+            spraymaker(spray_pmin(
+                index(S1),elements(value(S1)),
+                index(S2),elements(value(S2))
+                                   ))
+            )
     }
 }
 

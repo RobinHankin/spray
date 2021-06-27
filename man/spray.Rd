@@ -9,7 +9,9 @@
 \alias{values}
 \alias{coeffs}
 \alias{coeff}
+\alias{coeffs,spray-method}
 \alias{value<-}
+\alias{coeffs<-,spray-method}
 \title{
 Create sparse array objects
 }

@@ -7,6 +7,12 @@ importFrom(partitions,compositions)
 import(methods)
 import(mathjaxr)
 
+importFrom(disordR,disord)
+importFrom(disordR,elements)
+importFrom(disordR,hash)
+importFrom(disordR,is.disord)
+
+
 export(spray_add)
 export(pmax)
 export(pmin)
