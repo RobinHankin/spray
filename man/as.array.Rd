@@ -41,7 +41,7 @@ option \code{offbyone}.
 
 \preformatted{
     out <- array(0, dS)
-    out[ind] <- value(S)
+    out[ind] <- coeffs(S)
 }
 }
 \author{

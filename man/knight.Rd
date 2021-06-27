@@ -44,6 +44,6 @@ persp(1:25,1:25,as.array(d*kt^6))
 ## what is the probability that a 4D king is a knight's move from
 ##   (0,0,0,0) after 6 moves?
 
-sum(value(((king(4)/80)^4)[knight(4)]))
+sum(coeffs(((king(4)/80)^4)[knight(4)]))
 
 }

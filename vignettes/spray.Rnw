@@ -411,7 +411,7 @@ Then we may calculate the evolution of the probability mass function as follows:
 <<>>=
 timestep <- function(state, kernel, traps){
   state <- state * kernel
-  state <- spray(index(state)%%n, value(state), addrepeats = TRUE)
+  state <- spray(index(state)%%n, coeffs(state), addrepeats = TRUE)
   state[traps] <- 0
   return(state)
 }
@@ -426,7 +426,7 @@ probability of the entity still existing after 100 timesteps is then:
 <<>>=
 state <- initial
 for(i in 1:100){state <- timestep(state, kernel, traps)}
-sum(value(state))
+sum(coeffs(state))
 @ 
 
 Note the streamlined \proglang{R} idiom: It is not clear how such

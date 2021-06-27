@@ -1,8 +1,8 @@
 
 
 test_that("test suite aaa",{
-    expect_true(value(constant(subs(homog(2,2),1,10))) == 100)
-    expect_true(value(subs(product(1:3),3,10))==1000)
+    expect_true(coeffs(constant(subs(homog(2,2),1,10))) == 100)
+    expect_true(coeffs(subs(product(1:3),3,10))==1000)
 
     a <- spray(diag(5))
     expect_true(is.empty(a[2,3,4,1,5]))
@@ -28,8 +28,8 @@ test_that("test suite aaa",{
 
 
     expect_silent(S <- spray(matrix(1:7,5,7)))
-    expect_error(value(S) <- 1:2)
-    expect_silent(value(S) <- 13)
+    expect_error(coeffs(S) <- 1:2)
+    expect_silent(coeffs(S) <- 13)
 
     expect_silent(as.spray(spray(diag(7))))
     expect_silent(as.spray(list(diag(9),seq_len(9))))
@@ -179,9 +179,9 @@ test_that("test suite aaa",{
     expect_true(S2^1 == S2)
 
     Sz <- spray(matrix(sample(1:50),ncol=2),10^-(1:25))
-    expect_true(length(value(Sz)) >= length(value(zap(Sz))))
-    expect_true(length(value(Sz)) >= length(value(zapsmall(Sz))))
-    expect_true(length(value(Sz)) >= length(zapsmall(value(Sz))))
+    expect_true(length(coeffs(Sz)) >= length(coeffs(zap(Sz))))
+    expect_true(length(coeffs(Sz)) >= length(coeffs(zapsmall(Sz))))
+    expect_true(length(coeffs(Sz)) >= length(zapsmall(coeffs(Sz))))
 
 })
 
