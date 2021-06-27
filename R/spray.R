@@ -68,9 +68,9 @@ setClass("spray",
 }
 
 `index` <- function(S){S[[1]]}    # these two functions are the only
-`value` <- function(S){disord(S[[2]])}    # 'accessor' functions in the package
+`coeffs` <- function(S){disord(S[[2]])}    # 'accessor' functions in the package
 
-`value<-` <- function(S,value){
+`coeffs<-` <- function(S,value){
     stopifnot(length(value)==1)
     spray(index(S),value)
 }
@@ -125,7 +125,7 @@ setGeneric("deriv")
     }
     
     out <- array(0,dS)
-    out[ind] <- value(x)
+    out[ind] <- coeffs(x)
     dimnames(out) <- names(ind)
     return(out)
 }
@@ -148,7 +148,7 @@ setGeneric("deriv")
     if(ncol(M) != arity(S)){
       stop("incorrect number of dimensions specified")
     }
-    jj <- spray_accessor(index(S),value(S),M) # returns a NumericVector
+    jj <- spray_accessor(index(S),coeffs(S),M) # returns a NumericVector
     if(drop){
       return(jj)
     } else {
@@ -162,8 +162,8 @@ setGeneric("deriv")
         if(is.spray(value)){
             return(
                 spraymaker(spray_overwrite(
-                    spray::index(S    ),spray::value(S    ),
-                    spray::index(value),spray::value(value))))
+                    spray::index(S    ),spray::coeffs(S    ),
+                    spray::index(value),spray::coeffs(value))))
             } else {
                 return(spray(spray::index(S),value))
             }
@@ -182,7 +182,7 @@ setGeneric("deriv")
 
     if(length(value)==1){value <- rep(value,nrow(M))}
     stopifnot(length(value)==nrow(M))
-    return(spraymaker(spray_setter(spray::index(S),spray::value(S),M,value)))
+    return(spraymaker(spray_setter(spray::index(S),spray::coeffs(S),M,value)))
 }
 
 `as.function.spray` <- function(x,...){
@@ -193,7 +193,7 @@ setGeneric("deriv")
         for(i in seq_len(arity(x))){ # iterate over index columns
             jj <- jj * outer(X[,i],index(x)[,i],"^")
         }
-        return(rowSums(sweep(jj,2,value(x),"*")))
+        return(rowSums(sweep(jj,2,coeffs(x),"*")))
     }
 }
 
@@ -233,7 +233,7 @@ setGeneric("deriv")
         cat(paste('empty sparse array with ', arity(S), ' columns\n',sep=""))
     } else {
         jj <-
-            data.frame(index(S),symbol= " = ", val=round(value(S),getOption("digits")))
+            data.frame(index(S),symbol= " = ", val=round(coeffs(S),getOption("digits")))
         colnames(jj) <- c(rep(" ",arity(S)+1),'val')
         print(jj,row.names=FALSE)
     }
@@ -268,7 +268,7 @@ setGeneric("deriv")
   }
   
   ind <- index(S)
-  val <- elements(value(S))
+  val <- elements(coeffs(S))
 
     for(i in seq_len(nrow(ind))){ 
         coeff <- val[i]
@@ -347,9 +347,9 @@ setGeneric("deriv")
 
 `asum.spray` <- function(S, dims, drop=TRUE, ...){   # off-by-one dealt with in C++
   dims <- process_dimensions(S,dims)
-  jj <- spraymaker(spray_asum_include(index(S),value(S),dims))
+  jj <- spraymaker(spray_asum_include(index(S),coeffs(S),dims))
   if(drop){
-    return(spray(index(jj)[,-dims,drop=FALSE],value(jj),addrepeats=TRUE))
+    return(spray(index(jj)[,-dims,drop=FALSE],coeffs(jj),addrepeats=TRUE))
   } else {
     return(jj)
   }
@@ -357,7 +357,7 @@ setGeneric("deriv")
 
 `asum_inverted` <- function(S, dims){   # off-by-one dealt with in C++
   dims <- process_dimensions(S,dims)
-  return(spraymaker(spray_asum_exclude(index(S),value(S),dims)))
+  return(spraymaker(spray_asum_exclude(index(S),coeffs(S),dims)))
 }
 
 `subs` <- function(S,dims,x){
@@ -367,7 +367,7 @@ setGeneric("deriv")
   a <- index(S)[,-dims,drop=FALSE]
   b <- index(S)[, dims,drop=FALSE]
   
-  jj <- apply(sweep(b,2,x,function(x,y){y^x}),1,prod)* elements(value(S))
+  jj <- apply(sweep(b,2,x,function(x,y){y^x}),1,prod)* elements(coeffs(S))
   spray(a, jj, addrepeats=TRUE)
 }
 
@@ -382,7 +382,7 @@ setGeneric("deriv")
   orders <- round(orders)
   stopifnot(length(orders) == arity(S))
   stopifnot(all(orders >= 0))
-  return(spraymaker(spray_deriv(index(S),value(S),orders)))
+  return(spraymaker(spray_deriv(index(S),coeffs(S),orders)))
 }
 
 `pmax` <- function(...){ UseMethod("pmax") }
@@ -415,13 +415,13 @@ setGeneric("deriv")
         } else if (S2>0){
             stop("pmax(S,x) not defined if x>0")
         } else {
-            return(spray(index(S1),pmax(elements(value(S1)),S2)))
+            return(spray(index(S1),pmax(elements(coeffs(S1)),S2)))
         }
     } else {
         return(
             spraymaker(spray_pmax(
-                index(S1),elements(value(S1)),
-                index(S2),elements(value(S2))
+                index(S1),elements(coeffs(S1)),
+                index(S2),elements(coeffs(S2))
             ))
         )
     }
@@ -435,13 +435,13 @@ setGeneric("deriv")
         } else if (S2<0){
             stop("pmin(S,x) not defined if x<0")
         } else {
-            return(spray(index(S1),pmin(elements(value(S1)),S2)))
+            return(spray(index(S1),pmin(elements(coeffs(S1)),S2)))
         }
     } else {
         return(
             spraymaker(spray_pmin(
-                index(S1),elements(value(S1)),
-                index(S2),elements(value(S2))
+                index(S1),elements(coeffs(S1)),
+                index(S2),elements(coeffs(S2))
                                    ))
             )
     }
@@ -475,7 +475,7 @@ setMethod("zapsmall","ANY",function(x,digits){
 })
 
 `zap` <- function(x, digits=getOption("digits")){
-  spray(index(x),base::zapsmall(value(x),digits=digits))
+  spray(index(x),base::zapsmall(coeffs(x),digits=digits))
 }
 
 `spraycross2` <- function(S1,S2){
@@ -483,7 +483,7 @@ setMethod("zapsmall","ANY",function(x,digits){
     M2 <- index(S2)
     jj <- as.matrix(expand.grid(seq_len(nrow(M1)),seq_len(nrow(M2))))
     f <- function(i){c(M1[jj[i,1],],M2[jj[i,2],])}
-    spray(t(sapply(seq_len(nrow(jj)),f)),c(outer(value(S1),value(S2))))
+    spray(t(sapply(seq_len(nrow(jj)),f)),c(outer(coeffs(S1),coeffs(S2))))
 }
 
 `spraycross` <- function(S, ...) {

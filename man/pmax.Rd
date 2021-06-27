@@ -54,7 +54,7 @@ Note that \code{minpair_spray(S1,S2)} is algebraically equivalent to
 \code{-pmax_spray(-S1,-S2)}; see the examples.
 
 The value of \code{pmax(S)} is problematic.  Suppose
-\code{all(value(S)<0)}; the current implementation returns
+\code{all(coeffs(S)<0)}; the current implementation returns
 \code{pmax(S)==S} but there is a case for returning the null polynomial.
   
 }
