@@ -1,6 +1,10 @@
 \name{constant}
 \alias{constant}
+\alias{constant.spray}
+\alias{constant,spray-method}
 \alias{constant<-}
+\alias{constant<-.spray}
+\alias{constant<-,spray-method}
 \title{
   Get or set the constant term of a spray object
 }
