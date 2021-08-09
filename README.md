@@ -1,4 +1,9 @@
+The spray package: sparse arrays in R
+================
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# spray <img src="man/figures/spray.png" width = "150" align="right" />
 
 <!-- badges: start -->
 
@@ -38,13 +43,14 @@ a[2,2,2,2,2,2,2,2,2] <- 17
 a[3,4,2,2,7,2,3,2,3] <- 18
 ```
 
-Handling `a` requires storage of \(\prod_{i=4}^{12}i=79833600\) floating
-point numbers (of which two are nonzero), represented in an elegant
-format amenable to extraction and replacement. Arrays such as this in
-which many of the elements are zero are common and in this case storing
-only the nonzero elements and their positions would be a more compact
-and efficient representation. To create a sparse array object in the
-`spray` package, one specifies a matrix of indices with each row
+Handling `a` requires storage of
+![\\prod\_{i=4}^{12}i=79833600](https://latex.codecogs.com/png.latex?%5Cprod_%7Bi%3D4%7D%5E%7B12%7Di%3D79833600 "\prod_{i=4}^{12}i=79833600")
+floating point numbers (of which two are nonzero), represented in an
+elegant format amenable to extraction and replacement. Arrays such as
+this in which many of the elements are zero are common and in this case
+storing only the nonzero elements and their positions would be a more
+compact and efficient representation. To create a sparse array object in
+the `spray` package, one specifies a matrix of indices with each row
 corresponding to the position of a nonzero element, and a numeric vector
 of values:
 
@@ -57,8 +63,8 @@ M <- rbind(
 S1 <- spray(M,7:8)
 S1
 #>                        val
-#>  3 4 2 2 7 2 3 2 3  =    8
 #>  2 2 2 2 2 2 2 2 2  =    7
+#>  3 4 2 2 7 2 3 2 3  =    8
 ```
 
 Note that object `S1` is rather compact by comparison with plain array
@@ -75,8 +81,8 @@ S2 <-spray(rbind(
   c(3,4,2,2,7,2,3,2,3)), c(100,-8))
 S2
 #>                        val
-#>  3 4 2 2 7 2 3 2 3  =   -8
 #>  1 2 3 1 3 3 1 4 1  =  100
+#>  3 4 2 2 7 2 3 2 3  =   -8
 ```
 
 then
@@ -100,15 +106,15 @@ S1 <- spray(matrix(c(0,0,0,1,0,0,1,1,1,2,0,3),ncol=3),1:4)
 S2 <- spray(matrix(c(6,-7,8,0,0,2,1,1,3),byrow=TRUE,ncol=3),c(17,11,-4))
 S1
 #>            val
-#>  1 1 3  =    4
-#>  0 1 0  =    3
 #>  0 0 1  =    1
+#>  0 1 0  =    3
 #>  0 0 2  =    2
+#>  1 1 3  =    4
 S2
 #>             val
-#>  1  1 3  =   -4
 #>  6 -7 8  =   17
 #>  0  0 2  =   11
+#>  1  1 3  =   -4
 ```
 
 it is natural to interpret the rows of the index matrix as powers of
@@ -120,27 +126,29 @@ method:
 ``` r
 options(polyform = TRUE)
 S1
-#> +4*x*y*z^3 +3*y +z +2*z^2
+#> +z +3*y +2*z^2 +4*x*y*z^3
 S2
-#> -4*x*y*z^3 +17*x^6*y^-7*z^8 +11*z^2
+#> +17*x^6*y^-7*z^8 +11*z^2 -4*x*y*z^3
 ```
 
 (only the print method has changed; the objects themselves are
 unaltered). The print method interprets, by default, the three columns
-as variables \(x,y,z\) although this behaviour is user-definable. With
-this interpretation, multiplication and addition have natural
-definitions as multivariate polynomial multiplication and addition:
+as variables
+![x,y,z](https://latex.codecogs.com/png.latex?x%2Cy%2Cz "x,y,z")
+although this behaviour is user-definable. With this interpretation,
+multiplication and addition have natural definitions as multivariate
+polynomial multiplication and addition:
 
 ``` r
 S1+S2
-#> +3*y +13*z^2 +z +17*x^6*y^-7*z^8
+#> +z +3*y +13*z^2 +17*x^6*y^-7*z^8
 S1*S2
-#> +17*x^6*y^-7*z^9 -4*x*y*z^4 +68*x^7*y^-6*z^11 +11*z^3 +34*x^6*y^-7*z^10
-#> +33*y*z^2 -12*x*y^2*z^3 -16*x^2*y^2*z^6 +51*x^6*y^-6*z^8 +22*z^4
-#> +36*x*y*z^5
+#> -16*x^2*y^2*z^6 -12*x*y^2*z^3 +17*x^6*y^-7*z^9 +68*x^7*y^-6*z^11
+#> +34*x^6*y^-7*z^10 +22*z^4 +36*x*y*z^5 +33*y*z^2 +51*x^6*y^-6*z^8
+#> -4*x*y*z^4 +11*z^3
 S1^2+4*S2
-#> +9*y^2 -16*x*y*z^3 +16*x^2*y^2*z^6 +24*x*y^2*z^3 +4*z^4
-#> +68*x^6*y^-7*z^8 +45*z^2 +12*y*z^2 +16*x*y*z^5 +8*x*y*z^4 +4*z^3 +6*y*z
+#> +4*z^3 -16*x*y*z^3 +45*z^2 +6*y*z +12*y*z^2 +24*x*y^2*z^3 +9*y^2
+#> +16*x^2*y^2*z^6 +4*z^4 +8*x*y*z^4 +16*x*y*z^5 +68*x^6*y^-7*z^8
 ```
 
 It is possible to introduce an element of symbolic calculation,
@@ -157,7 +165,7 @@ z <- lone(3, 3)
 ```
 
 thus illustrating the identity
-\((x+y+z)(xy+xz+yz)=(x+y)(y+z)(x+z)+xyz\).
+![(x+y+z)(xy+xz+yz)=(x+y)(y+z)(x+z)+xyz](https://latex.codecogs.com/png.latex?%28x%2By%2Bz%29%28xy%2Bxz%2Byz%29%3D%28x%2By%29%28y%2Bz%29%28x%2Bz%29%2Bxyz "(x+y+z)(xy+xz+yz)=(x+y)(y+z)(x+z)+xyz").
 
 Spray objects can be coerced to functions:
 
@@ -172,10 +180,13 @@ f(c(1, 2))
 Differentiation is also straightforward. Suppose we wish to calculate
 the multivariate polynomial corresponding to
 
-\[
+![
+\\frac{\\partial^6}{\\partial x\\,\\partial^2y\\,\\partial^3z}
+\\left(xyz + x+2y+3z\\right)^3.
+](https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%5E6%7D%7B%5Cpartial%20x%5C%2C%5Cpartial%5E2y%5C%2C%5Cpartial%5E3z%7D%0A%5Cleft%28xyz%20%2B%20x%2B2y%2B3z%5Cright%29%5E3.%0A "
 \frac{\partial^6}{\partial x\,\partial^2y\,\partial^3z}
 \left(xyz + x+2y+3z\right)^3.
-\]
+")
 
 This would be
 

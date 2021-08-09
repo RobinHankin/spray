@@ -1,8 +1,8 @@
 ---
 title: "The spray package: sparse arrays in R"
 output:
-  md_document:
-    variant: gfm
+  github_document:
+    pandoc_args: --webtex
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
+# spray <img src="man/figures/spray.png" width = "150" align="right" />
 
 <!-- badges: start -->
 [![Build Status](https://travis-ci.org/RobinHankin/spray.svg?branch=master)](https://travis-ci.org/RobinHankin/spray)
