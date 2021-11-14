@@ -11,7 +11,7 @@ Various functions to create simple spray objects
 }
 \description{
 Various functions to create simple spray objects such as single-term,
-homogenous, and constant multivariate polynomials.
+homogeneous, and constant multivariate polynomials.
 }
 \usage{
 product(power)

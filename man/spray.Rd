@@ -40,8 +40,9 @@ is_valid_spray(L)
   \item{arg1,arg2}{Various arguments to be coerced to a spray}
   \item{addrepeats}{Boolean, with default \code{FALSE} meaning to check
     for repeated index rows and, if any are found, return an error}
-  \item{value}{In the assignment operator \code{coeffs<-()}, a disord
-    object so that \code{coeffs(S) <- x} works as expected}
+  \item{value}{In the assignment operator \code{coeffs<-()}, a
+    \code{disord} object (or a length-one numeric vector), so that
+    \code{coeffs(S) <- x} works as expected}
   \item{offbyone}{In function \code{as.spray()}, when converting from an
     array.  Argument \code{offbyone} is Boolean with default
     \code{FALSE} meaning to insert array elements in positions
