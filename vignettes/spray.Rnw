@@ -68,6 +68,7 @@ options(prompt = "R> ", continue = "+  ", width = 70, useFancyQuotes = FALSE)
 \SweaveOpts{}
 \begin{document}
 
+\hfill\includegraphics[width=1in]{\Sexpr{system.file("help/figures/spray.png",package="spray")}}
 
 \section{Introduction}
 
@@ -122,7 +123,7 @@ a <- array(1, dim=2:5)
 
 \noindent The resulting object requires storage of~$2\times 3\times
 4\times 5=120$ floating point numbers, which are represented in an
-elegant format amenable to cartesian extraction and replacement.
+elegant format amenable to Cartesian extraction and replacement.
 However, arrays in which many of the elements are zero are common and
 in this case storing only the nonzero elements and their positions
 would be a more compact and efficient representation.  To create a
@@ -217,7 +218,7 @@ above, this often leads to inefficient computation.
 \subsection{Multivariate polynomials}
 
 One natural and useful interpretation of a sparse array is as a
-multivariate polynomial.  Conisder the following sparse array:
+multivariate polynomial.  Consider the following sparse array:
 
 <<show_S1_again>>=
 S3 <- spray(matrix(c(0,0,0, 0,0,1, 1,1,1, 3,0,0), byrow=TRUE, ncol=3), 1:4)
@@ -228,7 +229,7 @@ S3
 powers of different variables of a multivariate polynomial, and the
 values as being the coefficients.
 
-This is realised in the package using the \code{polyform} option,
+This is realized in the package using the \code{polyform} option,
 which if set to \code{TRUE}, modifies the print method:
 
 <<show_a_multivariate_polynomial>>=
@@ -310,7 +311,7 @@ f(c(1, 2))
 
 The last line showing the result of substituting~$x=1,y=2$
 into~\code{S4}.  Other algebraic operations include substitution and
-partial differentiation.  Consider the homogenous polynomial in three
+partial differentiation.  Consider the homogeneous polynomial in three
 variables:
 
 <<homog_show>>=
@@ -363,7 +364,7 @@ polynomial in~$d$ variables, here~$x$ and~$y$; the probability of the
 entity being at point~$(n,m)$ is the coefficient of~$x^ny^m$.
 
 The entity typically moves between adjacent nodes according to a
-\emph{kernel} polynomial whose coefficients are the probabilites of
+\emph{kernel} polynomial whose coefficients are the probabilities of
 the moves.  Periodicity may be enforced simply by wrapping the
 polynomial using modular arithmetic.
 
