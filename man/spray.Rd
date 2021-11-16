@@ -13,7 +13,11 @@
 \alias{coeffs.spray}
 \alias{coeffs<-.spray}
 \alias{coeffs,spray-method}
+\alias{value}
 \alias{value<-}
+\alias{value.spray}
+\alias{value<-.spray}
+\alias{value,spray-method}
 \alias{coeffs<-,spray-method}
 \title{
 Create sparse array objects
@@ -69,7 +73,9 @@ is_valid_spray(L)
 }
 \author{Robin K. S. Hankin}
 \note{
-  Function \code{coeffs()} was formerly known as \code{value()}.
+  Function \code{coeffs()} was formerly known as \code{value()};
+  function \code{value()} will be deprecated
+
 }
   
 \examples{
