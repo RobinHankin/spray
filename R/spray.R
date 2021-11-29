@@ -245,7 +245,13 @@ setGeneric("deriv")
     } else {
         jj <-
             data.frame(index(S),symbol= " = ", val=round(coeffs(S),getOption("digits")))
-        colnames(jj) <- c(rep(" ",arity(S)+1),'val')
+        mdc <-getOption("sprayvars")
+        if(is.null(mdc)){
+            colnames(jj) <- c(rep(" ",arity(S)+1),'val')
+        } else {
+            stopifnot(length(mdc)==arity(S))
+            colnames(jj) <- c(mdc,' ','val')
+        }
         print(jj,row.names=FALSE)
     }
     return(invisible(S))
