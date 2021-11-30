@@ -3,3 +3,4 @@
 ^README\.Rmd
 ^\.travis\.yml$
 ^inst/spray_stickermaker.R$
+^inst/weyl.R$
