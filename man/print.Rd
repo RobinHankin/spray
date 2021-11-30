@@ -27,8 +27,7 @@ print_spray_polyform(S)
   section.
 
   Option \code{sprayvars} is a character vector with entries
-  corresponding to the variable names for printing.  For printing in
-  matrix form, its length must match the arity of the spray object.  The
+  corresponding to the variable names for printing.  The
   \code{sprayvars} option has no algebraic significance: all it does is
   affect the print method.
 

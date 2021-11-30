@@ -249,8 +249,7 @@ setGeneric("deriv")
         if(is.null(mdc)){
             colnames(jj) <- c(rep(" ",arity(S)+1),'val')
         } else {
-            stopifnot(length(mdc)==arity(S))
-            colnames(jj) <- c(mdc,' ','val')
+            colnames(jj) <- c(mdc[seq_len(arity(S))],' ','val')
         }
         print(jj,row.names=FALSE)
     }
