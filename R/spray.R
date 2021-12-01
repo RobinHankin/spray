@@ -1,6 +1,6 @@
 setClass("spray",
-         representation = representation(index="numeric",value="numeric"),
-         prototype      = list(index=numeric(),value=numeric()),
+         representation = representation(index="matrix",value="numeric"),
+         prototype      = list(index=matrix(),value=numeric()),
          )
 
 `spraymaker` <- function(L,addrepeats=FALSE,arity=ncol(L[[1]])){    # formal; this is the *only* way to create a spray object; 
@@ -17,9 +17,11 @@ setClass("spray",
         }
         out <- spray_maker(M,x)   # see RcppExports.R; strips out zeros and puts index rows in (some inscrutable) order
     }
-
-    class(out) <- "spray"  # this is the *only time class<-() is called
-    return(out)
+    if(is.empty(out)){
+        return(new("spray",index=matrix(0,0,arity),value=numeric(0)))
+    } else {
+        return(new("spray",index=out$index, value=out$value))
+    }
 }
 
 `is_valid_spray` <- function(L){  # L = list(M,x)
@@ -37,16 +39,24 @@ setClass("spray",
 
 `is.spray` <- function(S){inherits(S,"spray")}
 
-`is.empty` <- function(L){
-  if( is.null(L[[1]]) & is.null(L[[2]])){
-    return(TRUE)
-  } else if(  identical(nrow(L[[1]]),0L) & (length(L[[2]])==0)){
-    return(TRUE)
-  } else {
-    return(FALSE)
-  }
+`is.empty` <- function(S){
+    if(is.spray(S)){
+        i <- index(S)
+        v <- coeffs(S)
+    } else {
+        i <- S[[1]]
+        v <- S[[2]]
+    }
+
+if( is.null(i) & is.null(v)){
+        return(TRUE)
+    } else if(identical(nrow(i),0L) & (length(v)==0)){
+        return(TRUE)
+    } else {
+        return(FALSE)
+    }
 }
- 
+
 `is.zero` <- is.empty
 
 `spray` <- function(M,x,addrepeats=FALSE){
@@ -67,10 +77,10 @@ setClass("spray",
     return(spraymaker(list(M,x),addrepeats=addrepeats))
 }
 
-`index` <- function(S){S[[1]]}    # these two functions are the only
+`index` <- function(S){S@index}    # these two functions are the only
 
 `coeffs` <- function(S){UseMethod("coeffs")}
-`coeffs.spray` <- function(S){disord(S[[2]])}    # 'accessor' functions in the package
+`coeffs.spray` <- function(S){disord(S@value)}    # 'accessor' functions in the package
 
 `coeffs<-` <- function(S,value){UseMethod("coeffs<-")}
 `coeffs<-.spray` <- function(S,value){
@@ -240,7 +250,7 @@ setGeneric("deriv")
 }
 
 `print_spray_matrixform` <- function(S){
-    if(is.empty(S)){
+    if(is.empty(list(index(S),coeffs(S)))){
         cat(paste('empty sparse array with ', arity(S), ' columns\n',sep=""))
     } else {
         jj <-
@@ -349,6 +359,7 @@ setGeneric("deriv")
   return(out)
 }
 
+setMethod("show", "spray", function(object){print.spray(object)})
 `asum` <- function(S, dims,drop=TRUE, ...) {UseMethod("asum")}
 
 #      M <- matrix(sample(0:2,5*29,rep=T),ncol=5)

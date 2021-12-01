@@ -8,4 +8,5 @@
 
 # spray 1.0-17
 
+- Now S4
 - sprayvars option now also governs matrix-form printing

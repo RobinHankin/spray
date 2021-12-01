@@ -94,8 +94,8 @@ spray_times_spray <- function(S1,S2){
 }
 
 spray_times_scalar <- function(S,x){
-    stopifnot(length(x)==1)
-    return(spraymaker(spray(index(S), x*coeffs(S)),arity=arity(S)))
+    coeffs(S) <-  coeffs(S)*x
+    return(S)
 }
 
 spray_plus_spray <- function(S1,S2){
