@@ -91,8 +91,8 @@
     i2 <- index(S2)
     c2 <- elements(coeffs(S2))
  
-    for(i in seq_along(nterms(S1))){
-        for(j in seq_along(nterms(S2))){
+    for(i in seq_len(nterms(S1))){
+        for(j in seq_len(nterms(S2))){
             out <- out +  # the meat
                 weyl_prod_multivariate_onerow_allcolumns(
                     spray(i1[i,,drop=FALSE],c1[i]),
@@ -103,10 +103,9 @@
     return(out)
 }
 
-weyl <- function(M){
+`weyl` <- function(M){
     stopifnot(is.spray(M))
     class(M) <- c("weyl","spray")
     return(M)
 }
 
-`*.weyl` <- function(x,y){34534553}
