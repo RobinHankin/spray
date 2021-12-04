@@ -1,21 +1,27 @@
 \name{constant}
 \alias{constant}
+\alias{is.constant}
 \alias{constant.spray}
 \alias{constant,spray-method}
 \alias{constant<-}
 \alias{constant<-.spray}
 \alias{constant<-,spray-method}
+\alias{drop}
+\alias{drop,spray-method}
 \title{
   Get or set the constant term of a spray object
 }
 \description{
 The constant term of a spray object is the coefficient corresponding to
 an index of all zeros.  These functions get or set the constant of a
-spray object.
+spray object.  Function \code{drop()} returns the coefficient of a
+constant \code{spray}. 
 }
 \usage{
 constant(x,drop=FALSE)
 constant(x) <- value
+is.constant(x)
+drop(x)
 }
 \arguments{
   \item{x}{Object of class spray}
@@ -27,11 +33,11 @@ constant(x) <- value
   In function \code{constant()}, return the coefficient, or a constant
   multivariate polynomial, depending on the value of \code{drop}.
 }
-\author{
-Robin K. S. Hankin
-}
+\author{Robin K. S. Hankin}
 \note{
-The behaviour of \code{drop} (sort of) matches that of the spray extractor method.
+The behaviour of \code{drop} argument (sort of) matches that of the
+spray extractor method.  Function \code{drop()} returns the
+\code{disordR::elements()} of the coefficient.
 }
 \seealso{
 \code{\link{Extract}}
@@ -44,6 +50,8 @@ constant(S)
 constant(S) <- 33
 
 S
+
+drop(constant(S,drop=FALSE))
 
 }
 

@@ -9,3 +9,4 @@
 # spray 1.0-17
 
 - sprayvars option now also governs matrix-form printing
+- drop() function added, following the clifford package

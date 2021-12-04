@@ -282,7 +282,7 @@ setGeneric("deriv")
   } else {
     string <- constant(S,drop=TRUE)
   }
-  
+
   ind <- index(S)
   val <- elements(coeffs(S))
 
@@ -329,7 +329,6 @@ setGeneric("deriv")
             }
         }
         string <- paste(string, term, sep="")
-
       }  # row of index loop closes
     
   string <- paste(string,'\n',sep="")
@@ -510,5 +509,14 @@ setMethod("zapsmall","ANY",function(x,digits){
    }
 }
 
+`is.constant` <- function(x){is.zero(x) || (all(index(x))==0)}
 
+setGeneric("drop")
+setMethod("drop","spray", function(x){
+    if(is.constant(x)){
+        return(elements(coeffs(x)))
+    } else {
+        return(x)
+    }
+})
 
