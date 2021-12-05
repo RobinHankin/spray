@@ -519,7 +519,7 @@ setMethod("zapsmall","ANY",function(x,digits){
    }
 }
 
-`is.constant` <- function(x){is.zero(x) || (all(index(x))==0)}
+`is.constant` <- function(x){is.zero(x) || all(index(x)==0)}
 
 setGeneric("drop")
 setMethod("drop","spray", function(x){
