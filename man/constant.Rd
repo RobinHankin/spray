@@ -43,6 +43,9 @@ The behaviour of the \code{drop} argument (sort of) matches that of the
 spray extractor method.  Function \code{drop()} returns the elements of
 the coefficients.
 
+Function \code{constant()} ensures that zero spray objects retain the
+argument's arity.
+
 It might have been better to call \code{is.constant()}
 \code{is.scalar()}, for consistency with the \code{stokes} and
 \code{clifford} packages.  But this is not clear.

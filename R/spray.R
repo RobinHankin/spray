@@ -208,7 +208,17 @@ setGeneric("deriv")
 
 `constant` <- function(x,drop=FALSE){UseMethod("constant")}
 `constant.spray` <- function(x,drop=FALSE){ # returns 'the constant (term) of x'
-  x[t(rep(0,arity(x))),drop=drop]
+    M <- t(rep(0,arity(x)))
+    out <- x[M,drop=TRUE]
+    if(drop){
+        return(out)
+    } else { # drop = FALSE
+        if(out==0){
+            return(spraymaker(spray(M, 0),arity=arity(x)))
+        } else {
+            return(spray(M,out))
+        }
+    }
 }
 
 `constant<-` <- function(x, value){UseMethod("constant<-")}
@@ -519,4 +529,3 @@ setMethod("drop","spray", function(x){
         return(x)
     }
 })
-
