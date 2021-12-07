@@ -10,6 +10,7 @@ import(mathjaxr)
 importFrom(disordR,disord)
 importFrom(disordR,elements)
 importFrom(disordR,hash)
+importFrom(disordR,hashcal)
 importFrom(disordR,is.disord)
 importFrom(disordR,consistent)
 
