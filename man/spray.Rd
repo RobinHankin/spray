@@ -20,7 +20,7 @@
 \alias{value,spray-method}
 \alias{coeffs<-,spray-method}
 \title{
-Create sparse array objects
+Sparse arrays: \code{spray} objects
 }
 \description{
 Create, coerce, and test for sparse array objects
