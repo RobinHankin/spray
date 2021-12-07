@@ -523,7 +523,9 @@ setMethod("zapsmall","ANY",function(x,digits){
 
 setGeneric("drop")
 setMethod("drop","spray", function(x){
-    if(is.constant(x)){
+    if(is.zero(x)){
+        return(0)
+    } else if(is.constant(x)){
         return(elements(coeffs(x)))
     } else {
         return(x)
