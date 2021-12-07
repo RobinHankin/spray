@@ -385,7 +385,7 @@ setGeneric("deriv")
   return(spraymaker(spray_asum_exclude(index(S),coeffs(S),dims)))
 }
 
-`subs` <- function(S,dims,x){
+`subs` <- function(S,dims,x,drop=TRUE){
 
   dims <- process_dimensions(S,dims)
 
@@ -393,7 +393,9 @@ setGeneric("deriv")
   b <- index(S)[, dims,drop=FALSE]
   
   jj <- apply(sweep(b,2,x,function(x,y){y^x}),1,prod)* elements(coeffs(S))
-  spray(a, jj, addrepeats=TRUE)
+  out <- spray(a, jj, addrepeats=TRUE)
+  if(drop){out <- drop(out)}
+  return(out)
 }
 
 `deriv.spray` <- function(expr, i, derivative=1, ...){
