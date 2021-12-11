@@ -77,8 +77,8 @@ setClass("spray",
    jj <- coeffs(S)
    if(is.disord(value)){
 
-     stopifnot(consistent(coeffs(S),value))
-
+     stopifnot(consistent(jj,value))
+     if((!identical(hash(jj),hash(value))) & (length(value)>1)){stop("length > 1")}
 
      jj <- value
    } else {
