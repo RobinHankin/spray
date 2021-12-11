@@ -76,7 +76,10 @@ setClass("spray",
 `coeffs<-.spray` <- function(S,value){
    jj <- coeffs(S)
    if(is.disord(value)){
+
      stopifnot(consistent(coeffs(S),value))
+
+
      jj <- value
    } else {
      jj[] <- value  # the meat

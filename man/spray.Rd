@@ -95,6 +95,11 @@ S <- spray(matrix(1:7,5,7))
 a <- as.array(S)    # will not work if any(M<1)
 S1 <- as.spray(a)
 stopifnot(S==S1)
+
+a <- rspray(20)
+coeffs(a)[coeffs(a) \%\% 2 == 1] <- 99  # every odd coefficient -> 99
+
+
 }
 
 \keyword{symbolmath}
