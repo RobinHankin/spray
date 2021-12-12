@@ -47,7 +47,13 @@ setClass("spray",
   }
 }
  
-`is.zero` <- is.empty
+`is.zero` <- function(x){
+    if(is.spray(x)){
+        return(is.empty(x))
+    } else {
+        return(x==0)
+    }
+}
 
 `spray` <- function(M,x,addrepeats=FALSE){
     if(is.vector(M)){

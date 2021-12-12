@@ -12,12 +12,12 @@ Test for the zero, or empty, polynomial
 }
 \usage{
 zero(d)
-is.zero(L)
+is.zero(x)
 is.empty(L)
 }
 \arguments{
-  \item{L}{A two-element list of indices and values, possibly a spray
-    object}
+  \item{L,x}{A two-element list of indices and values, possibly a spray
+    object or numeric vector}
   \item{d}{Integer specifying dimensionality of the spray (the arity)}
 }
 \details{
