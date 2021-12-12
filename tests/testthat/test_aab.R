@@ -22,10 +22,10 @@ test_that("test suite aab",{
         expect_error(4/S)
         expect_error(S^S)
         expect_error(S^(-9))
-        expect_error(S == 6)
+        expect_false(S+1e7 == 6)
         expect_true(S == S + (S*0))
         expect_true(S == (S*0) + S)
-        expect_error(S != 6)
+        expect_false(S != 1e7)
         expect_false(1000+S == S)
         expect_false(13+S == S*0)
 

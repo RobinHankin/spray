@@ -58,14 +58,22 @@
     } else if (.Generic == "==") {
         if(lclass && rclass){
             return(spray_eq_spray(e1,e2))
+        } else if(lclass && !rclass){
+            return(spray_eq_numeric(e1,e2))
+        } else if(!lclass && rclass){
+            return(spray_eq_numeric(e2,e1))
         } else {
-            stop("Generic '==' only compares two spray objects with one another")
+            oddfunc()
         }
     } else if (.Generic == "!="){
         if(lclass && rclass){
             return(!spray_eq_spray(e1,e2))
+        } else if(lclass && !rclass){
+            return(!spray_eq_numeric(e1,e2))
+        } else if(!lclass && rclass){
+            return(!spray_eq_numeric(e2,e1))
         } else {
-            stop("Generic '!=' only compares two spray objects with one another")
+            oddfunc()
         }
     } else if (.Generic == "/") {
         if(lclass && !rclass){
@@ -132,5 +140,13 @@ spray_power_scalar <- function(S,n){
         return(FALSE)
     } else {
         return(spray_equality(index(S1),coeffs(S1),index(S2),coeffs(S2)))
+    }
+}
+
+`spray_eq_numeric` <- function(S1,x){
+    if(is.constant(S1)){
+        return(drop(S1) == x)
+    } else {
+        return(FALSE)
     }
 }

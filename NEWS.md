@@ -10,3 +10,9 @@
 
 - sprayvars option now also governs matrix-form printing
 - drop() function added, following the clifford package
+
+
+# spray 1.0-18
+
+- bug in coeffs(x) <- v fixed
+- <spray> == <numeric> implemented, also !=

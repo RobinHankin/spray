@@ -8,6 +8,7 @@
 \alias{spray_plus_scalar}
 \alias{spray_power_scalar}
 \alias{spray_eq_spray}
+\alias{spray_eq_numeric}
 \title{Arithmetic Ops Group Methods for sprays}
 \description{
   Allows arithmetic operators to be used for spray calculations, 
@@ -23,6 +24,7 @@ spray_plus_spray(S1,S2)
 spray_plus_scalar(S,x)
 spray_power_scalar(S,n)
 spray_eq_spray(S1,S2)
+spray_eq_numeric(S1,x)
 }
 \arguments{
   \item{e1,e2,S,S1,S2}{Objects of class spray, here interpreted as
