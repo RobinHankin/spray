@@ -16,3 +16,4 @@
 
 - bug in coeffs(x) <- v fixed
 - <spray> == <numeric> implemented, also !=
+- new generic as.one()
