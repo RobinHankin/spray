@@ -25,7 +25,8 @@ test_that("test suite aab",{
         expect_false(S+1e7 == 6)
         expect_true(S == S + (S*0))
         expect_true(S == (S*0) + S)
-        expect_false(S != 1e7)
+        expect_true(S != 1e7)
+        expect_false(S == 1e7)
         expect_false(1000+S == S)
         expect_false(13+S == S*0)
 
