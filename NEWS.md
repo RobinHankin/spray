@@ -8,7 +8,7 @@
 
 # spray 1.0-17
 
-- sprayvars option now also governs matrix-form printing
+- sprayvars option now also governs atrix-form printing
 - drop() function added, following the clifford package
 
 
@@ -16,4 +16,4 @@
 
 - bug in coeffs(x) <- v fixed
 - <spray> == <numeric> implemented, also !=
-- new generic as.one()
+- new generic as.id()

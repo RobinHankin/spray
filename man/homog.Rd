@@ -5,6 +5,8 @@
 \alias{linear}
 \alias{lone}
 \alias{one}
+\alias{as.id}
+\alias{as.id.spray}
 \alias{xyz}
 \title{
 Various functions to create simple spray objects
@@ -19,12 +21,14 @@ homog(d,power=1)
 linear(x,power=1)
 lone(n,d=n)
 one(d)
+as.id(S)
 xyz(d)
 }
 \arguments{
   \item{d}{An integer; generally, the dimension or arity of the resulting spray object}
   \item{power}{Integer vector of powers}
   \item{x}{Numeric vector of coefficients}
+  \item{S}{A spray object}
   \item{n}{In function \code{lone()}, the term to raise to power 1}
 }
 

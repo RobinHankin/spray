@@ -250,11 +250,11 @@ setGeneric("deriv")
   return(spray(t(rep(0,d))))
 }
 
-`as.one` <- function(S){UseMethod("as.one")}
-`as.one.spray` <- function(S){spray(t(rep(0,arity(S))))}
+`as.id` <- function(S){UseMethod("as.id")}
+`as.id.spray` <- function(S){spray(t(rep(0,arity(S))))}
 
 `ooom` <- function(S,n){
-  out <- as.one(S)
+  out <- as.id(S)
   for(i in seq_len(n)){
     out <- 1 + S*out
   }
