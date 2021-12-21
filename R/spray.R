@@ -266,7 +266,7 @@ setGeneric("deriv")
         cat(paste('empty sparse array with ', arity(S), ' columns\n',sep=""))
     } else {
         jj <-
-            data.frame(index(S),symbol= " = ", val=round(coeffs(S),getOption("digits")))
+            data.frame(index(S),symbol= " = ", val=round(elements(coeffs(S)),getOption("digits")))
         mdc <-getOption("sprayvars")
         if(is.null(mdc)){
             colnames(jj) <- c(rep(" ",arity(S)+1),'val')

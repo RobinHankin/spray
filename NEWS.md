@@ -17,3 +17,7 @@
 - bug in coeffs(x) <- v fixed
 - <spray> == <numeric> implemented, also !=
 - new generic as.id()
+
+# spray 1.0-19
+
+- bugfix so `getOption("max.print")` is respected
