@@ -21,3 +21,4 @@
 # spray 1.0-19
 
 - bugfix so `getOption("max.print")` is respected
+- coeffs(S) returns drop()-ped values

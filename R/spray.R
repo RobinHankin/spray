@@ -76,18 +76,19 @@ setClass("spray",
 `index` <- function(S){S[[1]]}    # these two functions are the only
 
 `coeffs` <- function(S){UseMethod("coeffs")}
-`coeffs.spray` <- function(S){disord(S[[2]],h=hashcal(S))}    # 'accessor' functions in the package
+`coeffs.spray` <- function(S){drop(disord(S[[2]],h=hashcal(S)))}    # 'accessor' functions in the package
 
 `coeffs<-` <- function(S,value){UseMethod("coeffs<-")}
 `coeffs<-.spray` <- function(S,value){
    jj <- coeffs(S)
+   value <- drop(value)
    if(is.disord(value)){
-
      stopifnot(consistent(jj,value))
      if((!identical(hash(jj),hash(value))) & (length(value)>1)){stop("length > 1")}
 
      jj <- value
    } else {
+     stopifnot(length(value) == 1)
      jj[] <- value  # the meat
    }
   spray(index(S),jj)
