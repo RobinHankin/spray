@@ -53,15 +53,8 @@ spray_eq_numeric(S1,x)
 The functions all return spray objects except  \dQuote{\code{==}}, which
 returns a logical.
 }
-\author{
-Robin K. S. Hankin
-}
-\note{
-Notes here
-}
-\seealso{
-\code{\link{ooom}}
-}
+\author{Robin K. S. Hankin}
+\seealso{\code{\link{ooom}}}
 \examples{
 
 

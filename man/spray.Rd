@@ -58,9 +58,13 @@ is_valid_spray(L)
 }
 \details{
 
-  The user should use \code{spray()}, if a matrix of indices and vector
-  of values is available, or \code{as.spray()} which tries hard to
-  do the Right Thing (tm).
+  Spray objects are sparse arrays interpreted as multivariate
+  polynomials.  They can be added and subtracted; \dQuote{\code{*}} is
+  interpreted as polynomial multiplication,
+  
+  To create a spray object the user should use \code{spray()}, if a
+  matrix of indices and vector of values is available, or
+  \code{as.spray()} which tries hard to do the Right Thing (tm).
 
   Function \code{spraymaker()} is the formal creator function, and it is
   written to take the output of the C++ routines and return a spray
@@ -69,7 +73,11 @@ is_valid_spray(L)
   cannot deal with).  In this case, we need some way to tell R the arity
   of the corresponding spray object.
 
-  Functions \code{index()} and \code{coeffs()} are accessor methods.  
+  Functions \code{index()} and \code{coeffs()} are accessor methods.
+
+  There is an extensive vignette available; type
+  \code{vignette("spray")} at the command line.
+
 }
 \author{Robin K. S. Hankin}
 \note{
@@ -77,7 +85,7 @@ is_valid_spray(L)
   function \code{value()} will be deprecated
 
 }
-  
+\seealso{\code{\link{Ops}},\code{\link{spray-package}}}
 \examples{
 
 S <- spray(diag(5))    # missing second argument interpreted as '1'.
