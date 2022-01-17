@@ -2,5 +2,6 @@
 ^\.Rproj\.user$
 ^README\.Rmd
 ^\.travis\.yml$
+^\.gitignore$
 ^inst/spray_stickermaker.R$
-^inst/weyl.R$
+^inst/missing_accessor.txt$
