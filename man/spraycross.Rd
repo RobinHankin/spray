@@ -30,7 +30,8 @@ that takes any number of arguments.
 \examples{
 a <- spray(matrix(1:4,2,2),c(2,5))
 b <- spray(matrix(c(10,11,12,13),2,2),c(7,11))
-
+a
+b
 spraycross2(a,b)
 spraycross2(b,a)
 

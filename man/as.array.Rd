@@ -50,14 +50,13 @@ Robin K. S. Hankin
 
 \examples{
 
-M <- matrix(sample(0:4,28,replace=TRUE),ncol=4)
-S <- spray(M,sample(7),addrepeats=TRUE)
-A <- as.array(S,offbyone=TRUE) 
-
+(M <- matrix(sample(0:4,28,replace=TRUE),ncol=4))
+(S <- spray(M,sample(7),addrepeats=TRUE))
+as.array(S,offbyone=TRUE)      # a large object!  sprays are terse
 
 
 S <- spray(matrix(sample(1:4,28,replace=TRUE),ncol=4),sample(7))
-A <- as.array(S)   # S has no zero indices
+A <- as.array(S)   # S has no zero indices [if it did, we would need to use offbyone=TRUE]
 
 stopifnot(all(S[index(S),drop=TRUE] == A[index(S)])) 
 }

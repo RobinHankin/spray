@@ -5,4 +5,9 @@
 \usage{nterms(S)}
 \arguments{\item{S}{Object of class \code{spray}}}
 \author{Robin K. S. Hankin}
-\examples{nterms(spray(diag(seq_len(5))))}
+\examples{
+
+(a <- rspray())
+nterms(a)
+
+}

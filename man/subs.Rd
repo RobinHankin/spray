@@ -25,11 +25,12 @@ order.  If not, caveat emptor!
 \seealso{\code{\link{process_dimensions}}}
 \examples{
 
-S <- spray(matrix(sample(0:3,60,replace=TRUE),nrow=12))
+(S <- spray(matrix(sample(0:3,60,replace=TRUE),nrow=12)))
 
 subs(S,c(2,5),1:2)
 
-subs(homog(3,3),1,3)
+P <- homog(3,3)
+subs(P,1,2)
 }
 \keyword{symbolmath}
 

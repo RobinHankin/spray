@@ -40,8 +40,9 @@
   
 }
 \examples{
-a <- spray(diag(5))
+(a <- spray(diag(5)))
 a[rbind(rep(1,5))] <- 5
+a
 
 a[3,4,5,3,1]  # the NULL polynomial
 
@@ -49,7 +50,7 @@ a[0,1,0,0,0]
 a[0,1,0,0,0,drop=TRUE]
 
 a[2,3:5,4,3,3] <- 9
-
+a
 
 options(polyform = TRUE)   # print as a multivariate polynomial
 a
@@ -57,14 +58,14 @@ a
 options(polyform = FALSE)  # print in sparse array form
 a
 
-S1 <- spray(diag(5),1:5)
-S2 <- spray(1-diag(5),1:5)
-S3 <- spray(rbind(c(1,0,0,0,0),c(1,2,1,1,1)))
+(S1 <- spray(diag(5),1:5))
+(S2 <- spray(1-diag(5),11:15))
+(S3 <- spray(rbind(c(1,0,0,0,0),c(1,2,1,1,1))))
 
 S1[] <- 3
 S1[] <- S2
 
 S1[S3] <- 99
-
+S1
 }
 \keyword{symbolmath}

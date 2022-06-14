@@ -20,7 +20,8 @@ Returns an integer
 Robin K. S. Hankin
 }
 \examples{
-arity(spray(diag(1:6)))
+(a <- rspray())
+arity(a)
 
 }
 \keyword{symbolmath}

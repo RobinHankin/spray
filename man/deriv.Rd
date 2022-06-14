@@ -45,7 +45,7 @@ Robin K. S. Hankin
 \examples{
 
 
-S <- spray(matrix(sample(-2:2,15,replace=TRUE),ncol=3),addrepeats=TRUE)
+(S <- spray(matrix(sample(-2:2,15,replace=TRUE),ncol=3),addrepeats=TRUE))
 
 deriv(S,1)
 deriv(S,2,2)
@@ -66,8 +66,6 @@ aderiv(S1,c(0,1,0))*aderiv(S2,c(1,0,0)) +
 aderiv(S1,c(1,0,0))*aderiv(S2,c(0,1,0)) +
 aderiv(S1,c(1,1,0))*aderiv(S2,c(0,0,0)) 
 )
-
-
 
 }
 

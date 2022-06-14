@@ -29,6 +29,11 @@ add 1 to the returned spray.  The vignette contains a short discussion.
 
 \examples{
 
+knight()  # default 2D chess board
+king()    # ditto
+
+knight()^2  # generating function for two knight's moves
+
 ## How many ways can a knight return to its starting square in 6 moves?
 constant(knight()^6)
 

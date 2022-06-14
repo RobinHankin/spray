@@ -30,17 +30,15 @@ Uses Horner's method for efficiency
 \examples{
 
 
-x <- spray(matrix(1))
+(x <- spray(matrix(1)))
 ooom(x,5)  # 1 + x + x^2 + x^3 + x^4 + x^5
 
 
-a <- homog(4,2)
+(a <- homog(4,2))
 d <- (1-a)*ooom(a,3)
-
 
 constant(d)    # should be 1
 rowSums(index(d))   # a single 0 and lots of 8s.
-
 
 }
 

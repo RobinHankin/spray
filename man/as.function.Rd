@@ -21,8 +21,8 @@ function is not vectorized in the arity of its argument.
 }
 \examples{
 
-S <- spray(matrix(1:6,3,2),1:3)
-f <- as.function(S)
+(S <- spray(matrix(1:6,3,2),1:3))
+(f <- as.function(S))
 f(2:3) == 3*2^3*3^6 + 2*2^2*3^5 + 1*2^1*3^4  # should be TRUE
 
 
