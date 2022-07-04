@@ -546,3 +546,20 @@ setMethod("drop","spray", function(x){
         return(x)
     }
 })
+
+`summary.spray` <- function(object, ...){
+  out <- list(
+      coeffs    = summary(coeffs(object)),
+      somespray = spray(head(index(object),...),head(elements(coeffs(object)),...))
+  )
+
+  class(out) <- "summary.spray"
+  return(out)
+}
+
+`print.summary.spray` <- function(x,...){
+  cat("A spray object.  Summary of coefficients: \n\n")
+  print(x[[1]])
+  cat("\n\nRepresentative selection of index and coefficients:\n\n")
+  print(x[[2]])
+}
