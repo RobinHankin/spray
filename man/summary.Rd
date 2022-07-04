@@ -20,6 +20,7 @@ A summary method for spray objects, and a print method for summaries.
   coefficients (which is a \code{disord} object), and the second being a
   \code{spray} object comprising a few selected index-coefficient
   pairs.  The selection is done by \code{head()}.
+
 }
 \author{Robin K. S. Hankin}
 \note{
@@ -33,6 +34,10 @@ a <- rspray()^2
 a
 summary(a)
 summary(a,2)
+
+options(polyform=TRUE)
+summary(a^4,3)
+options(polyform=FALSE) # restore default
 }
 
 
