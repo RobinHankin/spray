@@ -20,6 +20,7 @@ export(spray_add)
 export(pmax)
 export(pmin)
 export(zapsmall)
+export(summary)
 
 S3method("[", spray)
 S3method("[<-", spray)

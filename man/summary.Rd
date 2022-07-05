@@ -1,5 +1,6 @@
 \name{summary.spray}
 \alias{summary.spray}
+\alias{summary}
 \alias{print.summary.spray}
 \title{Summaries of spray objects}
 \description{
