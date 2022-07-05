@@ -1,3 +1,6 @@
+## NB: this seems to work nicely under windows but not on the mac (the
+## text is too big) or on linux (the colour comes out wrong).
+
 library("hexSticker")
 
 plotseq <- function(angle){
