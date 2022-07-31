@@ -16,7 +16,7 @@ spraycross2(S1,S2)
 
 \details{
 
-Cross products for sprays.  This is \emph{not} an algebraic product of
+Tensor products for sprays.  This is \emph{not} an algebraic product of
 sprays interpreted as multivariate polynomials.  The function is used in
 the \pkg{stokes} package.
 
