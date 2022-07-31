@@ -34,38 +34,50 @@ structure(list(structure(numeric(0), .Dim = c(0L, 5L)), numeric(0)), class = "sp
 }
 
 Above, the index matrix has zero rows (and no elements) but the fact
-that it has five columns is retained.  The \code{spray} object has no
-coefficients as the index matrix has zero rows.  Compare:
+that it has five columns is retained.  Arguably \code{spray()} should
+return an error here, as the number of rows of the index matrix should
+match the length of the coefficient vector and they do not: the index
+has zero rows and the coefficient vector has length 1 (although they
+match in the returned value).  The returned \code{spray} object has no
+coefficients [specifically, \code{numeric(0)}]; this is consistent with
+the index matrix having zero rows.
+
+Zero coefficients are discarded by the back end:
+
+\preformatted{
+   spray(matrix(1,1,5),0)
+empty sparse array with  columns
+
+   dput(spray(matrix(1,1,5),0))
+structure(list(index = NULL, value = NULL), class = "spray")
+}
+
+Above, the index matrix given to \code{spray()} has one row but the
+coefficient is a length-one vector with element zero.  The resulting
+\code{spray} object has a \code{NULL} index matrix [because rows with
+zero coefficients are removed] and a \code{NULL} coefficient.
+
+If we pass a zero coefficient [in the form of a length one vector] and a
+zero-row matrix, then:
 
 \preformatted{
    spray(matrix(0,0,5),0)
 empty sparse array with 5 columns
-   spray(matrix(0,1,5),0)
-empty sparse array with  columns 
 
-   dput(spray(matrix(0,1,5),0))
-structure(list(index = NULL, value = NULL), class = "spray")
-> 
+   dput(spray(matrix(0,0,5),0))
+structure(list(structure(numeric(0), dim = c(0L, 5L)), numeric(0)), class = "spray")
 }
 
-\preformatted{
-   spray(matrix(0,1,5),0)
-empty sparse array with  columns 
+Above, we see behaviour that is different from
+\code{spray(matrix(0,1,5),0)}: the index matrix of the returned spray
+object has five columns (and zero rows).
 
-   dput(spray(matrix(0,1,5),0))
-structure(list(index = NULL, value = NULL), class = "spray")
-> 
-}
-
-Above, the index matrix given to \code{spray()} has one row but the
-coefficient is zero.  The resulting \code{spray} object has a
-\code{NULL} index matrix [because rows with zero coefficients are
-removed] and a \code{NULL} coefficient.
-
-Arguably, the output should include the fact that we are dealing with a
-5-dimensional array; but the index matrix is \code{NULL} so this
-information is lost (note that the value is \code{NULL} too).  However,
-observe that the following works:
+Arguably, the output in all these cases should include the fact that we
+are dealing with a 5-dimensional array; but sometimes the index matrix
+in the returned \code{spray} object is \code{NULL} and if so, this
+information is lost (note that the coefficient vector is sometimes
+\code{NULL} and sometimes \code{numeric(0)}).  However, observe that the
+following works:
 
 \preformatted{
 > a1 <- spray(matrix(0,1,4),0)
@@ -76,7 +88,25 @@ observe that the following works:
  >
 }
 
+It is probably worth noting that \code{spray()}, given a zero-row index
+matrix, loses length one coefficients vector, but complains about
+a length-two coefficient vector:
+
+\preformatted{
+> dput(spray(matrix(0,0,5),0))
+structure(list(structure(numeric(0), dim = c(0L, 5L)), numeric(0)), class = "spray")
+> dput(spray(matrix(0,0,5),3))
+structure(list(structure(numeric(0), dim = c(0L, 5L)), numeric(0)), class = "spray")
+> dput(spray(matrix(0,0,5),1:2))
+Error in is_valid_spray(L) : nrow(L[[1]]) == length(L[[2]]) is not TRUE
+> 
+> identical(spray(matrix(0,0,5),0),spray(matrix(0,0,5),3))
+[1] TRUE
 }
+
+}
+
+
 \examples{
 
 (a <- lone(1,3))
