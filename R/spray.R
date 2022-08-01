@@ -42,6 +42,8 @@ setClass("spray",
     return(TRUE)
   } else if(  identical(nrow(L[[1]]),0L) & (length(L[[2]])==0)){
     return(TRUE)
+  } else if(all(L[[2]]==0)){
+    return(TRUE)
   } else {
     return(FALSE)
   }
