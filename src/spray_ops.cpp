@@ -75,13 +75,11 @@ IntegerMatrix makeindex(const spray S){  // takes a spray, returns the matrix of
     IntegerMatrix  out(S.size(),ncol);   // index
     mycont v;
     unsigned int row=0, col=0;
-    mycont::const_iterator ci;  // ci iterates through a container
-    spray::const_iterator it;   // it iterates through a sparse array
 
-    for(it=S.begin(); it != S.end(); ++it){
+    for(auto it=S.begin(); it != S.end(); ++it){
         v = it->first;
         col = 0;
-        for(ci=v.begin() ; ci != v.end() ; ++ci){
+        for(auto ci=v.begin() ; ci != v.end() ; ++ci){
             out(row,col++) = *ci;
         }
         row++;
