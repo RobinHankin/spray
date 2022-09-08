@@ -26,3 +26,8 @@
 # spray 1.0-20
 
 - summary method
+
+# spray 1.0-21
+
+- consistentification of zero objects
+
