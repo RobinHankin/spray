@@ -5,3 +5,5 @@
 ^\.gitignore$
 ^inst/spray_stickermaker.R$
 ^inst/missing_accessor.txt$
+^inst/spray_arxiv.Rnw$
+^inst/read.me$
