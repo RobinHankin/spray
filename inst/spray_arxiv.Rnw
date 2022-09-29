@@ -585,7 +585,60 @@ the best of both worlds (and indeed the {\tt mvp}
 package~\citep{hankin2019} does just this, and more).
 
 \bibliographystyle{apalike}
-\bibliography{spray}
+\begin{thebibliography}{}
+
+\bibitem[den Hollander and Kasteleyn, 1982]{hollander1982}
+den Hollander, W. T.~F. and Kasteleyn, P.~W. (1982).
+\newblock Random walks with `spontaneous emission' on lattices with
+  periodically distributed imperfect traps.
+\newblock {\em Physica A}, 112A:523--543.
+
+\bibitem[Hankin, 2008]{hankin2008}
+Hankin, R. K.~S. (2008).
+\newblock {{P}rogrammers' {N}iche}: {M}ultivariate polynomials in {\tt r}.
+\newblock {\em {\tt R} News}, 8(1):41--45.
+
+\bibitem[Hankin, 2019]{hankin2019}
+Hankin, R. K.~S. (2019).
+\newblock {\em {\tt mvp}: Fast Symbolic Multivariate Polynomials}.
+\newblock {\tt R} package version 1.0-5.
+
+\bibitem[Hornik et~al., 2014]{hornik2014}
+Hornik, K., Meyer, D., and Buchta, C. (2014).
+\newblock {\em {\tt slam}: Sparse Lightweight Arrays and Matrices}.
+\newblock {\tt R} package version 0.1-32.
+
+\bibitem[Kahle, 2013]{kahle2013}
+Kahle, D. (2013).
+\newblock {\tt mpoly}: Multivariate polynomials in {\tt r}.
+\newblock {\em The {\tt R} Journal}, 5(1):162--170.
+
+\bibitem[Montroll, 1969]{montroll1969}
+Montroll, E.~W. (1969).
+\newblock Random walks on lattices {I}{I}. calculation of first-passage times
+  with applications to exciton trapping on photosynthetic units.
+\newblock {\em Journal of Mathematical Physics}, 10(4):753--765.
+
+\bibitem[Musser et~al., 2009]{musser2009}
+Musser, D.~R., Derge, G.~J., and Saini, A. (2009).
+\newblock {\em {\tt STL} Tutorial and Reference Guide: {\tt C++} Programming
+  with the Standard Template Library}.
+\newblock Addison-Wesley Professional, 3rd edition.
+
+\bibitem[Scheunders and Naudts, 1989]{scheunders1989}
+Scheunders, P. and Naudts, J. (1989).
+\newblock Random walks on lattices with a random distribution of perfect traps.
+\newblock {\em Condensed Matter}, 73:551--553.
+
+\bibitem[Venables et~al., 2016]{venables2016}
+Venables, B., Hornik, K., and Maechler, M. (2016).
+\newblock {\em {\tt polynom}: A Collection of Functions to Implement a Class
+  for Univariate Polynomial Manipulations}.
+\newblock {\tt R} package version 1.3-9. {\tt S} original by Bill Venables,
+  packages for {\tt R} by Kurt Hornik and Martin Maechler.
+
+\end{thebibliography}
+
 
 \newpage
 \appendix
