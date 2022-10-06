@@ -24,7 +24,7 @@ setClass("spray",
 
 `is_valid_spray` <- function(L){  # L = list(M,x)
     stopifnot(is.list(L))
-    stopifnot(length(L)==2)
+    stopifnot(length(unclass(L))==2)
     if(is.empty(L)){
         return(TRUE)
     } else {
@@ -505,7 +505,8 @@ setGeneric("deriv")
   return(out-1)
 }
 
-`nterms` <- function(S){ nrow(index(S)) }
+`nterms` <- function(x){ nrow(index(x)) }
+`length.spray` <- function(x){nterms(x)}
 
 setGeneric("zapsmall")
 setMethod("zapsmall","spray",function(x,digits){

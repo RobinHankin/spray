@@ -5,5 +5,15 @@
 ^\.gitignore$
 ^inst/spray_stickermaker.R$
 ^inst/missing_accessor.txt$
-^inst/spray_arxiv.Rnw$
 ^inst/read.me$
+^inst/arxiv.sty$
+^inst/four_dimensional_knight.pdf$
+^inst/orcid.pdf$
+^inst/spray_arxiv.Rnw$
+^inst/spray_arxiv.aux$
+^inst/spray_arxiv.log$
+^inst/spray_arxiv.out$
+^inst/spray_arxiv.pdf$
+^inst/spray_arxiv.tex$
+^inst/spray_arxiv.tex~$
+
