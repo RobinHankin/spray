@@ -506,6 +506,7 @@ setGeneric("deriv")
 }
 
 `nterms` <- function(S){ nrow(index(S)) }
+`length.spray` <- function(S){nterms(S)}
 
 setGeneric("zapsmall")
 setMethod("zapsmall","spray",function(x,digits){
