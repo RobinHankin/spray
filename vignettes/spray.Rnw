@@ -185,7 +185,8 @@ requirement for indices to be positive: Element~\code{[6,-7,8]} is new
 (with value~17).  Even though the representation of the spray object
 does not preserve the order of the index rows in the argument, a
 particular index row is associated unambiguously with a unique numeric
-value.
+value.  The package uses \pkg{disordR} discipline, discussed below in
+section~\ref{disord}.
 
 \section{The spray package and multivariate polynomials}
 
@@ -232,10 +233,9 @@ S3
 
 \noindent It is natural to interpret the rows of the index matrix as
 powers of different variables of a multivariate polynomial, and the
-values as being the coefficients.
-
-This is realized in the package using the \code{polyform} option,
-which if set to \code{TRUE}, modifies the print method:
+values as being the coefficients.  This is realized in the package
+using the \code{polyform} option, which if set to \code{TRUE},
+modifies the print method:
 
 <<show_a_multivariate_polynomial>>=
 options(polyform = TRUE)
@@ -345,7 +345,7 @@ This would be
 aderiv((xyz(3) + linear(1:3))^3, 1:3)
 @ 
 
-\section{Manipulation of coefficients}
+\section{Manipulation of coefficients}\label{disord}
 
 The \pkg{spray} package uses \pkg{disordR}
 discipline~\citep{hankin2022} for manipulation of the coefficients.

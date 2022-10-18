@@ -624,10 +624,10 @@ package~\citep{hankin2019} does just this, and more).
 \appendix
 \section{Package philosophy}
 
-The {\tt spray} package does not interact or depend on {\tt multipol}
-in any way, owing to the very different design philosophies used.  The
-package uses the~{\tt C++} Standard Template Library's
-{\tt map} class~\citep{musser2009} to store and retrieve
+The {\tt spray} package does not interact with or depend on {\tt
+  multipol} in any way, owing to the very different design
+philosophies used.  The package uses the~{\tt C++} Standard Template
+Library's {\tt map} class~\citep{musser2009} to store and retrieve
 elements.
 
 A \emph{map} is an associative container that stores values indexed by
@@ -643,7 +643,7 @@ case of sparse arrays, this is not an issue because the nonzero
 entries do not possess a natural order, unlike dense arrays in which
 lexicographic ordering is used.  For multivariate polynomials, the
 order of storage is not important algebraically because addition is
-commutative and associative.
+commutative and associative~\cite{hankin2022_disordR_arxiv}.
 
 \subsection*{Compile-time options}
 
