@@ -59,7 +59,7 @@ pdfkeywords={Sparse arrays}
   In this short article I introduce the {\tt spray} package, which
   provides some functionality for handling sparse arrays.  The package
   uses the~{\tt C++} Standard Template Library's {\tt map}
-  class~\citep{musser2009} to store and retrieve elements.  One
+  class to store and retrieve elements.  One
   natural application for sparse arrays is multivariate polynomials
   and I give two examples of the package in use, one drawn from the
   fields of random walks on lattices and one from the field of
