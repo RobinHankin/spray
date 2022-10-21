@@ -1,0 +1,13 @@
+
+citation(auto = meta)
+
+bibentry(bibtype = "misc",
+         title = "Sparse arrays in R: the spray package",
+         author = person(
+             given = c("Robin", "K. S."),
+             family = "Hankin",
+             comment = c(ORCID = "0000-0001-5982-0415")),
+         year = "2022",
+         publisher = "arXiv",
+         doi = "10.48550/ARXIV.2210.10848"
+)
