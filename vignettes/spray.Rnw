@@ -21,7 +21,6 @@
 \Plaintitle{Sparse arrays and multivariate polynomials in R}
 \Shorttitle{Sparse arrays and multivariate polynomials in \proglang{R}}
 
-%% an abstract and keywords
 \Abstract{In this short article I introduce the \pkg{spray} package,
   which provides some functionality for handling sparse arrays.  The
   package uses the~\proglang{C++} Standard Template Library's
@@ -29,7 +28,11 @@
   elements.  One natural application for sparse arrays is multivariate
   polynomials and I give two examples of the package in use, one drawn
   from the fields of random walks on lattices and one from the field
-  of recreational combinatorics.}
+  of recreational combinatorics.
+
+  To cite the \pkg{spray} package, use \citet{hankin2022_spray}.
+
+}
 \Keywords{Multivariate polynomials, \proglang{R}, sparse arrays}
 \Plainkeywords{Multivariate polynomials, R}
 
@@ -114,8 +117,8 @@ variables.  As~\citeauthor{kahle2013} points out, naming the variables
 allows a richer and more natural suite of functionality;
 straightforward \pkg{mpoly} idiom is somewhat strained in \pkg{spray}.
 
-(The \code{mvp} package~\citep{hankin2019} is now available; this uses
-a more powerful concept of sparsity).
+(The \code{mvp} package~\citep{hankin2022_mvp} is now available; this
+uses a more powerful concept of sparsity).
 
 
 \section{Sparse arrays}
@@ -348,8 +351,8 @@ aderiv((xyz(3) + linear(1:3))^3, 1:3)
 \section{Manipulation of coefficients}\label{disord}
 
 The \pkg{spray} package uses \pkg{disordR}
-discipline~\citep{hankin2022} for manipulation of the coefficients.
-Thus:
+discipline~\citep{hankin2022_disordR} for manipulation of the
+coefficients.  Thus:
 
 <<>>=
 set.seed(0)
@@ -369,7 +372,7 @@ A
 @ 
 
 A detailed motivation and use-case for \pkg{spray} is provided
-by~\citet{hankin2022}.
+by~\citet{hankin2022_disordR}.
 
 \section{The package in use: some examples}
 
@@ -517,14 +520,15 @@ constant(chess_knight^6, drop = TRUE)
 
 (function \code{constant()} extracts the coefficient corresponding to
 zero power).  One natural generalization would be to arbitrary
-dimensions.  A d-dimensional knight moves two squares in one
+dimensions.  A $d$-dimensional knight moves two squares in one
 direction, followed by one square in another direction:
 
 <<define.d.dimensional.knight>>=
 knight <- function(d){
   n <- d * (d - 1)
   out <- matrix(0, n, d)
-  out[cbind(rep(seq_len(n), each=2), c(t(which(diag(d)==0, arr.ind=TRUE))))] <- seq_len(2)
+  jj <- cbind(rep(seq_len(n), each=2), c(t(which(diag(d)==0, arr.ind=TRUE))))
+  out[jj] <- seq_len(2)
   spray(rbind(out, -out, `[<-`(out, out==1, -1),`[<-`(out, out==2, -2)))
 }
 @ 
@@ -605,7 +609,7 @@ of sparseness which \pkg{mpoly} takes advantage of and \code{spray}
 does not.  Further work might include the development of name-based
 multivariate polynomials using concepts from \proglang{STL} to provide
 the best of both worlds (and indeed the \pkg{mvp}
-package~\citep{hankin2019} does just this, and more).
+package~\citep{hankin2022_mvp} does just this, and more).
 
 \bibliography{spray}
 \newpage
@@ -633,7 +637,7 @@ lexicographic ordering is used.  For multivariate polynomials, the
 order of storage is not important algebraically because addition is
 commutative and associative.  These issues are accommodated using
 \pkg{disordR} discipline which forbids implementation-specific
-idiom~\citep{hankin2022}.
+idiom~\citep{hankin2022_disordR}.
 
 \subsection*{Compile-time options}
 

@@ -4,7 +4,7 @@ Title: Sparse Arrays and Multivariate Polynomials
 Version: 1.0-22
 Authors@R: person(given=c("Robin", "K. S."), family="Hankin", role = c("aut","cre"), email="hankin.robin@gmail.com", comment = c(ORCID = "0000-0001-5982-0415"))
 Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
-Description: Sparse arrays interpreted as multivariate polynomials.  Uses 'disordR' discipline.  Please cite R. K. S. Hankin (2020), "Sparse arrays in R" <doi:10.48550/ARXIV.2210.10848>.
+Description: Sparse arrays interpreted as multivariate polynomials.  Uses 'disordR' discipline (Hankin, 2022, <doi:10.48550/ARXIV.2210.03856>).  To cite the package in publications please use Hankin (2022) <doi:10.48550/ARXIV.2210.10848>.
 License: GPL (>= 2)
 Depends: methods
 Suggests: polynom, testthat
