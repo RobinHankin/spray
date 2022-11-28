@@ -16,4 +16,5 @@
 ^inst/spray_arxiv.pdf$
 ^inst/spray_arxiv.tex$
 ^inst/spray_arxiv.tex~$
+^inst/spray_arxiv.bib$
 
