@@ -70,8 +70,8 @@ is_valid_spray(L)
   written to take the output of the C++ routines and return a spray
   object.  The reason this needs an \code{arity} argument is that C++
   sometimes returns \code{NULL} (in lieu of a zero-row matrix, which it
-  cannot deal with).  In this case, we need some way to tell R the arity
-  of the corresponding spray object.
+  cannot deal with).  In this case, we need some way to tell \R the
+  arity of the corresponding spray object.
 
   Functions \code{index()} and \code{coeffs()} are accessor methods.
 

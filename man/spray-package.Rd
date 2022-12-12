@@ -10,7 +10,7 @@ as multivariate polynomials.
 }
 \details{
 
-Base R has the capability of dealing with arbitrary dimensioned
+Base \R has the capability of dealing with arbitrary dimensioned
 numerical arrays, with the \code{array} class.
   
 A sparse array is a type of array in which nonzero elements are stored
