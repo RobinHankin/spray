@@ -60,18 +60,18 @@ is_valid_spray(L)
 
   Spray objects are sparse arrays interpreted as multivariate
   polynomials.  They can be added and subtracted; \dQuote{\code{*}} is
-  interpreted as polynomial multiplication,
+  interpreted as polynomial multiplication.
   
   To create a spray object the user should use \code{spray()}, if a
   matrix of indices and vector of values is available, or
   \code{as.spray()} which tries hard to do the Right Thing (tm).
 
   Function \code{spraymaker()} is the formal creator function, and it is
-  written to take the output of the C++ routines and return a spray
-  object.  The reason this needs an \code{arity} argument is that C++
-  sometimes returns \code{NULL} (in lieu of a zero-row matrix, which it
-  cannot deal with).  In this case, we need some way to tell \R the
-  arity of the corresponding spray object.
+  written to take the output of the \proglang{C++} routines and return a
+  spray object.  The reason this needs an \code{arity} argument is that
+  \proglang{C++} sometimes returns \code{NULL} (in lieu of a zero-row
+  matrix, which it cannot deal with).  In this case, we need some way to
+  tell \R the arity of the corresponding spray object.
 
   Functions \code{index()} and \code{coeffs()} are accessor methods.
 
@@ -82,7 +82,7 @@ is_valid_spray(L)
 \author{Robin K. S. Hankin}
 \note{
   Function \code{coeffs()} was formerly known as \code{value()};
-  function \code{value()} will be deprecated
+  function \code{value()} will be deprecated at some point.
 
 }
 \seealso{\code{\link{Ops}},\code{\link{spray-package}}}
