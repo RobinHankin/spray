@@ -20,15 +20,16 @@ arrays often require the storing of many zero elements which consume
 computational and memory resources.
 
 In the package, sparse arrays are represented as objects of class
-\code{spray}.  They use the \code{C++} standard template library (STL)
-\code{map} class, with keys being (unsigned) integer vectors, and values
-floats.
+\code{spray}.  They use the \proglang{C++} standard template library
+(STL) \code{map} class, with keys being (unsigned) integer vectors, and
+values floats.
 
 One natural application of sparse arrays, for which the package was
 written, is multivariate polynomials and the package vignette presents
 an extended discussion.  Note that other interpretations exist: the
-\pkg{stokes} and \pkg{weyl} packages interpret \code{spray} objects as
-differential forms and elements of a Weyl algebra respectively.
+\CRANpkg{stokes} and \CRANpkg{weyl} packages interpret \code{spray}
+objects as differential forms and elements of a Weyl algebra
+respectively.
 
 }
 \author{Robin K. S. Hankin}

@@ -18,7 +18,7 @@ spraycross2(S1,S2)
 
 Tensor products for sprays.  This is \emph{not} an algebraic product of
 sprays interpreted as multivariate polynomials.  The function is used in
-the \pkg{stokes} package.
+the \CRANpkg{stokes} package.
 
 Function \code{spraycross2()} is a helper function that takes exactly
 two arguments.  Function \code{spraycross()} is a more general function
