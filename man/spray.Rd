@@ -80,11 +80,7 @@ is_valid_spray(L)
 
 }
 \author{Robin K. S. Hankin}
-\note{
-  Function \code{coeffs()} was formerly known as \code{value()};
-  function \code{value()} will be deprecated at some point.
-
-}
+\note{Function \code{coeffs()} was formerly known as \code{value()}.}
 \seealso{\code{\link{Ops}},\code{\link{spray-package}}}
 \examples{
 
