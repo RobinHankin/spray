@@ -13,11 +13,11 @@ as multivariate polynomials.
 Base \R has the capability of dealing with arbitrary dimensioned
 numerical arrays, with the \code{array} class.
   
-A sparse array is a type of array in which nonzero elements are stored
-along with an index vector describing their coordinates---instead of
-arrays.  This allows for efficient storage and manipulation as base
-arrays often require the storing of many zero elements which consume
-computational and memory resources.
+A \dfn{sparse array} is a type of array in which nonzero elements are
+stored along with an index vector describing their coordinates.  This
+allows for efficient storage and manipulation as base arrays often
+require the storing of many zero elements which consume computational
+and memory resources.
 
 In the package, sparse arrays are represented as objects of class
 \code{spray}.  They use the \proglang{C++} standard template library

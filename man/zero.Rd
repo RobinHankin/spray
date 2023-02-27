@@ -66,9 +66,9 @@ structure(list(structure(numeric(0), dim = c(0L, 5L)), numeric(0)), class = "spr
 }
 
 In previous versions of the package, the index matrix in the returned
-\code{spray} object could \code{NULL} under some circumstances.  If so,
-the arity of the spray object is lost.  It is probably worth noting that
-\code{spray()}, given a zero-row index matrix, loses length one
+\code{spray} object could be \code{NULL} under some circumstances.  If
+so, the arity of the spray object is lost.  It is probably worth noting
+that \code{spray()}, given a zero-row index matrix, loses a length one
 coefficients vector, but complains about a length-two coefficient
 vector:
 

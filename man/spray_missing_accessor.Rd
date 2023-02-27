@@ -13,7 +13,9 @@ spray_missing_accessor(S, dots)
   \item{dots}{further arguments}
 }
 \details{
-Look at the source which contains an extended discussion of the
-difficulties
+  File \code{inst/missing_accessor.txt} presents an extended discussion
+  of the difficulties of implementing idiom like \code{S[1,,5,,]} in the
+  package.
+
 }
 \author{Robin K. S. Hankin}
