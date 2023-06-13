@@ -80,7 +80,11 @@ is_valid_spray(L)
 
 }
 \author{Robin K. S. Hankin}
-\note{Function \code{coeffs()} was formerly known as \code{value()}.}
+\note{
+  Function \code{coeffs()} was formerly known as \code{value()}.
+
+  Technically, \code{index()} breaks \code{disordR} discipline.
+}
 \seealso{\code{\link{Ops}},\code{\link{spray-package}}}
 \examples{
 
