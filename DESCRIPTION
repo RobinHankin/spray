@@ -8,9 +8,8 @@ Description: Sparse arrays interpreted as multivariate polynomials.  Uses 'disor
 License: GPL (>= 2)
 Depends: methods
 Suggests: polynom, testthat
-Imports: Rcpp (>= 0.12.3),partitions,magic,mathjaxr,disordR (>= 0.0-8)
+Imports: Rcpp (>= 0.12.3),partitions,magic,mathjaxr,disordR (>= 0.9-6)
 LinkingTo: Rcpp
-SystemRequirements: C++11
 URL: https://github.com/RobinHankin/spray
 BugReports: https://github.com/RobinHankin/spray/issues
 RdMacros: mathjaxr
