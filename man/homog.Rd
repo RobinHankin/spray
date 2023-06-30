@@ -39,8 +39,8 @@ All functions documented here return a spray object
 Robin K. S. Hankin
 }
 \note{
-The functions here are related to their equivalents in the multipol
-package, but are not exactly the same.
+The functions here are related to their equivalents in the
+\CRANpkg{multipol} package, but are not exactly the same.
 
 Function \code{zero()} is documented at \code{zero.Rd}, but is listed
 below for convenience.
