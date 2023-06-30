@@ -154,15 +154,14 @@ spray prod //
  const spray S1, const spray S2
  ){
     spray Sout;
-    spray::const_iterator it1,it2;
     mycont vsum;
     unsigned int i;
 
     // the "meat" of this function:  Sout=S1*S2
-    for (it1=S1.begin(); it1 != S1.end(); ++it1){
+    for (spray::const_iterator it1=S1.begin(); it1 != S1.end(); ++it1){
         const mycont v1 = it1->first;
         const double x1 = it1->second;
-        for (it2=S2.begin(); it2 != S2.end(); ++it2){
+        for (spray::const_iterator it2=S2.begin(); it2 != S2.end(); ++it2){
             const mycont v2 = it2->first;
             const double x2 = it2->second;
             vsum.clear();
@@ -394,19 +393,16 @@ List spray_pmax
  const IntegerMatrix &M1, const NumericVector &d1,
  const IntegerMatrix &M2, const NumericVector &d2 
  ){
-    spray S1,S2;
-    spray::const_iterator it;   // it iterates through a sparse array
-    
-    S1 = prepare(M1, d1);
-    S2 = prepare(M2, d2);
+    spray S1 = prepare(M1, d1);
+    spray S2 = prepare(M2, d2);
 
-    for (it=S1.begin(); it != S1.end(); ++it){
+    for (spray::const_iterator it = S1.begin(); it != S1.end(); ++it){
         const mycont v = it->first;
         if(S2[v] > S1[v]){ S1[v] = S2[v];} // S1[v] = max(S1[v],S2[v]);
         S2.erase(v); // not S2[v] = 0;  // OK because the iterator is it1 and this line modifies S2
     }
             
-    for (it=S2.begin(); it != S2.end(); ++it){ //iterate through S2 keys not in S1
+    for (spray::const_iterator it = S2.begin(); it != S2.end(); ++it){ //iterate through S2 keys not in S1
         const mycont v = it->first;
         if(S2[v] > 0){ S1[v] = S2[v]; }
     }
@@ -420,19 +416,16 @@ List spray_pmin
  const IntegerMatrix &M1, const NumericVector &d1,
  const IntegerMatrix &M2, const NumericVector &d2 
  ){
-    spray S1,S2;
-    spray::const_iterator it;   // it iterates through a sparse array
-    
-    S1 = prepare(M1, d1);
-    S2 = prepare(M2, d2);
+    spray S1 = prepare(M1, d1);
+    spray S2 = prepare(M2, d2);
 
-    for (it=S1.begin(); it != S1.end(); ++it){
+    for (spray::const_iterator it = S1.begin(); it != S1.end(); ++it){
         const mycont v = it->first;
         if(S2[v] < S1[v]){ S1[v] = S2[v]; }// S1[v] = min(S1[v],S2[v]);
         S2.erase(v);
     }
             
-    for (it=S2.begin(); it != S2.end(); ++it){
+    for (spray::const_iterator it = S2.begin(); it != S2.end(); ++it){
         const mycont v = it->first;
         if(S2[v] < 0){S1[v] = S2[v]; } // S1[v] = min(S2[v],0);
     }
