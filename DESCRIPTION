@@ -1,7 +1,7 @@
 Package: spray
 Type: Package
 Title: Sparse Arrays and Multivariate Polynomials
-Version: 1.0-22
+Version: 1.0-23
 Authors@R: person(given=c("Robin", "K. S."), family="Hankin", role = c("aut","cre"), email="hankin.robin@gmail.com", comment = c(ORCID = "0000-0001-5982-0415"))
 Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
 Description: Sparse arrays interpreted as multivariate polynomials.  Uses 'disordR' discipline (Hankin, 2022, <doi:10.48550/ARXIV.2210.03856>).  To cite the package in publications please use Hankin (2022) <doi:10.48550/ARXIV.2210.10848>.
