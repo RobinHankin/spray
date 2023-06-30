@@ -16,7 +16,7 @@ ooom(S, n)
 }
 \details{\loadmathjax
 Returns the Taylor expansion to order \eqn{n} of \mjseqn{1/(1-S)}, that
-is, \mjeqn{1+S+S^2+S^3+\ldots +S^n}{1+S+S^2+S^3+...+S^n}.
+is, \mjeqn{1+S+S^2+S^3+\cdots +S^n}{1+S+S^2+S^3+...+S^n}.
 }
 \value{
 Returns a spray object of the same arity as \code{S}.
