@@ -26,8 +26,12 @@
   These methods should work as expected, although the off-by-one issue
   might be a gotcha.
 
-  If \code{drop} is \code{TRUE}, a numeric vector is returned but the
-  elements may be in any order.
+  In \code{S[index,...]}, argument \code{drop} is \code{FALSE} by
+  default, in which case a \code{spray} object is returned.  If
+  \code{drop} is \code{TRUE} a numeric vector is returned, with elements
+  corresponding to the rows of \code{index}.  Compare \code{coeffs(S)},
+  which returns a \code{disord} object; in \code{S[index,drop=TRUE]},
+  the rows of \code{index} specify a unique order for the return value.
 
   If \code{a <- spray(diag(3))}, for example, then idiom such as
   \code{a[c(1,2,3)]} cannot work, because one would like \code{a[1,2,3]}
