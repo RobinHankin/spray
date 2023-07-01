@@ -21,6 +21,8 @@ export(pmax)
 export(pmin)
 export(zapsmall)
 export(summary)
+export(is.zero)
+
 
 S3method("[", spray)
 S3method("[<-", spray)
