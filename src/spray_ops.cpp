@@ -5,7 +5,7 @@
 
 #define STRICT_R_HEADERS
 #include <Rcpp.h>
-#include <cmath>
+
 
 #include <string.h>
 #include <iostream>
@@ -44,14 +44,13 @@ typedef map<mycont, double > spray;
 
 spray prepare(const IntegerMatrix M, const NumericVector d){
     spray S;
-    mycont v;
-    signed int i,j;
     spray::iterator it;
+    mycont v;
 
-    for(i=0; i<M.nrow() ; i++){
+    for(int i=0; i<M.nrow() ; i++){
         if(d[i] != 0){
                 v.clear();
-                for(j=0; j<M.ncol(); j++){
+                for(int j=0; j<M.ncol(); j++){
                     v.push_back(M(i,j));
                 }
                 S[v] += d[i];
@@ -131,13 +130,10 @@ List spray_add
  const IntegerMatrix &M1, const NumericVector &d1,
  const IntegerMatrix &M2, const NumericVector &d2
  ){
-     spray S1, S2; 
-     spray::const_iterator it;   
-     
-     S1 = prepare(M1, d1);
-     S2 = prepare(M2, d2);
+     spray S1 = prepare(M1, d1);
+     spray S2 = prepare(M2, d2);
     
-     for (it=S2.begin(); it != S2.end(); ++it){
+     for (spray::const_iterator it=S2.begin(); it != S2.end(); ++it){
        const mycont v = it->first;
        S1[v] += S2[v]; // the meat:  S1=S1+S2 (S1 += S2)
        if(S1[v]==0){S1.erase(v);}
@@ -153,7 +149,6 @@ spray prod //
  ){
     spray Sout;
     mycont vsum;
-    unsigned int i;
 
     // the "meat" of this function:  Sout=S1*S2
     for (spray::const_iterator it1=S1.begin(); it1 != S1.end(); ++it1){
@@ -163,7 +158,7 @@ spray prod //
             const mycont v2 = it2->first;
             const double x2 = it2->second;
             vsum.clear();
-            for(i=0; i<v1.size(); i++){
+            for(int i=0; i<v1.size(); i++){
                 vsum.push_back(v1[i] + v2[i]);  // meat 1: powers add
             }
             Sout[vsum] += x1*x2;                // meat 2: coefficients multiply
@@ -221,14 +216,14 @@ NumericVector spray_accessor // returns S1[]
  ){
     spray S;
     mycont v;
-    signed int i,j,k=0;
+    signed int k=0;
     NumericVector out(Mindex.nrow());
     
     S = prepare(M, d);
 
-    for(i=0; i<Mindex.nrow() ; i++){
+    for(int i=0; i<Mindex.nrow() ; i++){
         v.clear();
-        for(j=0; j<Mindex.ncol(); j++){
+        for(int j=0; j<Mindex.ncol(); j++){
             v.push_back(Mindex(i,j));
         }
         out[k++] = S[v];
@@ -236,23 +231,20 @@ NumericVector spray_accessor // returns S1[]
     return out;
 }
 
-
 // [[Rcpp::export]]
 List spray_setter // effectively S[M] <- d; return S
 (
  const IntegerMatrix &M1, const NumericVector &d1,
  const IntegerMatrix &M2, const NumericVector &d2    // M2 -> index ; d2 -> value
  ){
-    spray S1,S2;
     mycont v;
-    signed int i,j;
     
-    S1 = prepare(M1, d1);
-    S2 = prepare(M2, d2);
+    spray S1 = prepare(M1, d1);
+    spray S2 = prepare(M2, d2);
 
-    for(i=0; i<M2.nrow() ; i++){
+    for(int i=0; i<M2.nrow() ; i++){
         v.clear();
-        for(j=0; j<M2.ncol(); j++){
+        for(int j=0; j<M2.ncol(); j++){
             v.push_back(M2(i,j));
         }
         S1[v] = S2[v];
@@ -267,9 +259,6 @@ bool spray_equality // S1 == S2
  const IntegerMatrix &M1, const NumericVector &d1,
  const IntegerMatrix &M2, const NumericVector &d2
  ){
-
-    
-    
     spray S1 = prepare(M1, d1);
     spray S2 = prepare(M2, d2);
 
@@ -303,21 +292,19 @@ List spray_asum_include
  ){
     spray S;
     mycont v;
-    signed int i,j,k;
 
-    for(i=0; i<M.nrow() ; i++){
+    for(int i=0; i<M.nrow() ; i++){
         v.clear();
-        for(j=0; j<M.ncol(); j++){
+        for(int j=0; j<M.ncol(); j++){
             v.push_back(M(i,j));
         }
-        for(k=0 ;  k<n.size() ; k++){
+        for(int k=0 ;  k<n.size() ; k++){
             v[n[k]-1] = 0;    // off-by-one issue dealt with here: if n[k]=0 this means dimension 1.
         }
         S[v] += d[i];
     }
     return retval(S);
 }
-
 
 // [[Rcpp::export]]
 List spray_asum_exclude 
@@ -327,11 +314,10 @@ List spray_asum_exclude
  ){
     spray S;
     mycont v;
-    signed int i,j;
 
-    for(i=0; i<M.nrow() ; i++){
+    for(int i=0; i<M.nrow() ; i++){
         v.clear();
-        for(j=0; j<n.size(); j++){
+        for(int j=0; j<n.size(); j++){
             v.push_back(M(i,n[j]-1));   //off-by-one error
         }
         S[v] += d[i];
@@ -349,22 +335,21 @@ List spray_deriv
 ){
     spray S;
     mycont v;
-    signed int i,j,nn;
 
     IntegerMatrix Mout(M.nrow(),M.ncol());
     NumericVector dout(d.size());
 
     // create local copies of M and d:
-    for(i=0 ; i<M.nrow() ; i++){
+    for(int i=0 ; i<M.nrow() ; i++){
         dout[i] = d[i];
-        for(j=0 ; j<M.ncol() ; j++){
+        for(int j=0 ; j<M.ncol() ; j++){
             Mout(i,j) = M(i,j);
         }
     }
     
-    for(i=0; i<Mout.nrow() ; i++){
-        for(j=0; j<Mout.ncol() ; j++){
-            nn = n[j];
+    for(int i=0; i<Mout.nrow() ; i++){
+        for(int j=0; j<Mout.ncol() ; j++){
+            int nn = n[j];
             while( (nn>0) & (d[i]!=0)  ){  // while loop because it might not run at all
                 dout[i] *= Mout(i,j);  // multiply d first, then decrement M (!)
                 Mout(i,j)--;
@@ -372,7 +357,7 @@ List spray_deriv
             }
         }
         v.clear();
-        for(j=0; j<Mout.ncol() ; j++){
+        for(int j=0; j<Mout.ncol() ; j++){
             v.push_back(Mout(i,j));
         }                    
         S[v] += dout[i];   // increment because v is not row-unique any more
