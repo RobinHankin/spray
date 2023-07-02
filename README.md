@@ -10,7 +10,7 @@ The spray package: sparse arrays in R
 [![Build
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/spray)](https://cran.r-project.org/package=spray)
 [![Codecov test
-coverage](https://codecov.io/gh/RobinHankin/spray/branch/master/graph/badge.svg)](https://codecov.io/gh/RobinHankin/spray/branch/master)
+coverage](https://app.codecov.io/gh/RobinHankin/spray/branch/master/graph/badge.svg)](https://app.codecov.io/gh/RobinHankin/spray/branch/master)
 <!-- badges: end -->
 
 # Overview
