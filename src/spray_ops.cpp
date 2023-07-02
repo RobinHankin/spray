@@ -70,7 +70,7 @@ spray prepare(const IntegerMatrix M, const NumericVector d){
     return(S);
 }
 
-IntegerMatrix makeindex(const spray S){  // takes a spray, returns the matrix of indices
+IntegerMatrix makeindex(const spray &S){  // takes a spray, returns the matrix of indices
     const unsigned int ncol = S.begin()->first.size();
     IntegerMatrix  out(S.size(),ncol);   // index
     mycont v;
@@ -87,7 +87,7 @@ IntegerMatrix makeindex(const spray S){  // takes a spray, returns the matrix of
     return(out);
 }
 
-NumericVector makevalue(const spray S){  // takes a spray, returns data
+NumericVector makevalue(const spray &S){  // takes a spray, returns data
     NumericVector  out(S.size());   // data
     unsigned int i=0;
     spray::const_iterator it;   // it iterates through a sparse array
@@ -151,7 +151,7 @@ List spray_add
 
 spray prod //
 (
- const spray S1, const spray S2
+ const spray &S1, const spray &S2
  ){
     spray Sout;
     mycont vsum;
