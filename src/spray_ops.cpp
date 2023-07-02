@@ -28,7 +28,7 @@ public:
        {
               // thanks to Steffan Hooper for advice
               std::size_t seed = 0;
-              for (auto& i : vec){
+              for (const auto& i : vec){
                   seed ^= i + 0x9e3779b9 + (seed << 6) + (seed >> 2);
               }
               return seed;
