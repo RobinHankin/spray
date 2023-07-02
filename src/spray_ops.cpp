@@ -1,6 +1,6 @@
 // -*- mode: C++; c-indent-level: 4; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 
-#define container vector         // Could be 'vector' or 'deque' (both work but there may be performance differences)
+#define container vector      // Could be 'vector' or 'deque' (both work but there may be performance differences)
 #define USE_UNORDERED_MAP true   // set to true for unordered_map; comment out to use plain stl map.
 
 #define STRICT_R_HEADERS
@@ -15,10 +15,10 @@
 #include <utility>
 #include <iterator>
 
-using namespace std;
+
 using namespace Rcpp; 
 
-typedef container<signed int> mycont;  // a mycont  is a container [vector or deque] of *signed* ints.
+typedef std::container<signed int> mycont;  // a mycont  is a container [vector or deque] of *signed* ints.
 
 #ifdef USE_UNORDERED_MAP
 class MyVecHasher
