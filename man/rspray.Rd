@@ -17,15 +17,11 @@ rspray(n=9, vals = seq_len(n), arity = 3, powers = 0:2)
   \item{arity}{Arity of the spray; the number of columns in the index matrix}
   \item{powers}{Set from which to sample the entries of the index matrix}
 }
-\value{
-Returns a spray object
-}
-\author{
-Robin K. S. Hankin
-}
+\value{Returns a spray object}
+\author{Robin K. S. Hankin}
 \note{
 If the index matrix contains repeated rows, the returned spray object
-will  contain fewer than \code{n} entries
+will contain fewer than \code{n} entries
 }
 \seealso{\code{\link{spray}}}
 \examples{

@@ -7,9 +7,7 @@
 \alias{pmin.spray}
 \alias{pmax.default}
 \alias{pmin.default}
-\title{
-Parallel maxima and minima for sprays
-}
+\title{Parallel maxima and minima for sprays}
 \description{
 Parallel (pairwise) maxima and minima for sprays. 
 }
@@ -58,13 +56,8 @@ The value of \code{pmax(S)} is problematic.  Suppose
 \code{pmax(S)==S} but there is a case for returning the null polynomial.
   
 }
-\value{
-  Returns a spray object
-}
-
-\author{
-Robin K. S. Hankin
-}
+\value{Returns a spray object}
+\author{Robin K. S. Hankin}
 \examples{
 
 S1 <- rspray(100,vals=sample(100)-50)

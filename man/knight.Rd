@@ -19,9 +19,7 @@ king(d=2)
 \value{
 Returns the generating function of the piece in question.
 }
-\author{
-Robin K. S. Hankin
-}
+\author{Robin K. S. Hankin}
 \note{
 The pieces are forced to move; if they have the option of not moving,
 add 1 to the returned spray.  The vignette contains a short discussion.
