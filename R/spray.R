@@ -370,7 +370,7 @@ setGeneric("deriv")
   } else {
     out <- print_spray_matrixform(x)
   }
-  return(out)
+  return(invisible(out))
 }
 
 `asum` <- function(S, dims,drop=TRUE, ...) {UseMethod("asum")}
