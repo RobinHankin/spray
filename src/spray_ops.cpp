@@ -267,19 +267,18 @@ bool spray_equality // S1 == S2
  const IntegerMatrix &M1, const NumericVector &d1,
  const IntegerMatrix &M2, const NumericVector &d2
  ){
-    mycont v;
-    spray S1, S2;  
-    spray::const_iterator it;
+
     
-    S1 = prepare(M1, d1);
-    S2 = prepare(M2, d2);
+    
+    spray S1 = prepare(M1, d1);
+    spray S2 = prepare(M2, d2);
 
     if(S1.size() != S2.size()){
         return FALSE;  // this line is never executed in package idiom, because different-sized objects are trapped by R
     }
 
-    for (it=S1.begin(); it != S1.end(); ++it){
-        v = it->first;
+    for(spray::const_iterator it=S1.begin(); it != S1.end(); ++it){
+        const mycont v = it->first;
         if(S1[v] != S2[v]){
             return FALSE;
         } else {
