@@ -202,16 +202,12 @@ List spray_overwrite // something like S1[ind(S2)] <- S2
  const IntegerMatrix &M1, const NumericVector &d1,
  const IntegerMatrix &M2, const NumericVector &d2
  ){
-    spray S1,S2;
-    mycont v;
-    spray::const_iterator it;
+    spray S1 = prepare(M1, d1);
+    spray S2 = prepare(M2, d2);    
     
-    S1 = prepare(M1, d1);
-    S2 = prepare(M2, d2);    
-
-    for (it=S2.begin(); it != S2.end(); ++it){
-        v = it->first;
-        S1[v] = S2[v];   // the meat
+    for (spray::const_iterator it=S2.begin(); it != S2.end(); ++it){
+      const mycont v = it->first;
+      S1[v] = S2[v];   // the meat
     }
 
     return retval(S1);
