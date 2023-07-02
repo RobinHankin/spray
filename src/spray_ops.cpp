@@ -131,21 +131,20 @@ List spray_add
  const IntegerMatrix &M1, const NumericVector &d1,
  const IntegerMatrix &M2, const NumericVector &d2
  ){
-     spray S1, S2;   // basic idea is S1 = S1+S2;
-     spray::const_iterator it;   // it iterates through a sparse array
+     spray S1, S2; 
+     spray::const_iterator it;   
      mycont v;
      
-    S1 = prepare(M1, d1);
-    S2 = prepare(M2, d2);
+     S1 = prepare(M1, d1);
+     S2 = prepare(M2, d2);
     
-    // the "meat" of this function, namely S1=S1+S2 (S1 += S2):
-    for (it=S2.begin(); it != S2.end(); ++it){
-        v = it->first;
-        S1[v] += S2[v];   //S1 to be returned.  NB: S1 may have increased in size.
-        if(S1[v]==0){S1.erase(v);}
-    }
-
-    return retval(S1);
+     for (it=S2.begin(); it != S2.end(); ++it){
+       v = it->first;
+       S1[v] += S2[v]; // the meat:  S1=S1+S2 (S1 += S2)
+       if(S1[v]==0){S1.erase(v);}
+     }
+     
+     return retval(S1);
 }
 
 
