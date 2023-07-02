@@ -133,13 +133,12 @@ List spray_add
  ){
      spray S1, S2; 
      spray::const_iterator it;   
-     mycont v;
      
      S1 = prepare(M1, d1);
      S2 = prepare(M2, d2);
     
      for (it=S2.begin(); it != S2.end(); ++it){
-       v = it->first;
+       const mycont v = it->first;
        S1[v] += S2[v]; // the meat:  S1=S1+S2 (S1 += S2)
        if(S1[v]==0){S1.erase(v);}
      }
