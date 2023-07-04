@@ -87,7 +87,6 @@ setClass("spray",
    if(is.disord(value)){
      stopifnot(consistent(jj,value))
      if((!identical(hash(jj),hash(value))) & (length(value)>1)){stop("length > 1")}
-
      jj <- value
    } else {
      stopifnot(length(value) == 1)
@@ -150,6 +149,7 @@ setGeneric("deriv")
     dimnames(out) <- names(ind)
     return(out)
 }
+
 `spray_missing_accessor` <- function(S,dots){
     stop("not implemented: see inst/missing_accessor.txt for a discussion")
 }
@@ -281,16 +281,20 @@ setGeneric("deriv")
     return(invisible(S))
 }
 
-`print_spray_polyform` <- function(S){
+`print_spray_polyform` <- function(S,give=FALSE){
 
     vector_of_3vars <- c("x","y","z")
     multiply_symbol1 <- "*"
     multiply_symbol2 <- "*"
 
     if(is.empty(S)){
-    cat(paste('the NULL multinomial of arity ', arity(S), '\n',sep=""))
-    return(S)
-  }
+        if(give){
+            return("")
+        } else {
+            cat(paste('the NULL multinomial of arity ', arity(S), '\n',sep=""))
+            return(S)
+        }
+    }
 
   if(is.null(getOption("sprayvars"))){
     if(arity(S) <= 3){
@@ -303,7 +307,7 @@ setGeneric("deriv")
     }
   
   if(is.empty(constant(S))){
-    string <- ""
+    string <- " "
   } else {
     string <- constant(S,drop=TRUE)
   }
@@ -355,7 +359,9 @@ setGeneric("deriv")
         }
         string <- paste(string, term, sep="")
       }  # row of index loop closes
-    
+    string <- substr(string,2,nchar(string))  # remove first space
+    if(give){ return(string) }
+
   string <- paste(string,'\n',sep="")
   for(i in strwrap(string)){
     cat(noquote(i))
@@ -565,4 +571,12 @@ setMethod("drop","spray", function(x){
   print(x[[1]])
   cat("\n\nRepresentative selection of index and coefficients:\n\n")
   print(x[[2]])
+}
+
+`as.character.spray` <- function(x, ..., split=FALSE){
+    out <- print_spray_polyform(x,give=TRUE)
+    if(split){
+        out <- disord(strsplit(out," ")[[1]],h=hash(coeffs(x)))
+    }
+    return(out)
 }

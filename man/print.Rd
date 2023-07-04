@@ -13,11 +13,14 @@ or multivariate polynomial form
 \usage{
 \method{print}{spray}(x, ...)
 print_spray_matrixform(S)
-print_spray_polyform(S)
+print_spray_polyform(S,give=FALSE)
 }
 \arguments{
   \item{x,S}{spray object}
-  \item{...}{Further arguments (currently ignored)}
+  \item{give}{Boolean, with default \code{FALSE} meaning to print the
+    value of \code{S}, and \code{TRUE} meaning to return a string
+    (without nice formatting); used in \code{as.character.spray()}
+    \item{...}{Further arguments (currently ignored)}
 }
 \details{
 
