@@ -164,12 +164,7 @@ spray prod //
             Sout[vsum] += x1*x2;                // meat 2: coefficients multiply
         }
     }
-    //    for(spray::iterator it=S3.begin(); it != S3.end(); ++it){
-    //    if(it->second ==0){S3.erase(it);}
-    // }
-
     return Sout;
-
 }    
 
 spray unit //
@@ -432,6 +427,3 @@ List spray_power
     }
     return retval(out);
 }
-
-
-
