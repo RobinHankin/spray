@@ -359,7 +359,8 @@ setGeneric("deriv")
         }
         string <- paste(string, term, sep="")
       }  # row of index loop closes
-    string <- substr(string,2,nchar(string))  # remove first space
+
+    string <- gsub("^\ *", "", string)
     if(give){ return(string) }
 
   string <- paste(string,'\n',sep="")
