@@ -359,7 +359,8 @@ setGeneric("deriv")
         }
         string <- paste(string, term, sep="")
       }  # row of index loop closes
-    string <- substr(string,2,nchar(string))  # remove first space
+
+    string <- gsub("^\ *", "", string)
     if(give){ return(string) }
 
   string <- paste(string,'\n',sep="")
@@ -576,7 +577,7 @@ setMethod("drop","spray", function(x){
 `as.character.spray` <- function(x, ..., split=FALSE){
     out <- print_spray_polyform(x,give=TRUE)
     if(split){
-        out <- disord(strsplit(out," ")[[1]],h=hash(coeffs(x)))
+        out <- disord(strsplit(out," ")[[1]],h=hashcal(x))
     }
     return(out)
 }

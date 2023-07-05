@@ -592,8 +592,8 @@ other definitions of sparsity are possible.  Consider the following
 example, taken from \cite{kahle2013}:
 
 \[
-ab^2+bc^2+cd^2+\cdots+yz^2+za^2
-\].
+ab^2+bc^2+cd^2+\cdots+yz^2+za^2.
+\]
 
 The \pkg{spray} idiom for such an expression is
 

@@ -19,7 +19,7 @@ print_spray_polyform(S,give=FALSE)
   \item{x,S}{spray object}
   \item{give}{Boolean, with default \code{FALSE} meaning to print the
     value of \code{S}, and \code{TRUE} meaning to return a string
-    (without nice formatting); used in \code{as.character.spray()}
+    (without nice formatting); used in \code{as.character.spray()}}
     \item{...}{Further arguments (currently ignored)}
 }
 \details{
