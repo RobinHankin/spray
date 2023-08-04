@@ -17,9 +17,10 @@ Coerces spray objects to a character string or \code{disord} character vector.
     character}
 }
 \details{
-  The method is sensitive to option \code{sprayvars}, but not
-  \code{polyform}.
- }
+  The method uses \code{print_spray_polyform()} and as such is sensitive
+  to option \code{sprayvars}, but not \code{polyform}.
+}
+
 \author{Robin K. S. Hankin}
 \examples{
 as.character(rspray())

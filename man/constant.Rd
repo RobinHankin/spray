@@ -3,6 +3,8 @@
 \alias{is.constant}
 \alias{scalar}
 \alias{is.scalar}
+\alias{constant}
+\alias{const}
 \alias{constant.spray}
 \alias{constant,spray-method}
 \alias{constant<-}
@@ -34,9 +36,7 @@ drop(x)
   In function \code{constant()}, return the coefficient, or a constant
   multivariate polynomial, depending on the value of \code{drop}.
 }
-\author{
-Robin K. S. Hankin
-}
+\author{Robin K. S. Hankin}
 \note{
 
 The behaviour of the \code{drop} argument (sort of) matches that of the
