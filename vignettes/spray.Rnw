@@ -13,7 +13,7 @@
 %\maketitle
 
 
-\author{Robin K. S. Hankin\\Auckland University of Technology}
+\author{Robin K. S. Hankin\\University of Stirling}
 \title{Sparse arrays and multivariate polynomials in \proglang{R}}
 %\VignetteIndexEntry{A vignette for the spray package}
 %% for pretty printing and a nice hypersummary also set:
@@ -51,8 +51,8 @@
 %% in the following format:
 \Address{
   Robin K. S. Hankin\\%\orcid{https://orcid.org/0000-0001-5982-0415}\\
-  Auckland University of Technology\\
-  New Zealand
+  University of Stirling\\
+  Scotland
 }
 %% It is also possible to add a telephone and fax number
 %% before the e-mail in the following format:
