@@ -162,6 +162,8 @@ setGeneric("deriv")
         M <- first
     } else if(is.spray(first)){
         M <- index(first)
+    } else if(is.disord(first)){
+        return(spray_extract_disord(S,first))
     } else {
         M <- as.matrix(expand.grid(dots))
     }
@@ -194,6 +196,8 @@ setGeneric("deriv")
         M <- index
     } else if(is.spray(index)){
         M <- spray::index(index)
+    } else if(is.disord(index)){
+        return(spray_replace_disord(S,index,value))
     } else {
         M <- as.matrix(expand.grid(c(list(index), list(...))))
     }
@@ -580,4 +584,14 @@ setMethod("drop","spray", function(x){
         out <- disord(strsplit(out," ")[[1]],h=hashcal(x))
     }
     return(out)
+}
+
+`spray_extract_disord` <- function(S,first){
+    coeffs(S)[!first] <- 0
+    return(S)
+}
+
+`spray_replace_disord` <- function(S,index,value){
+    coeffs(S)[index] <- value
+    return(S)
 }

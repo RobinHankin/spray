@@ -5,6 +5,8 @@
 \alias{replace.spray}
 \alias{replace}
 \alias{[<-.spray}
+\alias{spray_extract_disord}
+\alias{spray_replace_disord}
 \title{Extract or Replace Parts of a spray}
 \description{
   Extract or replace subsets of sprays.
@@ -41,6 +43,10 @@
   \code{S[1,,p,1:3]} to work but this is problematic and a discussion is
   given in \code{inst/missing_accessor.txt}.
 
+  Functions \code{spray_extract_disord()} and
+  \code{spray_replace_disord()} are low-level helper functions which
+  implement idiom such as \code{a[coeffs(a) < 3]} and\code{a[coeffs(a) <
+  3] <- 99}.
   
 }
 \examples{
@@ -71,5 +77,12 @@ S1[] <- S2
 
 S1[S3] <- 99
 S1
+
+S <- rspray()
+S[coeffs(S) > 4]
+S[coeffs(S) < 6] <- 99
+S
+
+
 }
 \keyword{symbolmath}

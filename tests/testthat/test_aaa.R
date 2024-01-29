@@ -183,5 +183,17 @@ test_that("test suite aaa",{
     expect_true(length(coeffs(Sz)) >= length(coeffs(zapsmall(Sz))))
     expect_true(length(coeffs(Sz)) >= length(zapsmall(coeffs(Sz))))
 
+    S <- spray(matrix(c(0,0,1,0,1,2,1,2,0,1,3,2,1,3,0),ncol=3),1:5)
+    expect_true(S[coeffs(S) > 3] == spray(matrix(c(1,0,1,0,0,3),ncol=3),5:4))
+    expect_true(S[coeffs(S) < 4] == spray(matrix(c(1,0,0,2,1,2,1,2,3),ncol=3),3:1))
+
+    S[coeffs(S) < 3] <- 99
+    expect_true(S == spray(matrix(c(0,0,1,0,1,2,1,2,0,1,3,2,1,3,0),ncol=3),c(99,99,3:5)))
+
+    expect_error(S[1])
+    expect_error(S[1:2])
+    expect_error(S[1] <- 5)
+    expect_error(S[1:2] <- 5)
+
 })
 
