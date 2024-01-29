@@ -89,7 +89,7 @@ setClass("spray",
      if((!identical(hash(jj),hash(value))) & (length(value)>1)){stop("length > 1")}
      jj <- value
    } else {
-     stopifnot(length(value) == 1)
+     stopifnot(disordR::allsame(value))
      jj[] <- value  # the meat
    }
   spray(index(S),jj)
