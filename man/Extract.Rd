@@ -25,8 +25,10 @@
     return a numeric vector}
 }
 \details{
+
   These methods should work as expected, although the off-by-one issue
-  might be a gotcha.
+  might be a gotcha.  \CRANpkg{disordR} discipline is enforced where
+  appropriate.
 
   In \code{S[index,...]}, argument \code{drop} is \code{FALSE} by
   default, in which case a \code{spray} object is returned.  If
