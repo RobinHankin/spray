@@ -520,7 +520,7 @@ setGeneric("deriv")
 `length.spray` <- function(x){nterms(x)}
 
 setGeneric("zapsmall")
-setMethod("zapsmall","spray",function(x,digits){
+setMethod("zapsmall","spray",function(x,digits=getOption("digits")){
     zap(x,digits=digits)
 })
 
