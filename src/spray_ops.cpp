@@ -158,7 +158,7 @@ spray prod //
             const mycont v2 = it2->first;
             const double x2 = it2->second;
             vsum.clear();
-            for(int i=0; i<v1.size(); i++){
+            for(size_t i=0; i<v1.size(); i++){
                 vsum.push_back(v1[i] + v2[i]);  // meat 1: powers add
             }
             Sout[vsum] += x1*x2;                // meat 2: coefficients multiply
