@@ -504,6 +504,10 @@ setGeneric("deriv")
     return(spray(matrix(sample(powers,n*arity,replace=TRUE),ncol=arity),addrepeats=TRUE,vals))
 }
 
+`rsprayy` <- function(n=30,vals=seq_len(n),arity=7,powers=0:8){
+    rspray(n=n,vals=seq_len(n),arity=arity,powers=powers)
+}
+
 `knight` <- function(d=2){
   n <- d * (d - 1)
   out <- matrix(0, n, d)

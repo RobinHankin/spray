@@ -1,13 +1,13 @@
 \name{rspray}
 \alias{rspray}
-\title{
-Random spray objects
-}
+\alias{rsprayy}
+\title{Random spray objects}
 \description{
 Creates random spray objects as quick-and-dirty examples of multivariate polynomials
 }
 \usage{
-rspray(n=9, vals = seq_len(n), arity = 3, powers = 0:2)
+rspray(n=9  , vals = seq_len(n), arity = 3, powers = 0:2)
+rsprayy(n=30, vals = seq_len(n), arity = 7, powers = 0:8)
 }
 \arguments{
   \item{n}{
