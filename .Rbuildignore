@@ -17,4 +17,4 @@
 ^inst/spray_arxiv.tex$
 ^inst/spray_arxiv.tex~$
 ^inst/spray_arxiv.bib$
-
+^inst/power_timing.Rmd$

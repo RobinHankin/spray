@@ -53,3 +53,7 @@ spray_power <- function(M, d, pow) {
     .Call('spray_spray_power', PACKAGE = 'spray', M, d, pow)
 }
 
+spray_power_stla <- function(M, d, pow) {
+    .Call('spray_spray_power', PACKAGE = 'spray', M, d, pow)
+}
+

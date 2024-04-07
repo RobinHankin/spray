@@ -7,6 +7,7 @@
 \alias{spray_plus_spray}
 \alias{spray_plus_scalar}
 \alias{spray_power_scalar}
+\alias{spray_power_scalar_stla}
 \alias{spray_eq_spray}
 \alias{spray_eq_numeric}
 \title{Arithmetic Ops Group Methods for sprays}
@@ -23,6 +24,7 @@ spray_times_scalar(S,x)
 spray_plus_spray(S1,S2)
 spray_plus_scalar(S,x)
 spray_power_scalar(S,n)
+spray_power_scalar_stla(S,n)
 spray_eq_spray(S1,S2)
 spray_eq_numeric(S1,x)
 }
@@ -47,6 +49,12 @@ spray_eq_numeric(S1,x)
   \code{spray_eq_spray(S1,S2)} is algebraically equivalent to
   \code{is.zero(S1-S2)}, but faster (\code{FALSE} is returned as soon as
   a mismatch is found).
+
+  Function \code{spray_power_scalar()} is the functional representation
+  for powers: \code{spray_power_scalar(X,n)} is the same as \code{X^n}.
+  Function \code{spray_power_scalar_stla()} is an experimental
+  replacement for \code{spray_power_scalar()} that may offer speed
+  advantages.
 
 }
 \value{

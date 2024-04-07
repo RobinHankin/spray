@@ -14,6 +14,7 @@
 \alias{spray_pmax}
 \alias{spray_pmin}
 \alias{spray_power}
+\alias{spray_power_stla}
 \alias{spray_spray_accessor}
 \alias{spray_spray_add}
 \alias{spray_spray_asum_exclude}

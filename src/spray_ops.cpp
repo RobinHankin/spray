@@ -42,6 +42,8 @@ typedef map<mycont, double > spray;
 
 
 
+
+
 spray prepare(const IntegerMatrix M, const NumericVector d){
     spray S;
     spray::iterator it;
@@ -142,7 +144,6 @@ List spray_add
      return retval(S1);
 }
 
-
 spray prod //
 (
  const spray &S1, const spray &S2
@@ -176,6 +177,20 @@ spray unit //
     one[0] = 1;
     return prepare(M,one);
 }
+
+
+// Overloading the * operator as a non-member function
+spray operator*(spray& S1, const spray& S2) {
+    return prod(S1,S2);
+}
+
+
+// Overloading the *= operator as a non-member function
+spray operator*=(spray& S1, const spray& S2) {
+    S1 = prod(S1,S2);
+    return S1;
+}
+
 
 // [[Rcpp::export]]
 List spray_mult  // multiply two sprays
@@ -422,8 +437,29 @@ List spray_power
         return retval(S);
     } else {  // n>1
         for( ; n>0; n--){
-            out = prod(S,out);
+            out *= S;
         }
     }
     return retval(out);
 }
+
+
+// [[Rcpp::export]]
+List spray_power_stla
+(
+ const IntegerMatrix &M, const NumericVector &d, const NumericVector &pow
+ ){
+    spray Result = unit(M.ncol());
+    spray S = prepare(M,d);
+    unsigned int n=pow[0];
+
+    while(n) {
+        if(n & 1) {
+            Result = prod(S,Result);
+        }
+        n >>= 1;
+        S = prod(S,S);
+    }
+    return retval(Result);
+}
+

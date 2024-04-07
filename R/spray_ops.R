@@ -133,6 +133,15 @@ spray_power_scalar <- function(S,n){
   }
 }
 
+spray_power_scalar_stla <- function(S,n){
+  stopifnot(n==round(n))
+  if(n<0){
+    stop("use ooom() for negative powers")
+  } else {
+    return(spraymaker(spray_power_stla(index(S),coeffs(S),n),arity=arity(S)))
+  }
+}
+
 `spray_eq_spray` <- function(S1,S2){
     if(arity(S1) != arity(S2)){
         return(FALSE)

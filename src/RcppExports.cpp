@@ -180,3 +180,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// spray_power_stla
+List spray_power_stla(const IntegerMatrix& M, const NumericVector& d, const NumericVector& pow);
+RcppExport SEXP spray_spray_power_stla(SEXP MSEXP, SEXP dSEXP, SEXP powSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type M(MSEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type d(dSEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type pow(powSEXP);
+    rcpp_result_gen = Rcpp::wrap(spray_power(M, d, pow));
+    return rcpp_result_gen;
+END_RCPP
+}
+

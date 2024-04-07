@@ -37,6 +37,19 @@ test_that("test suite aab",{
         expect_false(SS1+SS2==SS1)
         expect_false(SS1+SS2==SS2)
 
+        expect_true(spray_power_scalar     (S,0) == one(S))
+        expect_true(spray_power_scalar_stla(S,0) == one(S))
+
+        expect_true(spray_power_scalar     (S,1) == S)
+        expect_true(spray_power_scalar_stla(S,1) == S)
+
+        expect_true(spray_power_scalar     (S,2) == S*S)
+        expect_true(spray_power_scalar_stla(S,2) == S*S)
+
+        expect_true(spray_power_scalar     (S,3) == S*S*S)
+        expect_true(spray_power_scalar_stla(S,3) == S*S*S)
+
+        
         return(TRUE)
     }
 
