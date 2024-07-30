@@ -268,12 +268,25 @@ setGeneric("deriv")
   return(out)
 }
 
+`printedvalue` <- function(v){
+    as.numeric(
+        strsplit(
+            stringr::str_squish(
+                         paste(
+                             gsub("^ *\\[\\d+\\]","",
+                                  capture.output(v)
+                                  ), collapse=" ")
+                     ), " "
+        )[[1]]
+    )
+}
+
 `print_spray_matrixform` <- function(S){
     if(is.empty(S)){
         cat(paste('empty sparse array with ', arity(S), ' columns\n',sep=""))
     } else {
         jj <-
-            data.frame(index(S),symbol= " = ", val=round(elements(coeffs(S)),getOption("digits")))
+            data.frame(index(S),symbol= " = ", val=printedvalue(elements(coeffs(S))))
         mdc <-getOption("sprayvars")
         if(is.null(mdc)){
             colnames(jj) <- c(rep(" ",arity(S)+1),'val')

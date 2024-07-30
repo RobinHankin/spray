@@ -1,7 +1,7 @@
 Package: spray
 Type: Package
 Title: Sparse Arrays and Multivariate Polynomials
-Version: 1.0-25
+Version: 1.0-26
 Authors@R: person(given=c("Robin", "K. S."), family="Hankin",
            role = c("aut","cre"),
 	   email="hankin.robin@gmail.com",
@@ -14,7 +14,7 @@ Description: Sparse arrays interpreted as multivariate polynomials.
 License: GPL (>= 2)
 Depends: methods
 Suggests: polynom, testthat, covr
-Imports: Rcpp (>= 0.12.3),partitions,magic,mathjaxr,disordR (>= 0.9-6)
+Imports: Rcpp (>= 0.12.3),partitions,magic,mathjaxr,disordR (>= 0.9-6), stringr
 LinkingTo: Rcpp
 URL: https://github.com/RobinHankin/spray
 BugReports: https://github.com/RobinHankin/spray/issues

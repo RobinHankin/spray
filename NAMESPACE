@@ -6,7 +6,11 @@ importFrom(magic,adiag)
 importFrom(partitions,compositions)
 import(methods)
 import(mathjaxr)
+
 importFrom("utils", "head")
+importFrom("utils", "capture.output")
+
+
 
 importFrom(disordR,disord)
 importFrom(disordR,elements)
@@ -16,6 +20,7 @@ importFrom(disordR,is.disord)
 importFrom(disordR,consistent)
 importFrom(disordR,allsame)
 
+importFrom("stringr","str_squish")
 
 export(spray_add)
 export(pmax)
