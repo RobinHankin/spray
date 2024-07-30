@@ -1,0 +1,21 @@
+---
+title: "spray power test"
+author: "Robin Hankin"
+date: "2024-04-07"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Function `spray_power_scalar_stla()` is an experimental replacement for spray powers.  This short document presents some timings for it.
+
+```{r}
+suppressMessages(library("spray"))
+options(polyform = TRUE)
+(S <- spray(as.matrix(expand.grid(0:1,0:1)),1:4))
+system.time(ignore <- spray_power_scalar(S,63))
+system.time(ignore <- spray_power_scalar_stla(S,63))
+```
+
