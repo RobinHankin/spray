@@ -8,9 +8,9 @@ The spray package: sparse arrays in R
 <!-- badges: start -->
 
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/spray)](https://cran.r-project.org/package=spray)
-[![Codecov test
-coverage](https://app.codecov.io/gh/RobinHankin/spray/branch/master/graph/badge.svg)](https://app.codecov.io/gh/RobinHankin/spray/branch/master)
 [![R-CMD-check](https://github.com/RobinHankin/spray/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/RobinHankin/spray/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/RobinHankin/spray/branch/master/graph/badge.svg)](https://app.codecov.io/gh/RobinHankin/spray?branch=master)
 <!-- badges: end -->
 
 # Overview
