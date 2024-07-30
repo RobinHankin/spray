@@ -5,7 +5,7 @@ importFrom(Rcpp, evalCpp)
 importFrom(magic,adiag)
 importFrom(partitions,compositions)
 import(methods)
-import(mathjaxr)
+
 
 importFrom("utils", "head")
 importFrom("utils", "capture.output")
