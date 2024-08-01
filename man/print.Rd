@@ -50,6 +50,11 @@ printedvalue(v)
 \note{
   There are a couple of hard-wired symbols for multiplication and
   equality which are defined near the top of the helper functions.
+
+  There are no checks for option \code{sprayvars} being sensible.  For
+  example, repeated entries, or entries with zero length, are acceptable
+  but the output might be confusing or uninformative.
+
 }
 \examples{
 

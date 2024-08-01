@@ -73,7 +73,15 @@ is_valid_spray(L)
   matrix, which it cannot deal with).  In this case, we need some way to
   tell \R the arity of the corresponding spray object.
 
+  Rownames and colnames of the index matrix are removed by
+  \code{spraymaker()} [\proglang{C++} routine \code{spray_maker()}
+  discards the \code{dimnames} attribute of matrix \code{M}], but the
+  print method might add colnames to printed output, via option
+  \code{sprayvars}.
+
   Functions \code{index()} and \code{coeffs()} are accessor methods.
+  Function \code{index()} returns an integer-valued matrix with rows
+  corresponding to variable powers. 
 
   There is an extensive vignette available; type
   \code{vignette("spray")} at the command line.
