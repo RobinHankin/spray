@@ -43,9 +43,11 @@ Thus if \code{S3 <- pmax(S,x)} we have \code{S3[v] == max(S[v],x)} for
 every index \code{v}.  Observe that this operation is not defined if
 \code{x>0}, for then there would be an infinity of \code{v} for which
 \code{S3[v] != 0}, an impossibility (or at least counter to the
-principles of a sparse array).  Note also that \code{x} cannot have
-length \mjseqn{>1} as the elements of a spray object are stored in an
-arbitrary order, following \code{disordR} discipline.
+principles of a sparse array).  The \CRANpkg{frab} package discussses
+this issue in vignette \code{inst/wittgenstein.Rmd}.  Note also that
+\code{x} cannot have length \mjseqn{>1} as the elements of a spray
+object are stored in an arbitrary order, following \code{disordR}
+discipline.
 
 Functions \code{minpair_spray()} and \code{pmin.spray()} are analogous.
 Note that \code{minpair_spray(S1,S2)} is algebraically equivalent to
