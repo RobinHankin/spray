@@ -14,8 +14,7 @@ Description: Sparse arrays interpreted as multivariate polynomials.
 License: GPL (>= 2)
 Depends: methods
 Suggests: polynom, testthat, covr
-Imports: Rcpp (>= 0.12.3),partitions,magic,mathjaxr,disordR (>= 0.9-6), stringr
+Imports: Rcpp (>= 0.12.3), partitions, magic, disordR (>= 0.9-6), stringr
 LinkingTo: Rcpp
 URL: https://github.com/RobinHankin/spray
 BugReports: https://github.com/RobinHankin/spray/issues
-RdMacros: mathjaxr

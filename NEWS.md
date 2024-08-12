@@ -38,3 +38,4 @@
 - code of conduct
 - contributing guide
 - improvement to print method
+- no dependence on mathjax package

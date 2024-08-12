@@ -10,9 +10,9 @@ that we can get.
   \item{S}{object of class spray}
   \item{n}{Order of the approximation}
 }
-\details{\loadmathjax
-Returns the Taylor expansion to order \eqn{n} of \mjseqn{1/(1-S)}, that
-is, \mjeqn{1+S+S^2+S^3+\cdots +S^n}{1+S+S^2+S^3+...+S^n}.
+\details{
+Returns the Taylor expansion to order \eqn{n} of \eqn{1/(1-S)}, that
+is, \eqn{1+S+S^2+S^3+\cdots +S^n}{1+S+S^2+S^3+...+S^n}.
 }
 \value{Returns a spray object of the same arity as \code{S}.}
 \author{Robin K. S. Hankin}

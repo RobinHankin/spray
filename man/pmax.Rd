@@ -21,7 +21,7 @@ minpair_spray(S1,S2)
   \item{x,S1,S2}{Spray objects}
   \item{\dots}{spray objects to be compared}
 }
-\details{\loadmathjax
+\details{
 
 Function \code{maxpair_spray()} finds the pairwise maximum for two
 sprays.  Specifically, if \code{S3 <- maxpair_spray(S1,S2)}, then
@@ -45,7 +45,7 @@ every index \code{v}.  Observe that this operation is not defined if
 \code{S3[v] != 0}, an impossibility (or at least counter to the
 principles of a sparse array).  The \CRANpkg{frab} package discussses
 this issue in vignette \code{inst/wittgenstein.Rmd}.  Note also that
-\code{x} cannot have length \mjseqn{>1} as the elements of a spray
+\code{x} cannot have length \eqn{>1} as the elements of a spray
 object are stored in an arbitrary order, following \code{disordR}
 discipline.
 
