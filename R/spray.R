@@ -12,7 +12,7 @@ setClass("spray",
     } else {
         M <- L[[1]]
         x <- L[[2]]
-        if(!addrepeats & anyDuplicated(M)){ 
+        if(!addrepeats && anyDuplicated(M)){ 
             stop("repeated indices; yet argument 'addrepeats' is FALSE")
         }
         out <- spray_maker(M,x)   # see RcppExports.R; strips out zeros and puts index rows in (some inscrutable) order
@@ -24,13 +24,13 @@ setClass("spray",
 
 `is_valid_spray` <- function(L){  # L = list(M,x)
     stopifnot(is.list(L))
-    stopifnot(length(unclass(L))==2)
+    stopifnot(length(unclass(L)) == 2)
     if(is.empty(L)){
         return(TRUE)
     } else {
         stopifnot(is.matrix(L[[1]]))
-        stopifnot(is.vector(L[[2]])| is.disord(L[[2]]))
-        stopifnot(nrow(L[[1]])==length(L[[2]]))
+        stopifnot(is.vector(L[[2]]) || is.disord(L[[2]]))
+        stopifnot(nrow(L[[1]]) == length(L[[2]]))
         return(TRUE)
     }
 }
@@ -38,9 +38,9 @@ setClass("spray",
 `is.spray` <- function(S){inherits(S,"spray")}
 
 `is.empty` <- function(L){
-  if( is.null(L[[1]]) & is.null(L[[2]])){
+  if( is.null(L[[1]]) && is.null(L[[2]])){
     return(TRUE)
-  } else if(  identical(nrow(L[[1]]),0L) & (length(L[[2]])==0)){
+  } else if(  identical(nrow(L[[1]]),0L) && (length(L[[2]]) == 0)){
     return(TRUE)
   } else if(all(L[[2]]==0)){
     return(TRUE)
@@ -53,7 +53,7 @@ setClass("spray",
     if(is.spray(x)){
         return(is.empty(x))
     } else {
-        return(x==0)
+        return(x == 0)
     }
 }
 
@@ -63,7 +63,7 @@ setClass("spray",
     } else if(inherits(M,"partition")){
         M <- unclass(t(M)) # saves typing t() in 'spray(parts(4))' which drives me nuts
     } else if(is.spray(M)){
-        if(length(x)>1){
+        if(length(x) > 1){
             stop("spray(M,x) not defined if length(x)>1")
         }
         M <- index(M)
@@ -71,7 +71,7 @@ setClass("spray",
         M <- as.matrix(M) # e.g., coerces expand.grid(...) to a matrix
     }
     if(missing(x)){x <- rep(1,nrow(M))}
-    if(length(x)==1){x <- rep(x,nrow(M))}
+    if(length(x) == 1){x <- rep(x,nrow(M))}
     return(spraymaker(list(M,x),addrepeats=addrepeats))
 }
 
@@ -86,7 +86,7 @@ setClass("spray",
    value <- drop(value)
    if(is.disord(value)){
      stopifnot(consistent(jj,value))
-     if((!identical(hash(jj),hash(value))) & (length(value)>1)){stop("length > 1")}
+     if((!identical(hash(jj),hash(value))) && (length(value)>1)){stop("length > 1")}
      jj <- value
    } else {
      stopifnot(disordR::allsame(value))
@@ -100,12 +100,12 @@ setClass("spray",
         return(arg1)  
     } else if(is.list(arg1)){
         return(spraymaker(arg1,addrepeats=addrepeats))
-    } else if(is.matrix(arg1) & !missing(arg2)){
+    } else if(is.matrix(arg1) && !missing(arg2)){
         return(spraymaker(list(arg1,arg2),addrepeats=addrepeats))
     } else if(is.array(arg1)){
-        ind <- which(arg1!=0,arr.ind=TRUE)
+        ind <- which(arg1 != 0,arr.ind=TRUE)
         if(offbyone){ ind <- ind-1 }
-        return(spray(ind, arg1[arg1!=0]))
+        return(spray(ind, arg1[arg1 != 0]))
     } else {
         stop("as.spray() needs a list or an array")
     }  
@@ -120,7 +120,7 @@ setGeneric("deriv")
 
 `dim.spray` <- function(x){
     ind <- index(x)
-    if(any(ind<0)){
+    if(any(ind < 0)){
         stop("dim() does not make sense for sprays with negative indices")
     } else {
         return(apply(ind,2,max))
@@ -132,15 +132,15 @@ setGeneric("deriv")
     dS <- dim(x) 
     if(compact){
         jj <- apply(ind,2,min)
-        dS <- dS-jj+1
-        ind <- 1+sweep(ind,2,jj)
+        dS <- dS - jj + 1
+        ind <- 1 + sweep(ind,2,jj)
     } 
     if(offbyone) {
-      ind <- ind+1
+      ind <- ind + 1
       dS <- dS + 1
     }
 
-    if(any(ind==0)){  # ind<0 detected by dS <- dim(x) above
+    if(any(ind == 0)){  # ind<0 detected by dS <- dim(x) above
         stop("There are zero index elements")
     }
     
@@ -205,15 +205,15 @@ setGeneric("deriv")
         stop("incorrect number of dimensions specified")
     }
 
-    if(length(value)==1){value <- rep(value,nrow(M))}
-    stopifnot(length(value)==nrow(M))
+    if(length(value) == 1){value <- rep(value,nrow(M))}
+    stopifnot(length(value) == nrow(M))
     return(spraymaker(spray_setter(spray::index(S),spray::coeffs(S),M,value)))
 }
 
 `as.function.spray` <- function(x,...){
     function(X){
-        if(!is.matrix(X)){X  <- rbind(X)}
-        stopifnot(ncol(X)==arity(x))
+        if(!is.matrix(X)){X <- rbind(X)}
+        stopifnot(ncol(X) == arity(x))
         jj <- matrix(1,nrow(X),nrow(index(x)))
         for(i in seq_len(arity(x))){ # iterate over index columns
             jj <- jj * outer(X[,i],index(x)[,i],"^")
@@ -229,7 +229,7 @@ setGeneric("deriv")
     if(drop){
         return(out)
     } else { # drop = FALSE
-        if(out==0){
+        if(out == 0){
             return(spraymaker(spray(M, 0),arity=arity(x)))
         } else {
             return(spray(M,out))
@@ -336,7 +336,7 @@ setGeneric("deriv")
         coeff <- val[i]
         coeff_abs <- abs(coeff)
         coeff_sign <- sign(coeff)
-        if(all(ind[i,]==0)){next}  # constant term
+        if(all(ind[i,] == 0)){next}  # constant term
         if(coeff_abs == 1){
             term <- ""
         } else {
@@ -350,11 +350,11 @@ setGeneric("deriv")
         }
 
         jj <- ind[i,]
-        vars <- variables[which(jj !=0)]
-        powers <- jj[jj!=0]
+        vars <- variables[which(jj != 0)]
+        powers <- jj[jj != 0]
         lv <- length(vars)
         if(lv==1){   # just one variable
-            if(powers==1){
+            if(powers == 1){
                 term <- paste(term, vars, sep="") 
             } else {
                 term <- paste(term, vars, "^", powers, sep="")
@@ -404,7 +404,7 @@ setGeneric("deriv")
 `process_dimensions` <- function(S,dims){
   if(is.logical(dims)){ dims <- which(dims)  }
   stopifnot(all(dims <= arity(S)))
-  stopifnot(all(dims >0))
+  stopifnot(all(dims > 0))
   stopifnot(all(dims == round(dims)))
   return(dims)
 }
@@ -466,7 +466,7 @@ setGeneric("deriv")
 }
 
 `pmin.spray` <- function(x, ...) {
-    if(nargs()<3){
+    if(nargs() < 3){
         return(minpair_spray(x, ...))
     } else {
         return(minpair_spray(x, minpair_spray(...)))
@@ -476,9 +476,9 @@ setGeneric("deriv")
 `maxpair_spray` <- function(S1,S2){
     if(missing(S2)){ return(S1) }
     if(!is.spray(S2)){   # S2 interpreted as a scalar
-        if(length(S2)>1){
+        if(length(S2) > 1){
             stop("pmax(S,x) not defined if length(x)>1")
-        } else if (S2>0){
+        } else if (S2 > 0){
             stop("pmax(S,x) not defined if x>0")
         } else {
             return(spray(index(S1),pmax(elements(coeffs(S1)),S2)))
@@ -496,9 +496,9 @@ setGeneric("deriv")
 `minpair_spray` <- function(S1,S2){
     if(missing(S2)){ return(S1) }
     if(!is.spray(S2)){
-        if(length(S2)>1){
+        if(length(S2) > 1){
             stop("pmin(S,x) not defined if length(x)>1")
-        } else if (S2<0){
+        } else if (S2 < 0){
             stop("pmin(S,x) not defined if x<0")
         } else {
             return(spray(index(S1),pmin(elements(coeffs(S1)),S2)))
@@ -524,8 +524,8 @@ setGeneric("deriv")
 `knight` <- function(d=2){
   n <- d * (d - 1)
   out <- matrix(0, n, d)
-  out[cbind(rep(seq_len(n), each=2), c(t(which(diag(d)==0, arr.ind=TRUE))))] <- seq_len(2)
-  spray(rbind(out, -out, `[<-`(out, out==1, -1),`[<-`(out, out==2, -2)))
+  out[cbind(rep(seq_len(n), each=2), c(t(which(diag(d) == 0, arr.ind=TRUE))))] <- seq_len(2)
+  spray(rbind(out, -out, `[<-`(out, out == 1, -1),`[<-`(out, out == 2, -2)))
 }
 
 `king` <- function(d=2){

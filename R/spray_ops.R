@@ -102,12 +102,12 @@ spray_times_spray <- function(S1,S2){
 }
 
 spray_times_scalar <- function(S,x){
-    stopifnot(length(x)==1)
+    stopifnot(length(x) == 1)
     return(spraymaker(spray(index(S), x*coeffs(S)),arity=arity(S)))
 }
 
 spray_plus_spray <- function(S1,S2){
-  stopifnot(arity(S1)==arity(S2))
+  stopifnot(arity(S1) == arity(S2))
   if(is.zero(S1)){
         return(S2)
     } else if(is.zero(S2)){
@@ -125,7 +125,7 @@ spray_plus_scalar <- function(S,x){
 }
 
 spray_power_scalar <- function(S,n){
-  stopifnot(n==round(n))
+  stopifnot(n == round(n))
   if(n<0){
     stop("use ooom() for negative powers")
   } else {
@@ -134,7 +134,7 @@ spray_power_scalar <- function(S,n){
 }
 
 spray_power_scalar_stla <- function(S,n){
-  stopifnot(n==round(n))
+  stopifnot(n == round(n))
   if(n<0){
     stop("use ooom() for negative powers")
   } else {
