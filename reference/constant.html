@@ -46,8 +46,8 @@ spray object.</p>
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">is.constant</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/spray/man/constant.html" class="external-link">constant</a></span><span class="op">(</span><span class="va">x</span>,drop<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/spray/man/constant.html" class="external-link">constant</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span><span class="fu"><a href="https://robinhankin.github.io/spray/reference/constant.html">constant</a></span><span class="op">(</span><span class="va">x</span>,drop<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://robinhankin.github.io/spray/reference/constant.html">constant</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
 <span><span class="fu">drop</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -67,7 +67,7 @@ spray object.</p>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>In function <code><a href="https://rdrr.io/pkg/spray/man/constant.html" class="external-link">constant()</a></code>, return the coefficient, or a constant
+    <p>In function <code><a href="https://robinhankin.github.io/spray/reference/constant.html">constant()</a></code>, return the coefficient, or a constant
   multivariate polynomial, depending on the value of <code>drop</code>.</p>
     </div>
     <div class="section level2">
@@ -81,7 +81,7 @@ spray object.</p>
 <p>The behaviour of the <code>drop</code> argument (sort of) matches that of the
 spray extractor method.  Function <code>drop()</code> returns the elements of
 the coefficients.</p>
-<p>Function <code><a href="https://rdrr.io/pkg/spray/man/constant.html" class="external-link">constant()</a></code> ensures that zero spray objects retain the
+<p>Function <code><a href="https://robinhankin.github.io/spray/reference/constant.html">constant()</a></code> ensures that zero spray objects retain the
 argument's arity.</p>
 <p>It might have been better to call <code>is.constant()</code>
 <code>is.scalar()</code>, for consistency with the <code>stokes</code> and
@@ -114,10 +114,10 @@ argument's arity.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1 0 0  =    1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1 1 1  =    1</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/spray/man/constant.html" class="external-link">constant</a></span><span class="op">(</span><span class="va">S</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://robinhankin.github.io/spray/reference/constant.html">constant</a></span><span class="op">(</span><span class="va">S</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            val</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0 0 0  =    1</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/spray/man/constant.html" class="external-link">constant</a></span><span class="op">(</span><span class="va">S</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">33</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://robinhankin.github.io/spray/reference/constant.html">constant</a></span><span class="op">(</span><span class="va">S</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">33</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">S</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            val</span>
@@ -139,7 +139,7 @@ argument's arity.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0 2 0  =    1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0 0 1  =    1</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">drop</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/spray/man/constant.html" class="external-link">constant</a></span><span class="op">(</span><span class="va">S</span>,drop<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">drop</span><span class="op">(</span><span class="fu"><a href="https://robinhankin.github.io/spray/reference/constant.html">constant</a></span><span class="op">(</span><span class="va">S</span>,drop<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 33</span>
 </code></pre></div>
     </div>
