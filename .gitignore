@@ -41,3 +41,4 @@ man/*.Rd~
 
 src/*.o
 src/*.so
+docs
