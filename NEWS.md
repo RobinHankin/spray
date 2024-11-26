@@ -1,3 +1,7 @@
+# spray 1.0-27
+
+- use capture.output(cat()) in print_spray_polyform()
+
 # spray 1.0-26
 
 - bugfixes
@@ -5,7 +9,6 @@
 - contributing guide
 - improvement to print method
 - no dependence on mathjax package
-- use capture.output(cat()) in print_spray_polyform()
 
 # spray 1.0-21
 
