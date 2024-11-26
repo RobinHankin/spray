@@ -340,7 +340,7 @@ setGeneric("deriv")
         if(coeff_abs == 1){
             term <- ""
         } else {
-            term <- paste(round(coeff_abs, getOption("digits")), "",multiply_symbol1, sep="")
+            term <- paste(capture.output(cat(coeff_abs)), "",multiply_symbol1, sep="")
         }
         
         if(coeff_sign == 1){

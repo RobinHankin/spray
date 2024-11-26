@@ -39,3 +39,4 @@
 - contributing guide
 - improvement to print method
 - no dependence on mathjax package
+- use capture.output(cat()) in print_spray_polyform()
