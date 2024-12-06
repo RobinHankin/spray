@@ -81,7 +81,11 @@ or multivariate polynomial form</p>
  method.</p>
 <p>Function <code>printedvalue()</code> is a low-level helper function that
  takes a numeric argument and returns the value as printed (thus
- respecting options <code>scipen</code> and <code>digits</code>).</p>
+ respecting options <code>scipen</code> and <code>digits</code>).  It uses
+ <code><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub()</a></code> to remove the “<code>[1]</code>” produced by
+ <code><a href="https://rdrr.io/r/utils/capture.output.html" class="external-link">capture.output()</a></code>.  The code is not perfect and sometimes fails
+ (for reasons that are not clear to me) when applied to large objects on
+ the Rstudio console.</p>
 <p>Note that printing a spray object (in either matrix form or polynomial
  form) generally takes much longer than calculating it.</p>
     </div>
