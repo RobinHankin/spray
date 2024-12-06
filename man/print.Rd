@@ -39,7 +39,11 @@ printedvalue(v)
 
  Function \code{printedvalue()} is a low-level helper function that
  takes a numeric argument and returns the value as printed (thus
- respecting options \code{scipen} and \code{digits}).
+ respecting options \code{scipen} and \code{digits}).  It uses
+ \code{gsub()} to remove the \dQuote{\code{[1]}} produced by
+ \code{capture.output()}.  The code is not perfect and sometimes fails
+ (for reasons that are not clear to me) when applied to large objects on
+ the \proglang{Rstudio} console.
 
  Note that printing a spray object (in either matrix form or polynomial
  form) generally takes much longer than calculating it.
