@@ -52,9 +52,10 @@ spray_eq_numeric(S1,x)
 
   Function \code{spray_power_scalar()} is the functional representation
   for powers: \code{spray_power_scalar(X,n)} is the same as \code{X^n}.
+
   Function \code{spray_power_scalar_stla()} is an experimental
   replacement for \code{spray_power_scalar()} that may offer speed
-  advantages.
+  advantages.  It is based on code by Stephane Laurent.
 
 }
 \value{
