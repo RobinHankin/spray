@@ -1,0 +1,111 @@
+---
+title: "Function `spraycross()` function in the `spray` package"
+author: "Robin K. S. Hankin"
+output: html_vignette
+bibliography: spray.bib
+link-citations: true
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{spraycross}
+  %\usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+set.seed(0)
+library("spray")
+options(rmarkdown.html_vignette.check_title = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
+knit_print.function <- function(x, ...){dput(x)}
+registerS3method(
+  "knit_print", "function", knit_print.function,
+  envir = asNamespace("knitr")
+)
+```
+
+```{r out.width='20%', out.extra='style="float:right; padding:10px"',echo=FALSE}
+knitr::include_graphics(system.file("help/figures/spray.png", package = "spray"))
+```
+
+```{r, label=showAlt,comment=""}
+spraycross
+spraycross2
+```
+
+To cite the `spray` package in publications, please use
+@hankin2022_spray.  Function `spraycross()` returns the tensor cross
+product of any number of `spray` objects (interpreted as tensors);
+`spraycross2()` is a helper function that returns the product of two
+such `spray` objects.
+
+### The tensor cross product
+
+In a memorable passage, @spivak1965 states:
+
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Integration on chains</b></p>
+<p style='margin-left:1em;'>
+
+If $V$ is a vector space over $\mathbb{R}$, we denote the $k$-fold
+product $V\times\cdots\times V$ by $V^k$.  A function $T\colon
+V^k\longrightarrow\mathbb{R}$ is called *multilinear* if for each $i$
+with $1\leqslant i\leqslant k$ we have
+
+$$
+T\left(v_1,\ldots, v_i + {v'}_i,\ldots, v_k\right)=
+T\left(v_1,\ldots,v_i,\ldots,v_k\right)+
+T\left(v_1,\ldots,{v'}_i,\ldots,v_k\right),\\
+T\left(v_1,\ldots,av_i,\ldots,v_k\right)=aT\left(v_1,\ldots,v_i,\ldots,v_k\right)
+$$
+
+A multilinear function $T\colon v^k\longrightarrow\mathbb{R}$ is
+called a *$k$-tensor* on $V$ and the set of all $k$-tensors, denoted
+by $\mathcal{J}^k(V)$, becomes a vector space (over $\mathbb{R}$) if
+for $S,T\in\mathcal{J}^k(V)$ and $a\in\mathbb{R}$ we define
+
+$$
+(S+T)(v_1,\ldots,v_k) = S(v_1,\ldots,v_k) + T(v_1,\ldots,v_k)
+(aS)(v_1,\ldots,v_k) = a\cdot S(v_1,\ldots,v_k)
+$$
+
+There is also an operation connecting the various spaces
+$\mathcal{J}(V)$.  If $S\in\mathcal{J}^k(V)$ and
+$T\in\mathcal{J}^l(V)$, we define the *tensor product* $S\otimes
+T\in\mathcal{J}^{k+l}(V)$ by
+
+$$
+S\otimes T(v_1,\ldots,v_k,v_{k+1},\ldots,v_{k+l})=
+S(v_1,\ldots,v_k)\cdot T(v_{k+1},\ldots,v_{k+l}).
+$$
+
+
+</p>
+<p style='margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia'> <b>- Michael Spivak, 1969</b> <i>(Calculus on Manifolds, Perseus books).  Page 75</i>
+</p></span>
+</div>
+
+Spivak goes on to observe that the tensor product is distributive and
+associative but not commutative.  He then proves that the set of all
+$k$-fold tensor products
+
+$$
+\phi_{i_1}\otimes\cdots\otimes\phi_{i_k}\qquad 1\leqslant
+i_1,\ldots,i_k\leqslant n
+$$
+
+[where $\phi_i(v_j)=\delta_{ij}$,$v_1,\ldots,v_k$ being a basis for
+$V$] is a basis for $\mathcal{J}^k(V)$, which therefore has dimension
+$n^k$.  Function `spraycross2()` evaluates the tensor product and I
+give examples here.
+
+
+
+
+
+
+
+
+
+
+# References
