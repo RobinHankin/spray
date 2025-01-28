@@ -1,5 +1,6 @@
 # spray 1.0-27
 
+- new spraycross vignette
 - use capture.output(cat()) in print_spray_polyform()
 
 # spray 1.0-26
