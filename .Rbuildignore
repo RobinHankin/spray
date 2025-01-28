@@ -18,3 +18,10 @@
 ^inst/spray_arxiv.tex~$
 ^inst/spray_arxiv.bib$
 ^inst/power_timing.Rmd$
+^CODE_OF_CONDUCT.md$
+^CONTRIBUTING.md$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
+^codecov\.yml$
