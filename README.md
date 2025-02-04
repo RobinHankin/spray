@@ -3,7 +3,7 @@ The spray package: sparse arrays in R
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# spray <img src="man/figures/spray.png" width = "150" align="right" />
+<img src="man/figures/spray.png" width = "150" align="right" />
 
 <!-- badges: start -->
 
