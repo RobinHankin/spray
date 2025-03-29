@@ -90,13 +90,11 @@ IntegerMatrix makeindex(const spray &S){  // takes a spray, returns the matrix o
 
 NumericVector makevalue(const spray &S){  // takes a spray, returns data
     NumericVector  out(S.size());   // data
-    unsigned int i=0;
-    spray::const_iterator it;   // it iterates through a sparse array
-    
-    for(it=S.begin(); it != S.end(); ++it){
-        out(i++) = it->second;   // initialize-and-fill is more efficient than  out.push_back(it->second) 
+    size_t i=0;
+    for (const auto& pair : S) {
+        out(i++) = pair.second;  
     }
-    return(out);
+    return out;
 }
 
 List retval (const spray &S){  // used to return a list to R
@@ -134,13 +132,14 @@ List spray_add
  ){
      spray S1 = prepare(M1, d1);
      spray S2 = prepare(M2, d2);
-    
-     for (spray::const_iterator it=S2.begin(); it != S2.end(); ++it){
-       const mycont v = it->first;
-       S1[v] += S2[v]; // the meat:  S1=S1+S2 (S1 += S2)
-       if(S1[v]==0){S1.erase(v);}
-     }
-     
+
+     for (const auto& [v, value] : S2) {  
+         auto& entry = S1[v]; 
+         entry += value;  // the meat
+         if (entry == 0) {  
+             S1.erase(v);  
+         }  
+     }  
      return retval(S1);
 }
 
@@ -151,18 +150,13 @@ spray prod //
     spray Sout;
     mycont vsum;
 
-    // the "meat" of this function:  Sout=S1*S2
-    for (spray::const_iterator it1=S1.begin(); it1 != S1.end(); ++it1){
-        const mycont v1 = it1->first;
-        const double x1 = it1->second;
-        for (spray::const_iterator it2=S2.begin(); it2 != S2.end(); ++it2){
-            const mycont v2 = it2->first;
-            const double x2 = it2->second;
-            vsum.clear();
-            for(size_t i=0; i<v1.size(); i++){
-                vsum.push_back(v1[i] + v2[i]);  // meat 1: powers add
-            }
-            Sout[vsum] += x1*x2;                // meat 2: coefficients multiply
+
+    for (const auto& [v1, x1] : S1) {
+        for (const auto& [v2, x2] : S2) {
+            mycont vsum;
+            vsum.reserve(v1.size());
+            std::transform(v1.begin(), v1.end(), v2.begin(), std::back_inserter(vsum), std::plus<int>()); //meat 1: powers add
+            Sout[vsum] += x1 * x2;  // meat 2: coefficients multiply
         }
     }
     return Sout;
@@ -208,13 +202,12 @@ List spray_overwrite // something like S1[ind(S2)] <- S2
  const IntegerMatrix &M2, const NumericVector &d2
  ){
     spray S1 = prepare(M1, d1);
-    spray S2 = prepare(M2, d2);    
+    spray S2 = prepare(M2, d2);
     
-    for (spray::const_iterator it=S2.begin(); it != S2.end(); ++it){
-      const mycont v = it->first;
-      S1[v] = S2[v];   // the meat
+    for (const auto& [v, value] : S2) {
+        S1[v] = value;
     }
-
+    
     return retval(S1);
 }
 
@@ -224,20 +217,16 @@ NumericVector spray_accessor // returns S1[]
  const IntegerMatrix &M, const NumericVector &d,
  const IntegerMatrix &Mindex
  ){
-    spray S;
-    mycont v;
-    signed int k=0;
-    NumericVector out(Mindex.nrow());
-    
-    S = prepare(M, d);
 
-    for(int i=0; i<Mindex.nrow() ; i++){
-        v.clear();
-        for(int j=0; j<Mindex.ncol(); j++){
-            v.push_back(Mindex(i,j));
-        }
-        out[k++] = S[v];
+    spray S = prepare(M, d);
+    NumericVector out(Mindex.nrow());
+    mycont v(Mindex.ncol());  // Preallocate space for v
+    
+    for (int i = 0; i < Mindex.nrow(); i++) {
+        std::copy(Mindex.row(i).begin(), Mindex.row(i).end(), v.begin()); 
+        out[i] = S[v];
     }
+    
     return out;
 }
 
@@ -247,21 +236,17 @@ List spray_setter // effectively S[M] <- d; return S
  const IntegerMatrix &M1, const NumericVector &d1,
  const IntegerMatrix &M2, const NumericVector &d2    // M2 -> index ; d2 -> value
  ){
-    mycont v;
-    
+    mycont v(M2.ncol());   
     spray S1 = prepare(M1, d1);
     spray S2 = prepare(M2, d2);
 
-    for(int i=0; i<M2.nrow() ; i++){
-        v.clear();
-        for(int j=0; j<M2.ncol(); j++){
-            v.push_back(M2(i,j));
-        }
-        S1[v] = S2[v];
+    for (int i = 0; i < M2.nrow(); i++) {
+        std::copy(M2.row(i).begin(), M2.row(i).end(), v.begin()); 
+        S1.insert({v, S2[v]});
     }
+    
     return retval(S1);
 }
-
 
 // [[Rcpp::export]]
 bool spray_equality // S1 == S2
@@ -272,26 +257,19 @@ bool spray_equality // S1 == S2
     spray S1 = prepare(M1, d1);
     spray S2 = prepare(M2, d2);
 
-    if(S1.size() != S2.size()){
-        return FALSE;  // this line is never executed in package idiom, because different-sized objects are trapped by R
+    if (S1.size() != S2.size()) {
+        return false;
     }
 
-    for(spray::const_iterator it=S1.begin(); it != S1.end(); ++it){
-        const mycont v = it->first;
-        if(S1[v] != S2[v]){
-            return FALSE;
-        } else {
-            S2.erase(v);
+    for (spray::const_iterator it = S1.begin(); it != S1.end(); ++it) {
+        const mycont& v = it->first;
+        auto it_s2 = S2.find(v);
+        if (it_s2 == S2.end() || it->second != it_s2->second) {
+            return false;
         }
+        S2.erase(it_s2);
     }
-    // at this point, S1[v] == S2[v] for every index 'v' of S1;  S1\subseteq S2.
-    // We need to check that every element of S2 has been accounted for:
-    
-    if(S2.empty()){
-        return TRUE;
-    } else {
-        return FALSE;
-    }
+    return S2.empty();
 }
 
 // [[Rcpp::export]]
@@ -301,41 +279,40 @@ List spray_asum_include
  const IntegerVector &n
  ){
     spray S;
-    mycont v;
+    std::vector<int> v(M.ncol());
 
-    for(int i=0; i<M.nrow() ; i++){
-        v.clear();
-        for(int j=0; j<M.ncol(); j++){
-            v.push_back(M(i,j));
-        }
-        for(int k=0 ;  k<n.size() ; k++){
-            v[n[k]-1] = 0;    // off-by-one issue dealt with here: if n[k]=0 this means dimension 1.
+    for (int i = 0; i < M.nrow(); ++i) {
+        std::copy(M.row(i).begin(), M.row(i).end(), v.begin()); 
+        
+        for (int k : n) {
+            if (k > 0 && k <= M.ncol()) {
+                v[k - 1] = 0; 
+            }
         }
         S[v] += d[i];
     }
     return retval(S);
 }
+
 
 // [[Rcpp::export]]
 List spray_asum_exclude 
 (
- const IntegerMatrix &M, const NumericVector &d,
- const IntegerVector &n
- ){
+    const IntegerMatrix &M, const NumericVector &d,
+    const IntegerVector &n
+){
     spray S;
     mycont v;
-
-    for(int i=0; i<M.nrow() ; i++){
+    v.reserve(n.size());  // Pre-allocate space for efficiency
+    
+    for (int i = 0; i < M.nrow(); i++) {
         v.clear();
-        for(int j=0; j<n.size(); j++){
-            v.push_back(M(i,n[j]-1));   //off-by-one error
-        }
+        std::transform(n.begin(), n.end(), std::back_inserter(v),
+                       [&](int idx) { return M(i, idx - 1); });  // Handle 1-based indexing
         S[v] += d[i];
     }
     return retval(S);
 }
-
-//spray(matrix(sample(0:5,100,rep=T),ncol=5) )-> S
 
 // [[Rcpp::export]]
 List spray_deriv
@@ -378,9 +355,9 @@ List spray_deriv
 // [[Rcpp::export]]
 List spray_pmax
 (
- const IntegerMatrix &M1, const NumericVector &d1,
- const IntegerMatrix &M2, const NumericVector &d2 
- ){
+    const IntegerMatrix &M1, const NumericVector &d1,
+    const IntegerMatrix &M2, const NumericVector &d2
+){
     spray S1 = prepare(M1, d1);
     spray S2 = prepare(M2, d2);
 
