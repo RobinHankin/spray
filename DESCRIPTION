@@ -1,7 +1,7 @@
 Package: spray
 Type: Package
 Title: Sparse Arrays and Multivariate Polynomials
-Version: 1.0-27
+Version: 1.1-0
 Authors@R: person(given=c("Robin", "K. S."), family="Hankin",
            role = c("aut","cre"),
 	   email="hankin.robin@gmail.com",
