@@ -1,3 +1,8 @@
+# spray 1.1-0
+
+- C++-17 constructions
+
+
 # spray 1.0-27
 
 - new spraycross vignette
