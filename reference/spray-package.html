@@ -78,26 +78,358 @@ respectively.</p>
 <span class="r-in"><span><span class="co"># define a spray using a matrix of indices and a vector of values:</span></span></span>
 <span class="r-in"><span><span class="va">M</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>,<span class="fl">21</span>,replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>,ncol<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="spray.html">spray</a></span><span class="op">(</span><span class="va">M</span>,<span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in spraymaker(list(M, x), addrepeats = addrepeats):</span> repeated indices; yet argument 'addrepeats' is FALSE</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># there are many pre-defined simple sprays:</span></span></span>
 <span class="r-in"><span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://robinhankin.github.io/spray/reference/homog.html">homog</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># arithmetic operators work:</span></span></span>
 <span class="r-in"><span><span class="va">a</span> <span class="op">+</span> <span class="fl">2</span><span class="op">*</span><span class="va">b</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'a' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +2*a*b*c^2 +3*c^2 +2*a*c^3 +2*a^2*b*c +2*b^2*c^2 +2*a*b^2*c +4*b^3*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +2*a^2*c^2 +2*b^4 +2*a^4 +2*a^3*c +2*c^4 +7*a*b^3 +2*a^2*b^2 +2*a^3*b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +2*b*c^3 +a^3 +7*b +2*b^3*c +6*a^2*b^3 +2*b^3*c^3</span>
 <span class="r-in"><span><span class="va">a</span> <span class="op">-</span> <span class="va">a</span><span class="op">*</span><span class="va">b</span><span class="op">^</span><span class="fl">2</span><span class="op">/</span><span class="fl">4</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'a' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -11.25*a^3*b^5*c^4 -3.75*a^7*b^5 -3.75*a^7*b^3*c^2 -1.25*a^9*b^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -4*a^3*b^4*c^7 -0.5*a^3*b^7*c -5.5*a^8*b^3*c^2 -7.5*a^3*b^8*c</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -5*a^6*b^3*c^3 -8*a*b^6*c^6 -7.5*a^3*b^2*c^5 -16*a^2*b^6*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -1.5*b^7*c^3 -3*b^3*c^7 -7*a^5*b*c^3 -5*a^7*b^4*c -0.5*a^10*b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -2.5*a^8*b^3*c -3.75*a*b^9*c^2 -7.5*a^6*b^5*c -5*a^3*b^6*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -10*a^4*b^4*c^4 -10.5*a^2*b^6*c -8*a^7*b^3*c^3 -4.5*a^4*b^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -3*a^9*b^3*c -0.5*b^3*c^11 -2.5*a^6*b^2*c^3 -a^7*b^4*c^3 -3*a^5*b^4*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -2*a*b^10*c^2 -1.75*a^8*b -3*a^3*c^7 -3*a^3*b^5*c^2 -6*a*b^4*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -2*a^5*b^3*c^6 -3.5*a*b^8 -10.5*a^5*b^3*c -5.25*a^2*b^7 +6*a^2*b^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -2.25*a^5*b^4*c^2 -16.5*a^6*b^5*c^2 -6.75*a^2*b^2*c^6 +7*b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -22*a^3*b^6*c^4 -5*a^2*b^6*c^6 -b^11*c^2 -5*b^7*c^6 -b^3*c^10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.5*a^4*c^7 -3*a^5*b^5*c^4 -2.25*a^2*c^8 -14*a^3*b^2*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -10*a^2*b^6*c^4 -4.5*a^5*b*c^4 -6.75*a^4*b^2*c^4 -2*a^6*b*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -7.5*a^3*b^4*c^5 -6.75*a^2*b^4*c^4 -1.5*a^6*b^5*c^3 -7*a^6*b^2*c</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -1.5*a^5*b^5*c -10*a^4*b^7*c -1.5*a^7*b*c^2 -3*a^9*b^4 -0.75*a^9*b^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -3*a*b^5*c^8 -19*a^3*b^5*c^5 -2*b^6*c^8 +3*c^2 -2.25*b^2*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -3.75*a*b^5*c^6 -4.5*a^2*b^5*c^7 -5*a*b^6*c^5 -10.5*a^6*b^3*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -3*a*b^6*c^3 -5.25*b^7*c^2 -2.25*a^2*b^6*c^2 -9.5*a^4*b^3*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -4.5*a*b^2*c^7 -10*a^5*b^3*c^5 -8.75*b^5*c^4 -5.25*a^6*b*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -14*a^4*b^2*c^3 -3*b^5*c^5 -1.5*a*c^9 -3*a*b^8*c^5 -5*a^2*b^4*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -1.5*b*c^9 -6*a*b^8*c^4 -10.5*a^5*b^2*c^2 -4*b^8*c^5 -2.25*a^6*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -7.5*a^3*b^3*c^4 -4*a*b^4*c^8 -3*b^5*c^8 -2.5*a^5*b^3*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -4*a^4*b^6*c^4 -3*b^9*c^4 -9*a^2*b^4*c^7 -18*a^5*b^4*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -5.25*a^2*b*c^6 -5*a^3*b^5*c^6 -4*b^6*c^7 -2.5*a^4*b^7*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -2.25*a^6*b^2*c^2 -2.25*b^6*c^4 -7.5*a^2*b^5*c^5 -5*a^2*b^9*c</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -2*a^4*b^3*c^4 -3*a^5*c^5 -11.25*a^3*b^7*c^2 -0.75*a^9*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -17*a^4*b^4*c^5 -1.25*a^7*c^4 -17.5*a^3*b^3*c^3 -4.5*a^2*b^7*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -4.5*a^5*b^2*c^3 -1.5*a^2*b^3*c^9 -0.75*b^8*c^2 -11.25*a^5*b^5*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -5*a^6*b^6 -0.75*c^10 -5.25*a^6*b^3 +4*b^3*c^2 -7*a*b^7*c -a^8*b^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -3.75*a^3*b^9 -6*a*b^5*c^7 -13.5*a^2*b^5*c^6 -7.5*a^2*b^9*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -2.5*a^4*b^3*c^7 -7*b^6*c^3 -4.5*a^4*b^5*c^5 -3.75*b^4*c^6 -4*a*b^7*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -3*a^2*b^4*c^8 -3*a^5*b^3*c^2 -6*a^5*b^8 -23*a^4*b^6*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -7.5*a^2*b^8*c^2 -1.5*a^4*b^2*c^5 -5*a*b^8*c^3 -2*a*b^4*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -4*a*b^9*c^3 -1.5*a^4*b^5*c^2 -7.5*a^6*b^4*c^2 -8.75*a^4*b^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -2.5*a*b^4*c^7 -12*a^5*b^7*c -0.75*a^3*b^6*c^2 -0.75*a^5*b^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -6*a*b^3*c^6 -2*b^8*c^6 -7.5*a^6*b^7 -7.5*a^2*b^3*c^5 -17.5*a^3*b^4*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -7*a^3*b^3*c^7 -1.5*b^5*c^9 -a^9*b*c -9*a^7*b^5*c -2*a^7*b*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -18.5*a^4*b^7*c^2 -0.75*a^5*c^6 -2*b^10*c^3 -4.5*a*b^5*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -12.5*a^4*b^6*c^2 -1.5*a^2*b^9*c^3 -a^6*b^5 -0.5*a^10*c -a^4*b^6*c</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.25*a^3*c^8 -14*a^3*b^5*c -6.25*a^5*b^7 -1.25*a*b^11 -6*a^3*b^4*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.5*a^3*b*c^7 -2.5*a^8*b^4 -a*b^10*c^3 -14*a^3*b^4*c^6 +5*a*b^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -2*a*b^3*c^9 -3.75*a^4*b^4*c^2 -10*a^5*b^6*c -2.5*b^7*c^7 +2*b^3*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -5.25*b^3*c^6 -2*a^4*b^4*c^3 -2.5*a^2*b^10 -11*a^7*b^4*c^2 -9*a^4*b^8*c</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -19*a^5*b^6*c^2 -1.25*a*b^3*c^8 -a^3*b^3*c^5 -3*a^2*b^8*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -16*a^6*b^4*c^3 -b^4*c^10 -10*a^2*b^7*c^3 -1.5*a*b^7*c^2 -a^6*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.25*a^11 -8*a*b^7*c^5 -8.75*a^4*b*c^4 -4*a*b^6*c^7 -2.5*a^6*b^3*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -16.5*a^2*b^7*c^4 -2.25*a^5*b^2*c^4 -1.5*a^7*c^3 -2.5*a^2*b^3*c^7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -7*a*b^2*c^6 -12.5*a^3*b^6*c^3 -4*a^4*b^4*c^6 -10.5*a^2*b^2*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -5*a^4*b^8 -2.25*a^7*b^2*c^2 -1.5*a^8*b*c^2 -2*a^7*b^3*c -2*a^6*b^4*c</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -1.5*b^9*c^5 -a^8*c^3 -12*a^2*b^8*c^3 -2*a^6*b^4*c^4 -4*a^3*b^7*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -3.75*a^3*b^3*c^6 -4.5*a^2*b^3*c^8 -15.75*a^4*b^3*c^2 -4.5*a^2*b^5*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -7*a^3*b*c^5 -4.5*a^2*b*c^7 +a^3 -3*a*b*c^8 -3.5*a^7*b*c -6*a^3*b*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -6*a^8*b^4*c -1.5*a^6*b^3*c^5 -10.5*a*b^6*c^2 -14*a^4*b^4*c -a*b^3*c^10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -1.5*a^5*b*c^5 -6.25*a*b^7*c^4 -3.75*a^4*c^6 -21*a^5*b^5*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -3*a^2*b^10*c -12*a^6*b^6*c -10*a^5*b^4*c^3 -a^3*b^5*c^3 -2*b^4*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -15.75*a^2*b^3*c^4 -1.5*a^2*b^11 -22.5*a^4*b^5*c^4 -7*b^4*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -6*a^4*b*c^5 -3*a^6*b*c^3 -6.25*a^5*b^3*c^4 -0.75*a^8*c^2 -0.5*b^11*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -15.75*a^2*b^5*c^2 -14*a*b^5*c^3 -6*a^4*b^3*c^3 -0.5*a^4*b^7 -7*a^3*b^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -3*a^3*b^10 -3.5*b^2*c^7 -1.5*a^10*b^3 -b^10*c^4 -a^7*b^3*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -1.75*b*c^8 -17.5*a^2*b^4*c^3 -1.75*b^9 -14*a*b^4*c^4 -1.25*a^3*b^4*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -2*a*b^9*c^4 -0.75*a^3*b^2*c^6 -0.5*a^8*b^3*c^3 -6*a^3*b^9*c</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -4.5*a^8*b^5 -2*a^5*b^6*c^3 -12.5*a^4*b^5*c^3 -20*a^3*b^7*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.25*a^3*b^8 -2.5*a*b^10*c -1.25*a^7*b^4 -3.5*a^7*b^2 -7*a^5*b^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -6*a^7*b^6 -2*a^3*b^3*c^8 -a^4*b*c^6 -10.5*a*b^3*c^5 -1.5*a^8*b^2*c</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -2*a^3*b^8*c^3 -13*a^3*b^8*c^2 -3.5*a*b*c^7 -5*a^4*b^3*c^5 -3.5*b^8*c</span>
 <span class="r-in"><span><span class="va">a</span><span class="op">+</span><span class="va">b</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'a' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +a^3*b +a^2*b^2 +b*c^3 +3*c^2 +a*c^3 +a*b*c^2 +b^2*c^2 +a*b^2*c +b^3*c</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +a^2*b*c +a^2*c^2 +b^4 +a^4 +a^3*c +6*a*b^3 +c^4 +a^3 +7*b +2*b^3*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +6*a^2*b^3 +4*b^3*c^2</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">#  we can sum over particular dimensions:</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="asum.html">asum</a></span><span class="op">(</span><span class="va">a</span><span class="op">+</span><span class="va">b</span>,<span class="fl">1</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'a' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 +a*b^3 +a^4 +b^3 +12*a^3 +a*b +a^2*b +a^3*b +4*a^3*b^2 +a^2*b^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +2*a^3*b^3 +b^4 +8*a +4*b^2 +a^2 +b +a*b^2</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># differentiation is supported:</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="deriv.html">deriv</a></span><span class="op">(</span><span class="va">a</span><span class="op">^</span><span class="fl">6</span>,<span class="fl">2</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in h(simpleError(msg, call)):</span> error in evaluating the argument 'expr' in selecting a method for function 'deriv': object 'a' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +907200*a^12*b^9 +4630500*a^5*b^8 +4687200*a^2*b^14*c^11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +2436480*a^4*b^11*c^10 +311040*a^3*b^8*c^10 +7672320*a^4*b^11*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +2222640*b^5*c^7 +2488320*a^7*b^8*c^6 +5080320*b^7*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +243000*a^8*b^8*c^5 +207360*b^11*c^15 +35562240*a^4*b^13*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +5400*a^15*b^5 +661500*a^7*b^4*c^2 +2954880*a^11*b^11*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1646400*a*b^13*c^9 +6981120*a^4*b^11*c^8 +17640*a^9*b*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +16200000*a^5*b^14*c^4 +1166400*a*b^8*c^10 +1572480*a^2*b^12*c^11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +5313600*a^2*b^14*c^10 +4445280*a^5*b^8*c^3 +291600*a^4*b^8*c^10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +4200000*a^4*b^15*c^3 +14774400*a^8*b^14*c^4 +4717440*a^9*b^12*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +9072000*a*b^9*c^9 +311040*a^2*b^11*c^13 +6480*a^9*b^2*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +12700800*a*b^7*c^6 +3375000*a^4*b^14*c^4 +777600*a^11*b^11*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +479520*a^12*b^8*c^2 +233280*a^5*b^5*c^9 +544320*a^7*b^5*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3732480*a^4*b^17*c^10 +8654400*a^3*b^17*c^9 +77760*a^6*b^5*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +28800*a^7*b^11*c^9 +201600*a^3*b^9*c^11 +432000*a^6*b^14*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +317520*a^3*b^6*c^10 +17781120*a^4*b^11*c^3 +2358720*a^7*b^12*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +2096640*b^12*c^10 +73500*a^11*b^6 +23708160*a^2*b^13*c^7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1890000*a^10*b^9 +1440*a^9*b^8*c^9 +2160*a^14*b^5*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +17418240*a^8*b^15*c^2 +16380000*a^3*b^12*c^4 +6431250*a^4*b^13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +17781120*a^6*b^11 +1905120*a^5*b^6*c^7 +259200*a^3*b^17*c^12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +583200*a^6*b^5*c^6 +3962880*a^7*b^11*c^6 +302400*b^9*c^13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +6220800*a^3*b^17*c^10 +34560*a^8*b^11*c^9 +3110400*a*b^11*c^11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +5080320*a^5*b^7*c^5 +8640*b^14*c^17 +1209600*a^8*b^9*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +28800*a^3*b^14*c^14 +6075000*a^8*b^17 +36*a^15*b^2*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +777600*a^9*b^14*c^6 +311040*b^8*c^12 +43200*a^5*b^14*c^12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +43680*a^3*b^12*c^12 +9313920*a^5*b^10*c^4 +15724800*a*b^12*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +19051200*a^3*b^7*c^4 +1008420*a^3*b^6*c^3 +1706250*a^7*b^12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +108*a^17*b^2 +27578880*a^4*b^15*c^6 +73728*b^17*c^12 +882000*a^8*b^7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1587600*b^4*c^8 +268800*a*b^15*c^12 +6985440*a^9*b^10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +2306880*a^5*b^11*c^8 +12960*a^11*b^8*c^6 +1975680*a^2*b^13*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +972000*a^12*b^11 +15552000*a^3*b^14*c^9 +29160*b^5*c^14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +8890560*a^4*b^13*c^6 +4320000*a^3*b^17*c^7 +246960*a^6*b^5*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +4078080*a^7*b^11*c^7 +622080*a^6*b^17*c^9 +3110400*a^9*b^14*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +174960*a^2*b^5*c^11 +622080*a^10*b^11*c^5 +51840*a^11*b^8*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1152*b^17*c^18 +21504*b^15*c^15 +74088000*a^4*b^13*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +11793600*a^8*b^12*c^3 +393120*a^10*b^8*c^5 +164640*b^13*c^12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +743040*a^10*b^8*c^4 +1720320*b^15*c^12 +9003750*a^2*b^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +843750*a^5*b^14*c^2 +18869760*a^2*b^12*c^9 +317520*b^6*c^12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +11894400*a^7*b^9*c^4 +2592000*a*b^14*c^12 +4050000*a^10*b^14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +116640*b^5*c^13 +3144960*a^5*b^12*c^8 +10290000*a^3*b^13*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +172800*a*b^17*c^14 +12127500*a^3*b^10*c^2 +38880*b^8*c^15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +141120*a^6*b^7*c^6 +17280*a^3*b^11*c^14 +21600*a^10*b^5*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +414720*a^8*b^11*c^7 +4199040*a^11*b^17 +9331200*a^5*b^17*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +10483200*a^4*b^14*c^9 +2187000*a^4*b^8*c^6 +55566000*a^6*b^13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +552960*a^3*b^11*c^11 +3951360*b^11*c^8 +658560*b^11*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +6985440*a^2*b^10*c^8 +64800*a^12*b^8*c^3 +27412560*a^4*b^8*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +6350400*a*b^7*c^7 +3265920*a^4*b^8*c^8 +504210*a^3*b^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +414720*b^11*c^12 +1620000*a^3*b^11*c^7 +661500*a^8*b^6*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +423360*a^6*b^6*c^6 +675000*a^5*b^17*c^3 +2522880*a^2*b^17*c^11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +846720*a^8*b^7*c^3 +3951360*b^13*c^10 +15552000*a^4*b^17*c^7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +276480*b^14*c^12 +1555200*a^7*b^14*c^8 +11642400*a^6*b^10*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +12960000*a^5*b^17*c^4 +340200*a*b^3*c^8 +2880*a^6*b^11*c^12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3810240*a^2*b^6*c^8 +1940400*a^4*b^10*c^6 +145800*a*b^5*c^11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +58060800*a^7*b^15*c^2 +29808000*a^7*b^14*c^4 +1382400*a*b^17*c^12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +9434880*a^9*b^12*c^2 +2268000*a*b^9*c^10 +5831280*a^5*b^12*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +349920*a^2*b^5*c^10 +1166400*a^11*b^14*c^3 +4769280*a^9*b^11*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +29400*a^9*b^4*c^3 +155520*a^3*b^5*c^10 +19440000*a^7*b^17*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +51840*a^11*b^5*c^4 +155520*a^4*b^17*c^12 +362880*a^3*b^3*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +4860000*a^11*b^14 +11793600*a^10*b^12 +2328480*a^5*b^10*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +23284800*a*b^10*c^7 +291600*a*b^8*c^12 +20580000*a^3*b^13*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +29877120*a^6*b^12*c^5 +44452800*a^5*b^13*c^3 +3460320*a^2*b^11*c^10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +19980000*a^8*b^14*c^2 +13237200*a^6*b^14*c^6 +4860000*a^9*b^14*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1587600*a^3*b^4*c^6 +15240960*a^2*b^7*c^6 +9875520*a^10*b^14*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +16128000*a^2*b^15*c^7 +23040*a^6*b^11*c^11 +2963520*a^3*b^5*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +35562240*a^6*b^13*c^2 +793800*b^4*c^9 +184320*b^17*c^15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +5292000*a^5*b^7*c^2 +69120*a^6*b^11*c^10 +5556600*a*b^5*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +43740*a^5*b^2*c^8 +1555200*a^5*b^17*c^9 +5529600*a^4*b^14*c^10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +9434880*a^7*b^12*c^4 +408240*a^2*b^3*c^8 +777600*a^13*b^11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1209600*a^3*b^9*c^10 +27216000*a^3*b^9*c^6 +226800*a^7*b^3*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +92160*a^6*b^11*c^9 +19897920*a^4*b^7*c^4 +291600*a*b^5*c^10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +10886400*a^2*b^9*c^9 +1348380*a^3*b^8*c^6 +839808*a^12*b^17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +8467200*a^9*b^9*c^2 +4082400*a^5*b^8*c^6 +181440*a^6*b^3*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +12965400*a^4*b^9 +793800*a^3*b^4*c^7 +26244*a^2*b^2*c^10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +2381400*a^5*b^4*c^4 +2268000*a^11*b^9 +281250*a^6*b^17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +30870000*a^5*b^13 +2963520*a^3*b^8*c^4 +29106000*a^2*b^10*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1399680*a^8*b^17*c^6 +8601600*a*b^15*c^9 +9590400*a^5*b^11*c^7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +453600*a^4*b^3*c^6 +172800*a^4*b^11*c^11 +27000*a^11*b^8*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +7620480*a^2*b^7*c^7 +1080*a^12*b^2*c^4 +4033680*a*b^7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +22377600*a^4*b^9*c^6 +233280*a^3*b^8*c^12 +3240000*a^8*b^11*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3499200*a^3*b^8*c^8 +49686000*a^6*b^12*c^2 +5832000*a^4*b^11*c^7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +59270400*a^3*b^11*c^2 +729000*a^2*b^8*c^9 +11819520*a^6*b^11*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +5670000*a^2*b^9*c^7 +90720*a^6*b^3*c^7 +4939200*a*b^11*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +138240*a^3*b^11*c^13 +218160*a^10*b^5*c^4 +11656800*a^4*b^14*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3110400*a^8*b^8*c^4 +25920*b^11*c^16 +466560*b^8*c^13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3240*a^9*b^2*c^7 +2521050*a^4*b^6 +1270080*b^7*c^10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +729000*a^5*b^8*c^7 +1512000*a^9*b^9*c^3 +23224320*a^4*b^15*c^7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +2419200*b^9*c^10 +176400*a^12*b^6 +24696000*a^2*b^11*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +17280*a^9*b^5*c^7 +4762800*a^3*b^6*c^6 +49674240*a^4*b^10*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +524160*a^5*b^12*c^9 +2073600*a^3*b^17*c^11 +15681600*a^5*b^17*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +555660*a^3*b^2*c^4 +345600*b^14*c^15 +18144000*a^7*b^14*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +14580*a^3*b^2*c^11 +1382400*a*b^17*c^11 +155520*a^3*b^5*c^11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +928800*a^11*b^8*c^2 +79380*a^6*b*c^4 +466560*a^5*b^5*c^8 +42*a^15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +36288000*a^8*b^15 +3226944*b^7*c^2 +115200*a^3*b^14*c^13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +73500*a^10*b^4 +77760*a^6*b^8*c^10 +4656960*b^10*c^10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +17280*a*b^17*c^15 +9072000*a^6*b^9*c^5 +2580480*a^2*b^15*c^11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +29030400*a^7*b^15*c^3 +25920*a^11*b^5*c^5 +1012500*a^4*b^11*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +24696000*a^2*b^13*c^5 +44452800*a^5*b^11 +14212800*a^4*b^9*c^7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +22226400*a*b^8*c^4 +414720*a^3*b^11*c^12 +20160000*a^5*b^15*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +24696000*a^2*b^13*c^4 +705894*b^5 +19656000*a^2*b^12*c^7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +13335840*a^2*b^8*c^5 +7862400*a*b^12*c^10 +19756800*a*b^11*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1984500*a^5*b^6*c^4 +622080*a^10*b^11*c^4 +1728000*a^2*b^17*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1587600*a^4*b^6*c^7 +4320000*a^2*b^14*c^8 +27941760*a^2*b^10*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +436800*a^4*b^12*c^9 +1693440*a^8*b^7*c^2 +1612800*a^3*b^9*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +33546240*a^4*b^12*c^7 +38880*a^15*b^8 +6192000*a^9*b^11*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1935360*a^4*b^15*c^9 +2216160*a^4*b^8*c^9 +23328000*a^8*b^17*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +29484000*a^4*b^12*c^5 +11718000*a^3*b^14*c^8 +29160*a^3*b^2*c^10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +349440*a^3*b^12*c^11 +2963520*a^3*b^8*c^5 +1350*a^13*b^2*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +215040*b^15*c^14 +10800*a^10*b^8*c^6 +37044000*a^4*b^13*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1317120*b^13*c^11 +230400*a^3*b^14*c^12 +10160640*a^5*b^7*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +688128*b^15*c^10 +38707200*a^3*b^15*c^7 +2880*a^3*b^14*c^15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +4851000*a^5*b^10*c^3 +4320*a^14*b^5*c^2 +7563150*a*b^6*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +27941760*a^2*b^10*c^7 +7203000*a*b^9*c^3 +272160*a^8*b^3*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3704400*a^4*b^5*c^2 +1209600*a^8*b^9*c^5 +86400*b^14*c^16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +77313600*a^5*b^12*c^4 +72*a^15*b^2*c^2 +5268480*b^13*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +19656000*a^2*b^12*c^6 +4200*a^13*b^3 +131040*b^12*c^14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +529200*a^7*b^6*c^5 +1587600*a^9*b^6*c^2 +69120*b^17*c^16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +12700800*a^6*b^7*c^2 +58800*a^9*b^4*c^2 +9720000*a^7*b^17*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1080000*a^6*b^11*c^5 +10886400*a^2*b^9*c^8 +116640*b^5*c^12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +11043000*a^4*b^17*c^6 +62092800*a^5*b^10*c^2 +1440*a^12*b^5*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +13440000*a^3*b^15*c^5 +33339600*a^3*b^8*c^2 +14553000*a^2*b^10*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +793800*a^8*b^4*c^2 +5080320*b^7*c^8 +194400*a^4*b^5*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1728000*a*b^14*c^10 +1687500*a^4*b^14*c^5 +699840*a^13*b^14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +6209280*b^10*c^8 +4665600*a^7*b^17*c^6 +1562400*a^5*b^14*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +97200*a^14*b^8 +1984500*a^2*b^6*c^6 +13275000*a^7*b^14*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +97200*a^7*b^8*c^8 +182250*a^2*b^5*c^8 +103680*a^6*b^8*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +4193280*b^12*c^11 +7741440*a^2*b^15*c^10 +8890560*b^8*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1601280*a^6*b^11*c^8 +6032880*a^4*b^6*c^6 +1065600*a^4*b^14*c^11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +291600*a^9*b^5*c^4 +423360*a^6*b^6*c^7 +158760*a^3*b*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +2250*a^14*b^5 +64800*a^12*b^5*c^2 +29160*a^8*b^2*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1397760*a^3*b^12*c^9 +60480*a^11*b^3*c^2 +1270080*b^6*c^11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3386880*a^3*b^7*c^7 +42480*a^13*b^5*c^2 +5762400*b^9*c^4 +119070*b*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +17010*a^3*c^8 +4725000*a^3*b^9*c^4 +3240*a^16*b^5 +691200*a*b^17*c^13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +7603200*a^5*b^14*c^8 +2332800*a^11*b^14*c^2 +1720320*b^15*c^11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +19353600*a^3*b^15*c^8 +14868000*a^8*b^9*c^2 +1814400*a^10*b^9*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +17280*a^9*b^8*c^7 +34927200*a^3*b^10*c^5 +4050000*a^6*b^17*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +540000*a^11*b^11 +9434880*a^7*b^12*c^5 +544320*a^5*b^3*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +36000*a^4*b^14*c^12 +24768000*a^5*b^14*c^6 +11862720*a^8*b^11*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +44029440*a^6*b^12*c^4 +9720*a^11*b^2*c^4 +4233600*a^4*b^7*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3538080*a^11*b^12 +10483200*a*b^12*c^8 +26671680*a^2*b^8*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +88200*a^11*b^4 +11113200*a*b^8*c^5 +13608000*a^3*b^9*c^7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +8748000*a^10*b^17 +17010000*a^4*b^9*c^4 +4840416*a^2*b^7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +27000*a^11*b^5*c^2 +31799040*a^4*b^12*c^6 +14406000*a*b^9*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +88905600*a^5*b^13*c^2 +3628800*b^9*c^11 +17493840*a^2*b^12*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3025260*b^6*c^5 +562500*a^7*b^14*c^3 +4762800*a^6*b^6*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1270080*a^8*b^6*c^4 +5598720*a^8*b^17*c^4 +58800*a^10*b^6*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1680*a^12*b^3*c^3 +47174400*a^3*b^12*c^6 +272160*b^3*c^10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +740880*a^8*b^5 +23708160*a^2*b^11*c^5 +3144960*b^12*c^12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +259200*a*b^11*c^13 +1800*a^13*b^5*c^3 +13440000*a^3*b^15*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +529200*a^6*b^4*c^4 +7464960*a^6*b^17*c^7 +635040*a^8*b^6*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +5040*a^14*b^3 +8100000*a^5*b^14*c^5 +34201440*a^8*b^12*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +13996800*a^9*b^17*c^2 +11664000*a^8*b^17*c^3 +1620*a^14*b^2*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3916080*a^7*b^6*c^4 +48384000*a^4*b^15*c^5 +6050520*b^6*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +268800*a^6*b^9*c^6 +3888000*a^2*b^11*c^9 +10752000*a^2*b^15*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +10908000*a^6*b^11*c^4 +349920*a^5*b^8*c^10 +466560*a^8*b^8*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +622080*b^11*c^14 +7938000*a^2*b^7*c^4 +2700000*a^4*b^17*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +846720*a^3*b^7*c^8 +259200*a^7*b^14*c^9 +4042500*a^6*b^10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +38880*a^13*b^8*c^3 +21609000*a^3*b^9 +5062500*a^6*b^14*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1613472*b^7*c^3 +41932800*a^5*b^12*c^5 +11854080*a^2*b^13*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +12600000*a^6*b^15 +3693600*a^7*b^14*c^6 +691200*b^14*c^14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +607500*a^6*b^8*c^4 +6667920*a^2*b^5*c^4 +38880*a^3*b^5*c^12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1296540*b^3*c^4 +243000*a^5*b^5*c^6 +3704400*a^4*b^8*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +281250*a^8*b^14 +12960*a^6*b^8*c^11 +70560*a^11*b^6*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +5400000*a^3*b^14*c^7 +403200*a^6*b^9*c^7 +11665920*a^2*b^15*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +11760*a^9*b^6*c^6 +23708160*a^2*b^11*c^4 +11340*a^6*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +19440000*a^4*b^14*c^7 +207360*a^5*b^11*c^11 +1048320*a^3*b^12*c^10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +180000*a^9*b^11*c^3 +630*a^12*c^2 +35562240*a^4*b^11*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1270080*a^3*b^6*c^9 +36288000*a^6*b^15*c^3 +3456000*a^2*b^17*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1105920*a^7*b^11*c^8 +2880000*a^3*b^17*c^6 +11612160*a^4*b^15*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +47040*a^9*b^6*c^5 +201600*a^6*b^9*c^8 +322560*a^2*b^15*c^12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +58060800*a^5*b^15*c^4 +3780*a^9*c^4 +3110400*a^9*b^14*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3732480*a^6*b^17*c^8 +17781120*a^6*b^13*c^3 +276480*b^17*c^14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1481760*a^3*b^5*c^5 +90*a^16*b^2 +10264320*a^4*b^17*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +617400*a^7*b^5 +5225472*a^10*b^15 +1438560*a^7*b^8*c^7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +10808640*a^6*b^17*c^6 +264600*a^6*b^4*c^5 +13891500*a^2*b^8*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +30960000*a^6*b^14*c^4 +37044000*a^4*b^11 +2025000*a^7*b^17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +555660*b^2*c^6 +3225600*a^3*b^15*c^9 +23224320*a^6*b^15*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +19440*a^6*b^2*c^8 +8643600*a^2*b^9*c^3 +1512000*a^4*b^9*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1399680*a^2*b^8*c^10 +5927040*a^2*b^11*c^6 +493920*a^6*b^5*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +5097600*a^8*b^11*c^5 +38880*a^3*b^8*c^13 +14515200*a^5*b^15*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3110400*a^2*b^14*c^12 +97200*a^7*b^5*c^7 +1244160*a^4*b^17*c^11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +181440*a^3*b^3*c^9 +47174400*a^3*b^12*c^7 +17287200*a^2*b^9*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +21979440*a^2*b^13*c^6 +13824*b^17*c^17 +2488320*a^5*b^11*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +4924800*a^6*b^14*c^8 +8100000*a^6*b^17*c^2 +69854400*a^3*b^10*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +8640*a^9*b^8*c^8 +2100000*a^5*b^15 +3931200*a^6*b^12*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +349920*a^2*b^8*c^12 +3780000*a^5*b^9*c^5 +583200*a^9*b^8*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +4300800*a*b^15*c^8 +4860000*a^5*b^11*c^4 +18662400*a^7*b^17*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +58968000*a^4*b^12*c^4 +907200*a^10*b^9*c^3 +105840*a^13*b^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3888000*a^2*b^11*c^8 +829440*a^2*b^17*c^13 +10290000*a^3*b^11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +185220*a^6*b^2*c^2 +4320*a^9*b^5*c^8 +26308800*a^6*b^9*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +13224960*a^2*b^15*c^8 +2222640*b^8*c^8 +20580*a^9*b^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +9075780*a^2*b^6*c^2 +651240*a^4*b^5*c^8 +233280*a^14*b^11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +19440000*a^4*b^14*c^6 +48384000*a^4*b^15*c^4 +11275200*a^8*b^14*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +207360*a^2*b^17*c^14 +5961600*a^10*b^11*c^2 +3240000*a^3*b^11*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +2016840*a^3*b^6*c^2 +29635200*a^3*b^11*c^3 +11664000*a^4*b^11*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +155520*a^6*b^8*c^9 +21870*a*b^2*c^10 +9720*a^6*b^2*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1905120*a^2*b^6*c^9 +6289920*a^5*b^12*c^7 +59270400*a^3*b^13*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3386880*a^3*b^7*c^6 +24570000*a^5*b^12*c^2 +9313920*b^10*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +14553000*a^7*b^10 +19756800*a*b^13*c^7 +33600*a^6*b^9*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +47040*a^9*b^6*c^4 +252000*a^7*b^9*c^6 +12960000*a^5*b^17*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3732480*a^2*b^11*c^11 +55036800*a^7*b^12*c^2 +1512630*b^4*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +221184*b^17*c^13 +437400*a^3*b^5*c^8 +141120*a^11*b^6*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +864360*a^3*b^3*c^2 +6998400*a^9*b^17*c^3 +776160*b^10*c^11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1944000*a^8*b^14*c^6 +8100*a^10*b^2*c^4 +1984500*a^4*b^4*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +13171200*a*b^13*c^6 +105840*a^6*b^6*c^8 +6985440*a^7*b^10*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3359232*a^10*b^17*c^2 +1036800*a^2*b^14*c^13 +8890560*a^5*b^8*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +51840*a^11*b^8*c^5 +1984500*a*b^4*c^6 +58060800*a^5*b^15*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +2903040*a^9*b^11*c^5 +8190000*a^8*b^12 +9031680*a^7*b^7*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +864000*a*b^14*c^13 +13335840*a^8*b^13 +17280*a^9*b^5*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +258720*a^3*b^10*c^9 +8748*b^2*c^13 +7257600*a^5*b^9*c^7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +30240000*a^7*b^15 +525000*a^9*b^9 +1399680*a^5*b^8*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +17463600*a^8*b^10 +705600*a^7*b^7*c^3 +1244160*a^5*b^11*c^10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +2916000*a^12*b^14 +2069760*a^3*b^10*c^6 +729000*a^10*b^8*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3810240*a^5*b^6*c^6 +23328000*a^6*b^17*c^4 +1555200*a*b^11*c^12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1270080*a^10*b^7 +207360*a^8*b^11*c^8 +1587600*a*b^6*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +11340000*a^2*b^9*c^6 +9020160*a^6*b^11*c^7 +72576000*a^6*b^15*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1749600*a^3*b^8*c^9 +1440600*b^9*c^6 +540*a^12*b^2*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +7868160*a^3*b^14*c^10 +552960*a*b^17*c^10 +8190000*a^3*b^12*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3360*a^12*b^3*c^2 +116640*a^8*b^8*c^8 +564480*a^6*b^7*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +630000*a^8*b^9*c^3 +9720000*a^9*b^17 +2730000*a^6*b^12*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3025260*a^5*b^6 +25488000*a^5*b^14*c^7 +18662400*a^7*b^17*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +2721600*a^2*b^9*c^10 +345600*a^5*b^14*c^11 +9828000*a^7*b^12*c^3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1866240*a^2*b^11*c^12 +3888000*a^10*b^14*c^3 +44452800*a^7*b^13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +18468000*a^9*b^14*c^2 +43659000*a^4*b^10*c^2 +4445280*b^5*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +5268480*b^11*c^6 +9331200*a^3*b^11*c^9 +22500*a^12*b^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +20160*a^9*b^3*c^5 +4548960*a^6*b^8*c^6 +1552320*a^3*b^10*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +2381400*a^2*b^4*c^6 +8709120*a^8*b^15*c^3 +14774400*a^7*b^11*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +77760*a^6*b^5*c^8 +5762400*b^9*c^5 +9434880*a^2*b^12*c^10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1166400*a*b^8*c^11 +12492480*a^3*b^12*c^8 +202500*a^9*b^8*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +6667920*a^7*b^8 +1350000*a^5*b^17*c^2 +129600*a^2*b^14*c^14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1270080*a^3*b^6*c^8 +19756800*a*b^11*c^4 +1458000*a^2*b^8*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +7902720*b^11*c^7 +2609280*a^3*b^11*c^10 +9696960*a^4*b^12*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +14515200*a^6*b^14*c^7 +2419200*a^3*b^9*c^9 +2216160*a^9*b^8*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +27972000*a^5*b^9*c^4 +108000*a*b^14*c^14 +40320*a^9*b^3*c^4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1749600*a^6*b^8*c^7 +3110400*a^7*b^14*c^7 +44241120*a^6*b^10*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +691200*b^14*c^13 +564480*a^6*b^7*c^4 +829440*b^11*c^13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +466560*a^8*b^8*c^7 +11113200*a^6*b^8 +1310400*a*b^12*c^11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3150000*a^6*b^9*c^2 +384480*a^8*b^11*c^6 +2073600*a*b^11*c^10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +6272640*a^4*b^17*c^9 +24300*a^7*b^2*c^6 +3104640*a^3*b^10*c^7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3175200*a*b^6*c^8 +233280*b^8*c^14 +259200*a^9*b^11*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +23284800*a*b^10*c^6 +1440*a^12*b^5*c^4 +5806080*a^6*b^15*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1526400*a^3*b^14*c^11 +29164800*a^3*b^15*c^6 +5118750*a^4*b^12*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1470*a^12*b +2150400*a*b^15*c^11 +9331200*a^3*b^11*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1036800*a^5*b^14*c^10 +360*a^12*b^5*c^6 +9072000*a*b^9*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1270080*b^6*c^10 +144060*a^6*b^3 +77760*a^13*b^8*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +311040*a^12*b^11*c^3 +10206*c^10 +2634240*b^13*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +35562240*a^4*b^13*c^4 +860160*b^15*c^13 +3888000*a^7*b^11*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +50400*a^10*b^3*c^2 +40320000*a^5*b^15*c^2 +20736*a^2*b^17*c^15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +2700000*a^4*b^17*c^5 +466560*a^3*b^8*c^11 +14742000*a^9*b^12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +23224320*a^6*b^15*c^4 +18662400*a^5*b^17*c^7 +21772800*a^9*b^15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +11340000*a^7*b^9*c^2 +116640*a^8*b^5*c^7 +16588800*a^5*b^11*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +112500*a^10*b^11 +6451200*a*b^15*c^10 +5598720*a^8*b^17*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +136080*b^3*c^11 +5821200*a*b^10*c^8 +9313920*a^5*b^10*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +121500*a^8*b^5*c^4 +6451200*a^7*b^9*c^5 +302400*a^8*b^9*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +23328000*a^6*b^17*c^5 +1687500*a^9*b^14 +59270400*a^3*b^13*c^5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1048320*b^12*c^13 +81000*a^13*b^8 +155520*a^10*b^11*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +3255552*a^2*b^17*c^10 +1070160*a^10*b^6*c^2 +2116800*a^9*b^7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1399680*a^5*b^8*c^9 +9878400*a*b^13*c^8 +17496*b^2*c^12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1814400*a^5*b^9*c^8 +2700000*a^8*b^14*c^3 +8400000*a^4*b^15*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +16380000*a^6*b^14*c^5 +14817600*a^3*b^13*c^6 +8890560*b^8*c^7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +675000*a^7*b^11*c^2 +19440*a^6*b^5*c^10 +6307200*a^3*b^17*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +233280*a^8*b^5*c^6 +2187000*a^7*b^8*c^4 +3456000*a*b^14*c^11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +622080*a^12*b^11*c^2 +7257600*a^5*b^9*c^6 +11520*a^9*b^8*c^6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1399680*a^2*b^8*c^11 +28717920*a^4*b^10*c^5 +36450*a^4*b^2*c^8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +648000*a^10*b^11*c^3 +1679616*a^10*b^17*c^3 +13970880*a^7*b^10*c^2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1766880*a^2*b^17*c^12 +5400000*a^3*b^14*c^6 +6480000*a^2*b^14*c^9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> +1814400*b^9*c^12 +12348000*a^2*b^11*c^3 +4445280*a^5*b^5*c^2</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># extraction and replacement work as expected:</span></span></span>
 <span class="r-in"><span></span></span>
@@ -121,7 +453,7 @@ respectively.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer></div>

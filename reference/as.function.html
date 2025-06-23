@@ -92,8 +92,8 @@ function is not vectorized in the arity of its argument.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     return(rowSums(sweep(jj, 2, coeffs(x), "*")))</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;bytecode: 0x556e42fb1e80&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x556e42fb0d98&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;bytecode: 0x5603b41a17c8&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x5603b41a3950&gt;</span>
 <span class="r-in"><span><span class="fu">f</span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="op">==</span> <span class="fl">3</span><span class="op">*</span><span class="fl">2</span><span class="op">^</span><span class="fl">3</span><span class="op">*</span><span class="fl">3</span><span class="op">^</span><span class="fl">6</span> <span class="op">+</span> <span class="fl">2</span><span class="op">*</span><span class="fl">2</span><span class="op">^</span><span class="fl">2</span><span class="op">*</span><span class="fl">3</span><span class="op">^</span><span class="fl">5</span> <span class="op">+</span> <span class="fl">1</span><span class="op">*</span><span class="fl">2</span><span class="op">^</span><span class="fl">1</span><span class="op">*</span><span class="fl">3</span><span class="op">^</span><span class="fl">4</span>  <span class="co"># should be TRUE</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    X </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> TRUE </span>
@@ -111,16 +111,16 @@ function is not vectorized in the arity of its argument.</p>
 <span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">f1</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">*</span><span class="fu">f2</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">-</span><span class="fu">f3</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>  <span class="co"># should be zero</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            X </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3.637979e-12 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># coercion is vectorized:</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">f1</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">33</span>,ncol<span class="op">=</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  -72.89297  -80.68018  -90.15020 -100.28045 -110.94692 -122.11887</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] -133.78536 -145.94145 -158.58447 -171.71275 -185.32516</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]   5988.467  14139.551  24786.461  38299.957  55071.294  75514.166</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 100064.883 129182.402 163348.342 203066.980 248865.259</span>
 <span class="r-in"><span>  </span></span>
 </code></pre></div>
     </div>
@@ -133,7 +133,7 @@ function is not vectorized in the arity of its argument.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer></div>
