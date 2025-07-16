@@ -18,8 +18,7 @@ setClass("spray",
         out <- spray_maker(M,x)   # see RcppExports.R; strips out zeros and puts index rows in (some inscrutable) order
     }
 
-    class(out) <- "spray"  # this is the *only time class<-() is called
-    return(out)
+    return(structure(out, class = "spray"))  # class spray is set only here
 }
 
 `is_valid_spray` <- function(L){  # L = list(M,x)
