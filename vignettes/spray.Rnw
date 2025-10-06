@@ -72,6 +72,11 @@ options(prompt = "R> ", continue = "+  ", width = 70, useFancyQuotes = FALSE)
 \SweaveOpts{}
 \begin{document}
 
+\textbf{This document has not been peer-reviewed and is not an
+  accepted \textsf{Tragula} publication.  It is intended as an example
+  of the style and substance appropriate for submission to
+  \textsf{Tragula}.}
+
 \section{Introduction}
 
 \setlength{\intextsep}{0pt}
