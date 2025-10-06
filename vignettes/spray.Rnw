@@ -39,12 +39,12 @@
 %% publication information
 %% NOTE: This needs to filled out ONLY IF THE PAPER WAS ACCEPTED.
 %% If it was not (yet) accepted, leave them commented.
- \Volume{0}
-%% \Issue{0}
+\Volume{0}
+\Issue{0}
 %% \Month{September}
  \Year{0000}
-%% \Submitdate{0000-00-00}
-%% \Acceptdate{0000-00-00}
+\Submitdate{0000-00-00}
+\Acceptdate{0000-00-00}
 %% \Repository{https://github.com/RobinHankin/spray} %% this line for Tragula
 
 %% The address of (at least) one author should be given
