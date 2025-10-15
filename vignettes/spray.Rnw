@@ -52,7 +52,8 @@
 \Address{
   Robin K. S. Hankin\\
   University of Stirling\\
-  Scotland
+  Scotland\\
+  email: \email{hankin.robin@gmail.com}
 }
 %% It is also possible to add a telephone and fax number
 %% before the e-mail in the following format:
