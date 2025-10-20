@@ -7,7 +7,8 @@ List spray_maker
 (
   const IntegerMatrix &M, const NumericVector &d
  ){
-    return retval(prepare(M,d));
+    const spray out = prepare(M, d);
+    return retval(out);
 }
 
 // [[Rcpp::export]]
