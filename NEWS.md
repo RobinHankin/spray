@@ -1,5 +1,6 @@
 # spray 1.1-0
 
+- code refactoring
 - C++-17 constructions
 
 
