@@ -114,3 +114,48 @@ List retval (const spray &S){  // used to return a list to R
                             );
     }
 }
+
+
+spray prod //
+(
+ const spray &S1, const spray &S2
+ ){
+    spray Sout;
+    mycont vsum;
+
+
+    for (const auto& [v1, x1] : S1) {
+        for (const auto& [v2, x2] : S2) {
+            mycont vsum;
+            vsum.reserve(v1.size());
+            std::transform(v1.begin(), v1.end(), v2.begin(), std::back_inserter(vsum), std::plus<int>()); //meat 1: powers add
+            Sout[vsum] += x1 * x2;  // meat 2: coefficients multiply
+        }
+    }
+    return Sout;
+}    
+
+spray unit //
+(
+ unsigned int n
+){
+    const IntegerMatrix M(1,n);
+    NumericVector one(1);
+    one[0] = 1;
+    return prepare(M,one);
+}
+
+
+// Overloading the * operator as a non-member function
+spray operator*(spray& S1, const spray& S2) {
+    return prod(S1,S2);
+}
+
+
+// Overloading the *= operator as a non-member function
+spray operator*=(spray& S1, const spray& S2) {
+    S1 = prod(S1,S2);
+    return S1;
+}
+
+
