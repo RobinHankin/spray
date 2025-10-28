@@ -36,7 +36,9 @@ List spray_mult  // multiply two sprays
  const IntegerMatrix &M1, const NumericVector &d1,
  const IntegerMatrix &M2, const NumericVector &d2
  ){
-    return retval(prod(prepare(M1,d1),prepare(M2,d2)));
+    const spray S1 = prepare(M1, d1);
+    const spray S2 = prepare(M2, d2);
+    return retval(prod(S1, S2)); // the meat
 }
 
 // [[Rcpp::export]]
