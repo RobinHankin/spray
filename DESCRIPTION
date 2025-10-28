@@ -12,9 +12,8 @@ Description: Sparse arrays interpreted as multivariate polynomials.
     <doi:10.48550/ARXIV.2210.03856>).  To cite the package in
     publications please use Hankin (2022) <doi:10.48550/ARXIV.2210.10848>.
 License: GPL (>= 2)
-Depends: methods
 Suggests: polynom, testthat, covr
-Imports: Rcpp (>= 0.12.3), partitions, magic, disordR (>= 0.9-6), stringr
+Imports: Rcpp (>= 0.12.3), partitions, magic, disordR (>= 0.9-6), stringr, methods
 LinkingTo: Rcpp
 URL: https://github.com/RobinHankin/spray, https://robinhankin.github.io/spray/
 BugReports: https://github.com/RobinHankin/spray/issues
