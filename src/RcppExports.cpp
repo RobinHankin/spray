@@ -153,20 +153,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// spray_pmin
-List spray_pmin(const IntegerMatrix& M1, const NumericVector& d1, const IntegerMatrix& M2, const NumericVector& d2);
-RcppExport SEXP spray_spray_pmin(SEXP M1SEXP, SEXP d1SEXP, SEXP M2SEXP, SEXP d2SEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const IntegerMatrix& >::type M1(M1SEXP);
-    Rcpp::traits::input_parameter< const NumericVector& >::type d1(d1SEXP);
-    Rcpp::traits::input_parameter< const IntegerMatrix& >::type M2(M2SEXP);
-    Rcpp::traits::input_parameter< const NumericVector& >::type d2(d2SEXP);
-    rcpp_result_gen = Rcpp::wrap(spray_pmin(M1, d1, M2, d2));
-    return rcpp_result_gen;
-END_RCPP
-}
 // spray_power
 List spray_power(const IntegerMatrix& M, const NumericVector& d, const NumericVector& pow);
 RcppExport SEXP spray_spray_power(SEXP MSEXP, SEXP dSEXP, SEXP powSEXP) {

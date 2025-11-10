@@ -18,7 +18,6 @@ extern SEXP spray_spray_maker(SEXP, SEXP);
 extern SEXP spray_spray_mult(SEXP, SEXP, SEXP, SEXP);
 extern SEXP spray_spray_overwrite(SEXP, SEXP, SEXP, SEXP);
 extern SEXP spray_spray_pmax(SEXP, SEXP, SEXP, SEXP);
-extern SEXP spray_spray_pmin(SEXP, SEXP, SEXP, SEXP);
 extern SEXP spray_spray_power(SEXP, SEXP, SEXP);
 extern SEXP spray_spray_setter(SEXP, SEXP, SEXP, SEXP);
 
@@ -33,7 +32,6 @@ static const R_CallMethodDef CallEntries[] = {
     {"spray_spray_mult",         (DL_FUNC) &spray_spray_mult,         4},
     {"spray_spray_overwrite",    (DL_FUNC) &spray_spray_overwrite,    4},
     {"spray_spray_pmax",         (DL_FUNC) &spray_spray_pmax,         4},
-    {"spray_spray_pmin",         (DL_FUNC) &spray_spray_pmin,         4},
     {"spray_spray_power",        (DL_FUNC) &spray_spray_power,        3},
     {"spray_spray_setter",       (DL_FUNC) &spray_spray_setter,       4},
     {NULL, NULL, 0}

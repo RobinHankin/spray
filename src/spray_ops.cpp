@@ -222,30 +222,6 @@ List spray_pmax
 }
 
 // [[Rcpp::export]]
-List spray_pmin
-(
- const IntegerMatrix &M1, const NumericVector &d1,
- const IntegerMatrix &M2, const NumericVector &d2 
- ){
-    spray S1 = prepare(M1, d1);
-    spray S2 = prepare(M2, d2);
-
-    for (spray::const_iterator it = S1.begin(); it != S1.end(); ++it){
-        const mycont v = it->first;
-        if(S2[v] < S1[v]){ S1[v] = S2[v]; }// S1[v] = min(S1[v],S2[v]);
-        S2.erase(v);
-    }
-            
-    for (spray::const_iterator it = S2.begin(); it != S2.end(); ++it){
-        const mycont v = it->first;
-        if(S2[v] < 0){S1[v] = S2[v]; } // S1[v] = min(S2[v],0);
-    }
-
-    return retval(S1);
-}
-
-
-// [[Rcpp::export]]
 List spray_power
 (
  const IntegerMatrix &M, const NumericVector &d, const NumericVector &pow

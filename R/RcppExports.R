@@ -45,10 +45,6 @@ spray_pmax <- function(M1, d1, M2, d2) {
     .Call('spray_spray_pmax', PACKAGE = 'spray', M1, d1, M2, d2)
 }
 
-spray_pmin <- function(M1, d1, M2, d2) {
-    .Call('spray_spray_pmin', PACKAGE = 'spray', M1, d1, M2, d2)
-}
-
 spray_power <- function(M, d, pow) {
     .Call('spray_spray_power', PACKAGE = 'spray', M, d, pow)
 }

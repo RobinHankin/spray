@@ -1,6 +1,7 @@
 # spray 1.1-0
 
 - code refactoring
+- rationalize pmin()
 - C++-17 constructions
 
 

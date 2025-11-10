@@ -492,25 +492,7 @@ setGeneric("deriv")
     }
 }
 
-`minpair_spray` <- function(S1, S2){
-    if(missing(S2)){ return(S1) }
-    if(!is.spray(S2)){
-        if(length(S2) > 1){
-            stop("pmin(S,x) not defined if length(x)>1")
-        } else if (S2 < 0){
-            stop("pmin(S,x) not defined if x<0")
-        } else {
-            return(spray(index(S1), pmin(elements(coeffs(S1)), S2)))
-        }
-    } else {
-        return(
-            spraymaker(spray_pmin(
-                index(S1), elements(coeffs(S1)),
-                index(S2), elements(coeffs(S2))
-                                   ))
-            )
-    }
-}
+`minpair_spray` <- function(S1, S2){ -maxpair_spray(-S1,-S2) }
 
 `rspray` <- function(n=9, vals=seq_len(n), arity=3, powers=0:2){
     return(spray(matrix(sample(powers, n*arity, replace=TRUE), ncol=arity), addrepeats=TRUE, vals))
