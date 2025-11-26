@@ -73,7 +73,7 @@ S
 #>  2 2 1  =    1
 #>  1 1 2  =    2
 
-asum(S,1)
+asum(S, 1)
 #>          val
 #>  0 2  =    1
 #>  1 2  =    3
@@ -83,20 +83,18 @@ asum(S,1)
 #>  1 0  =    6
 #>  2 1  =    2
 #>  1 1  =    1
-asum(S,1:2)
+asum(S, 1:2)
 #>        val
 #>  2  =    6
 #>  0  =    8
 #>  1  =    6
 
-asum(S,1:2,drop=FALSE)
+asum(S, 1:2, drop=FALSE)
 #>            val
 #>  0 0 1  =    6
 #>  0 0 0  =    8
 #>  0 0 2  =    6
 
-
-asum(S,c(1,3)) == asum_inverted(S,2)
+asum(S, c(1,3)) == asum_inverted(S, 2)
 #> [1] TRUE
-
 ```

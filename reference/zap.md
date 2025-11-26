@@ -37,7 +37,7 @@ Robin K. S. Hankin
 ## Examples
 
 ``` r
-(S <- spray(matrix(sample(1:50),ncol=2),10^-(1:25)))
+(S <- spray(matrix(sample(1:50), ncol=2), 10^-(1:25)))
 #>   a  b       val
 #>  39 18  =  1e-23
 #>  20 35  =  1e-22
@@ -75,7 +75,7 @@ zap(S)
 #>  26 30  =  1e-05
 #>  36 45  =  1e-01
 
-S-zap(S)        # print method will probably print zeros...
+S - zap(S)         # print method will probably print zeros...
 #>   a  b       val
 #>   9 31  =  1e-20
 #>  27 48  =  1e-11
@@ -94,7 +94,7 @@ S-zap(S)        # print method will probably print zeros...
 #>  28 32  =  1e-21
 #>  15 24  =  1e-16
 #>   7 23  =  1e-18
-coeffs(S-zap(S)) # ...but they are nevertheless nonzero
+coeffs(S - zap(S)) # ...but they are nevertheless nonzero
 #> A disord object with hash 99c4b22baaec117c1e3d1ed42e72d0dadfd730df and elements
 #>  [1] 1e-20 1e-11 1e-14 1e-15 1e-23 1e-13 1e-17 1e-10 1e-22 1e-09 1e-19 1e-12
 #> [13] 1e-25 1e-24 1e-21 1e-16 1e-18

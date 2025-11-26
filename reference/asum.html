@@ -112,7 +112,7 @@ version thereof.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  2 2 1  =    1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1 1 2  =    2</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">asum</span><span class="op">(</span><span class="va">S</span>,<span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">asum</span><span class="op">(</span><span class="va">S</span>, <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          val</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0 2  =    1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1 2  =    3</span>
@@ -122,22 +122,20 @@ version thereof.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1 0  =    6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  2 1  =    2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1 1  =    1</span>
-<span class="r-in"><span><span class="fu">asum</span><span class="op">(</span><span class="va">S</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">asum</span><span class="op">(</span><span class="va">S</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        val</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  2  =    6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0  =    8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1  =    6</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">asum</span><span class="op">(</span><span class="va">S</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span>,drop<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">asum</span><span class="op">(</span><span class="va">S</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, drop<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            val</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0 0 1  =    6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0 0 0  =    8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0 0 2  =    6</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">asum</span><span class="op">(</span><span class="va">S</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span> <span class="op">==</span> <span class="fu">asum_inverted</span><span class="op">(</span><span class="va">S</span>,<span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">asum</span><span class="op">(</span><span class="va">S</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span> <span class="op">==</span> <span class="fu">asum_inverted</span><span class="op">(</span><span class="va">S</span>, <span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

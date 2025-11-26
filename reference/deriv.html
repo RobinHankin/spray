@@ -111,19 +111,19 @@ x_3^k}\).</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   1 -1  1  =    1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   0  0  2  =    1</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">deriv</span><span class="op">(</span><span class="va">S</span>,<span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">deriv</span><span class="op">(</span><span class="va">S</span>, <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               val</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   0  1 -2  =    1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  -2  1 -1  =   -1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  -2 -1 -1  =   -1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   0 -1  1  =    1</span>
-<span class="r-in"><span><span class="fu">deriv</span><span class="op">(</span><span class="va">S</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">deriv</span><span class="op">(</span><span class="va">S</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               val</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  -1 -3 -1  =    2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   1 -3  1  =    2</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># differentiation is invariant under order:</span></span></span>
-<span class="r-in"><span><span class="fu">aderiv</span><span class="op">(</span><span class="va">S</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="op">==</span> <span class="fu">deriv</span><span class="op">(</span><span class="fu">deriv</span><span class="op">(</span><span class="fu">deriv</span><span class="op">(</span><span class="va">S</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>,<span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">aderiv</span><span class="op">(</span><span class="va">S</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="op">==</span> <span class="fu">deriv</span><span class="op">(</span><span class="fu">deriv</span><span class="op">(</span><span class="fu">deriv</span><span class="op">(</span><span class="va">S</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>,<span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Leibniz's rule:</span></span></span>

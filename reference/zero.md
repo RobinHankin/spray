@@ -12,7 +12,7 @@ is.empty(L)
 
 ## Arguments
 
-- L,x:
+- L, x:
 
   A two-element list of indices and values, possibly a spray object or
   numeric vector
@@ -96,6 +96,6 @@ is.zero(zero(6))
 x <- spray(t(0:1))
 y <- spray(t(1:0))
 
-is.zero((x+y)*(x-y)-(x^2-y^2)) # TRUE
+is.zero((x+y)*(x-y) - (x^2-y^2)) # TRUE
 #> [1] TRUE
 ```

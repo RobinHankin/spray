@@ -42,7 +42,7 @@ Uses Horner's method for efficiency
 (x <- spray(matrix(1)))
 #>        val
 #>  1  =    1
-ooom(x,5)  # 1 + x + x^2 + x^3 + x^4 + x^5
+ooom(x, 5)  # 1 + x + x^2 + x^3 + x^4 + x^5
 #>        val
 #>  1  =    1
 #>  3  =    1
@@ -52,7 +52,7 @@ ooom(x,5)  # 1 + x + x^2 + x^3 + x^4 + x^5
 #>  0  =    1
 
 
-(a <- homog(4,2))
+(a <- homog(4, 2))
 #>              val
 #>  0 0 1 1  =    1
 #>  0 1 0 1  =    1
@@ -64,7 +64,7 @@ ooom(x,5)  # 1 + x + x^2 + x^3 + x^4 + x^5
 #>  1 1 0 0  =    1
 #>  0 2 0 0  =    1
 #>  2 0 0 0  =    1
-d <- (1-a)*ooom(a,3)
+d <- (1-a) * ooom(a,3)
 
 constant(d)    # should be 1
 #>              val

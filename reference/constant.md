@@ -8,7 +8,7 @@ spray object.
 
 ``` r
 is.constant(x)
-constant(x,drop=FALSE)
+constant(x, drop=FALSE)
 constant(x) <- value
 drop(x)
 ```
@@ -60,7 +60,7 @@ clear.
 ## Examples
 
 ``` r
-(S <- spray(partitions::blockparts(rep(2,3),3,TRUE)))
+(S <- spray(partitions::blockparts(rep(2,3), 3, TRUE)))
 #>            val
 #>  0 1 2  =    1
 #>  1 0 2  =    1
@@ -105,6 +105,6 @@ S
 #>  0 2 0  =    1
 #>  0 0 1  =    1
 
-drop(constant(S,drop=FALSE))
+drop(constant(S, drop=FALSE))
 #> [1] 1
 ```
