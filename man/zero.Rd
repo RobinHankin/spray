@@ -16,7 +16,7 @@ is.zero(x)
 is.empty(L)
 }
 \arguments{
-  \item{L,x}{A two-element list of indices and values, possibly a spray
+  \item{L, x}{A two-element list of indices and values, possibly a spray
     object or numeric vector}
   \item{d}{Integer specifying dimensionality of the spray (the arity)}
 }
@@ -98,7 +98,7 @@ is.zero(zero(6))
 x <- spray(t(0:1))
 y <- spray(t(1:0))
 
-is.zero((x+y)*(x-y)-(x^2-y^2)) # TRUE
+is.zero((x+y)*(x-y) - (x^2-y^2)) # TRUE
 
 }
 \keyword{datasets}

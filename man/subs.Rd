@@ -27,10 +27,10 @@ order.  If not, caveat emptor!
 
 (S <- spray(matrix(sample(0:3,60,replace=TRUE),nrow=12)))
 
-subs(S,c(2,5),1:2)
+subs(S, c(2,5), 1:2)
 
-P <- homog(3,3)
-subs(P,1,2)
+P <- homog(3, 3)
+subs(P, 1, 2)
 }
 \keyword{symbolmath}
 

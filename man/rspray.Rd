@@ -30,9 +30,9 @@ rspray()
 
 rspray(4)*rspray(3,rnorm(3))
 
-rspray(3,arity=7,powers=-2:2)^3
+rspray(3, arity=7, powers = -2:2)^3
 
-rspray(1000,vals=rnorm(1000))
+rspray(1000, vals=rnorm(1000))
 
 }
 

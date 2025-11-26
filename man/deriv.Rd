@@ -47,11 +47,11 @@ Robin K. S. Hankin
 
 (S <- spray(matrix(sample(-2:2,15,replace=TRUE),ncol=3),addrepeats=TRUE))
 
-deriv(S,1)
-deriv(S,2,2)
+deriv(S, 1)
+deriv(S, 2, 2)
 
 # differentiation is invariant under order:
-aderiv(S,1:3) == deriv(deriv(deriv(S,1,1),2,2),3,3)
+aderiv(S, 1:3) == deriv(deriv(deriv(S,1,1),2,2),3,3)
 
 # Leibniz's rule:
 S1 <- spray(matrix(sample(0:3,replace=TRUE,21),ncol=3),sample(7),addrepeats=TRUE)

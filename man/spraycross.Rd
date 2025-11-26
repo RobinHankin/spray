@@ -10,9 +10,9 @@ and \eqn{k}-forms
 }
 \usage{
 spraycross(S, ...)
-spraycross2(S1,S2)
+spraycross2(S1, S2)
 }
-\arguments{\item{S,S1,S2,...}{spray objects}}
+\arguments{\item{S, S1, S2, ...}{spray objects}}
 
 \details{
 
@@ -29,14 +29,14 @@ that takes any number of arguments.
 \value{Returns a spray object}
 \author{Robin K. S. Hankin}
 \examples{
-a <- spray(matrix(1:4,2,2),c(2,5))
-b <- spray(matrix(c(10,11,12,13),2,2),c(7,11))
+a <- spray(matrix(1:4,2,2), c(2,5))
+b <- spray(matrix(c(10,11,12,13),2,2), c(7,11))
 a
 b
-spraycross2(a,b)
-spraycross2(b,a)
+spraycross2(a, b)
+spraycross2(b, a)
 
-spraycross(a,b,b)
+spraycross(a, b, b)
 
 }
 

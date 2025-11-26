@@ -22,7 +22,7 @@ spray object.
 }
 \usage{
 is.constant(x)
-constant(x,drop=FALSE)
+constant(x, drop=FALSE)
 constant(x) <- value
 drop(x)
 }
@@ -55,14 +55,14 @@ It might have been better to call \code{is.constant()}
 \code{\link{Extract}}
 }
 \examples{
-(S <- spray(partitions::blockparts(rep(2,3),3,TRUE)))
+(S <- spray(partitions::blockparts(rep(2,3), 3, TRUE)))
 
 constant(S)
 constant(S) <- 33
 
 S
 
-drop(constant(S,drop=FALSE))
+drop(constant(S, drop=FALSE))
 }
 
 \keyword{symbolmath}

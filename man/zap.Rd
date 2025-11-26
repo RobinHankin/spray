@@ -30,9 +30,9 @@ zap(x, digits = getOption("digits"))
 \author{Robin K. S. Hankin}
 \examples{
 
-(S <- spray(matrix(sample(1:50),ncol=2),10^-(1:25)))
+(S <- spray(matrix(sample(1:50), ncol=2), 10^-(1:25)))
 zap(S)
 
-S-zap(S)        # print method will probably print zeros...
-coeffs(S-zap(S)) # ...but they are nevertheless nonzero
+S - zap(S)         # print method will probably print zeros...
+coeffs(S - zap(S)) # ...but they are nevertheless nonzero
 }
