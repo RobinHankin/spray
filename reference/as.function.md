@@ -53,8 +53,8 @@ function is not vectorized in the arity of its argument.
 #>     }
 #>     return(rowSums(sweep(jj, 2, coeffs(x), "*")))
 #> }
-#> <bytecode: 0x5596f6bd43e8>
-#> <environment: 0x5596f6bd2260>
+#> <bytecode: 0x555f7d9a38b0>
+#> <environment: 0x555f7d9a2a68>
 f(2:3) == 3*2^3*3^6 + 2*2^2*3^5 + 1*2^1*3^4  # should be TRUE
 #>    X 
 #> TRUE 
