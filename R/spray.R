@@ -1,7 +1,4 @@
-setClass("spray",
-         representation = representation(index="numeric",value="numeric"),
-         prototype      = list(index=numeric(),value=numeric()),
-         )
+setOldClass("spray")
 
 `spraymaker` <- function(L, addrepeats=FALSE, arity=ncol(L[[1]])){    # formal; this is the *only* way to create a spray object; 
     stopifnot(is_valid_spray(L))

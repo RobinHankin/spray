@@ -5,15 +5,9 @@
 \description{The formal S4 class for sprays.}
 \section{Objects from the Class}{
 
-Objects \emph{can} be created by calls of the form \code{new("spray",
-  ...)} but this is not encouraged.  Use functions \code{spray()} or
- \code{as.spray()} instead.
-}
-\section{Slots}{
-  \describe{
-    \item{\code{index}:}{Index matrix}
-    \item{\code{value}:}{Numeric vector holding coefficients}
-  }
+  A spray object is typically a list with components \code{index} and
+  \code{value}.
+  
 }
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{spray}}}
