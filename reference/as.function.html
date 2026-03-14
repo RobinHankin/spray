@@ -92,8 +92,8 @@ function is not vectorized in the arity of its argument.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     return(rowSums(sweep(jj, 2, coeffs(x), "*")))</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;bytecode: 0x555f7d9a38b0&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x555f7d9a2a68&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;bytecode: 0x5636f0be9a98&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x5636f0be59b8&gt;</span>
 <span class="r-in"><span><span class="fu">f</span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="op">==</span> <span class="fl">3</span><span class="op">*</span><span class="fl">2</span><span class="op">^</span><span class="fl">3</span><span class="op">*</span><span class="fl">3</span><span class="op">^</span><span class="fl">6</span> <span class="op">+</span> <span class="fl">2</span><span class="op">*</span><span class="fl">2</span><span class="op">^</span><span class="fl">2</span><span class="op">*</span><span class="fl">3</span><span class="op">^</span><span class="fl">5</span> <span class="op">+</span> <span class="fl">1</span><span class="op">*</span><span class="fl">2</span><span class="op">^</span><span class="fl">1</span><span class="op">*</span><span class="fl">3</span><span class="op">^</span><span class="fl">4</span>  <span class="co"># should be TRUE</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    X </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> TRUE </span>
@@ -111,16 +111,16 @@ function is not vectorized in the arity of its argument.</p>
 <span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">f1</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">*</span><span class="fu">f2</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">-</span><span class="fu">f3</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>  <span class="co"># should be zero</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            X </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3.637979e-12 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># coercion is vectorized:</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">f1</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">33</span>,ncol<span class="op">=</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]   5988.467  14139.551  24786.461  38299.957  55071.294  75514.166</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 100064.883 129182.402 163348.342 203066.980 248865.259</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  -72.89297  -80.68018  -90.15020 -100.28045 -110.94692 -122.11887</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] -133.78536 -145.94145 -158.58447 -171.71275 -185.32516</span>
 <span class="r-in"><span>  </span></span>
 </code></pre></div>
     </div>

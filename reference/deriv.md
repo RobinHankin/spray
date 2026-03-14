@@ -66,22 +66,22 @@ Robin K. S. Hankin
 
 (S <- spray(matrix(sample(-2:2,15,replace=TRUE),ncol=3),addrepeats=TRUE))
 #>               val
-#>   1  1 -2  =    1
-#>  -1  1 -1  =    1
-#>  -1 -1 -1  =    1
-#>   1 -1  1  =    1
 #>   0  0  2  =    1
+#>   2  1  1  =    1
+#>  -2 -1  1  =    1
+#>  -1 -1 -1  =    1
+#>   2  1 -1  =    1
 
 deriv(S, 1)
 #>               val
-#>   0  1 -2  =    1
-#>  -2  1 -1  =   -1
+#>   1  1  1  =    2
+#>  -3 -1  1  =   -2
 #>  -2 -1 -1  =   -1
-#>   0 -1  1  =    1
+#>   1  1 -1  =    2
 deriv(S, 2, 2)
 #>               val
+#>  -2 -3  1  =    2
 #>  -1 -3 -1  =    2
-#>   1 -3  1  =    2
 
 # differentiation is invariant under order:
 aderiv(S, 1:3) == deriv(deriv(deriv(S,1,1),2,2),3,3)

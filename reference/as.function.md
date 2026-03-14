@@ -53,8 +53,8 @@ function is not vectorized in the arity of its argument.
 #>     }
 #>     return(rowSums(sweep(jj, 2, coeffs(x), "*")))
 #> }
-#> <bytecode: 0x555f7d9a38b0>
-#> <environment: 0x555f7d9a2a68>
+#> <bytecode: 0x5636f0be9a98>
+#> <environment: 0x5636f0be59b8>
 f(2:3) == 3*2^3*3^6 + 2*2^2*3^5 + 1*2^1*3^4  # should be TRUE
 #>    X 
 #> TRUE 
@@ -72,15 +72,15 @@ f3 <- as.function(S1*S2)
 x <- 4:6
 
 f1(x)*f2(x)-f3(x)  # should be zero
-#>            X 
-#> 3.637979e-12 
+#> X 
+#> 0 
 
 
 
 # coercion is vectorized:
 
 f1(matrix(1:33,ncol=3))
-#>  [1]   5988.467  14139.551  24786.461  38299.957  55071.294  75514.166
-#>  [7] 100064.883 129182.402 163348.342 203066.980 248865.259
+#>  [1]  -72.89297  -80.68018  -90.15020 -100.28045 -110.94692 -122.11887
+#>  [7] -133.78536 -145.94145 -158.58447 -171.71275 -185.32516
   
 ```

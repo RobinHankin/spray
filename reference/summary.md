@@ -45,50 +45,52 @@ to extract rows of the index matrix and coefficients.
 ``` r
 a <- rspray()^2
 a
-#> +202*a^4*b^2*c^2 +4*a^2 +84*a^4*b^2*c +24*a^2*b +28*a^4*b^2*c^3
-#> +168*a^3*b^2*c +121*b^4*c^4 +64*b^2 +4*a^3*b*c^2 +224*a^2*b^2*c
-#> +56*a^3*b*c +22*a^2*b^3*c^4 +12*a^3*b^2*c^2 +96*a*b^2 +44*a*b^2*c^2
-#> +132*a*b^3*c^2 +a^4*b^2*c^4 +36*a^3*b^2 +16*a^2*b^2*c^2 +32*a*b
-#> +9*a^4*b^2 +176*b^3*c^2 +84*a^2*b^2 +308*a^2*b^3*c^3 +66*a^2*b^3*c^2
-#> +12*a^3*b
+#> +48*a^3*b^3*c +54*a^2*b^2*c^2 +16*a^4*b^4*c^2 +16*a^4*b^4*c^3
+#> +54*a*b^2*c^2 +8*a^4*b^3*c^3 +25*b^2*c^2 +60*a*b^2*c +30*a*b^2*c^3
+#> +126*b^3*c +228*a*b^3*c +40*a^3*b^3*c^3 +81*b^2 +64*a^3*b^4*c^2
+#> +12*a^3*b^3*c^4 +12*a^3*b^2*c^2 +9*a^2*b^2*c^4 +168*a^2*b^3*c
+#> +49*b^4*c^2 +24*a^3*b^3*c^2 +36*a^2*b^2 +82*a^2*b^3*c^3 +4*a^4*b^4*c^4
+#> +28*a^2*b^4*c^3 +a^4*b^2*c^4 +90*b^2*c +76*a^2*b^3*c^2 +32*a^3*b^4*c^3
+#> +120*a^2*b^4*c^2 +10*a^2*b^2*c^3 +4*a^4*b^3*c^4 +80*a*b^3*c^2
+#> +6*a^3*b^2*c^4 +112*a*b^4*c^2 +70*b^3*c^2 +42*a*b^3*c^3 +108*a*b^2
 summary(a)
 #> A spray object.  Summary of coefficients: 
 #> 
-#> a disord object with hash 771a0c87c8a3259456c6b16e3c36f10195a7ab7a 
+#> a disord object with hash 9082ecf5d90ad95671e126c91d11c8790b8e3ea1 
 #> 
 #>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-#>    1.00   17.50   50.00   77.88  114.75  308.00 
+#>    1.00   16.00   42.00   54.73   80.00  228.00 
 #> 
 #> 
 #> Representative selection of index and coefficients:
 #> 
-#> +168*a^3*b^2*c +28*a^4*b^2*c^3 +24*a^2*b +84*a^4*b^2*c +4*a^2
-#> +202*a^4*b^2*c^2
+#> +8*a^4*b^3*c^3 +54*a*b^2*c^2 +16*a^4*b^4*c^3 +16*a^4*b^4*c^2
+#> +54*a^2*b^2*c^2 +48*a^3*b^3*c
 summary(a,2)
 #> A spray object.  Summary of coefficients: 
 #> 
-#> a disord object with hash 771a0c87c8a3259456c6b16e3c36f10195a7ab7a 
+#> a disord object with hash 9082ecf5d90ad95671e126c91d11c8790b8e3ea1 
 #> 
 #>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-#>    1.00   17.50   50.00   77.88  114.75  308.00 
+#>    1.00   16.00   42.00   54.73   80.00  228.00 
 #> 
 #> 
 #> Representative selection of index and coefficients:
 #> 
-#> +4*a^2 +202*a^4*b^2*c^2
+#> +54*a^2*b^2*c^2 +48*a^3*b^3*c
 
 options(polyform=TRUE)
 summary(a^4,3)
 #> A spray object.  Summary of coefficients: 
 #> 
-#> a disord object with hash 4ff6e4bd6f1f0dfd4b1c133cfad5ceb2d6e24366 
+#> a disord object with hash 6010e9e8cf91dea25a7f18505d8941339d9e300f 
 #> 
 #>      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-#> 1.000e+00 2.943e+07 1.100e+09 1.728e+10 1.292e+10 2.960e+11 
+#> 1.000e+00 1.306e+07 4.912e+08 1.296e+10 7.731e+09 2.268e+11 
 #> 
 #> 
 #> Representative selection of index and coefficients:
 #> 
-#> +2788156*a^16*b^8*c^12 +155420160*a^12*b^6*c^7 +29850240*a^10*b^5*c^6
+#> +80994816*a^10*b^9*c^5 +2320109568*a^8*b^10*c^3 +970631424*a^8*b^9*c^4
 options(polyform=FALSE) # restore default
 ```
