@@ -100,9 +100,9 @@ List retval (const spray &S){  // used to return a list to R
   // size and, if so, return a special Nil value.  This corresponds to
   // an empty spray object.
   
-    if(S.size() == 0){
-        return List::create(Named("index") = R_NilValue,
-                            Named("value") = R_NilValue
+    if(S.empty()){
+        return List::create(Named("index") = IntegerMatrix(0,0),
+                            Named("value") = NumericVector(0)
                             );
     } else {
         return List::create(Named("index") = makeindex(S),
