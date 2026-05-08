@@ -40,35 +40,31 @@ typedef std::unordered_map<mycont, double , MyVecHasher > spray;
 typedef map<mycont, double > spray;
 #endif
 
-
-
-
-
 spray prepare(const IntegerMatrix M, const NumericVector d){
     spray S;
-    spray::iterator it;
-    mycont v;
+    const int rows = M.nrow();
 
-    for(int i=0; i<M.nrow() ; i++){
+    for(int i=0; i<rows ; ++i){
         if(d[i] != 0){
-                v.clear();
-                for(int j=0; j<M.ncol(); j++){
-                    v.push_back(M(i,j));
-                }
-                S[v] += d[i];
+            IntegerMatrix::ConstRow row = M.row(i);
+            mycont v(row.begin(), row.end());
+            S[std::move(v)] += d[i];
         }
-    }  // i loop closes
+    }
 
-    // Now remove zero entries:
-    it = S.begin();
-    while(it != S.end()){
+    // Now remove zero entries.
+    // NB: Removing zeros is better done with erase_if(), but this is
+    // not supported on github workflow as of May 2026
+    // std::erase_if(S, [](const auto& item) { return item.second == 0; });
+
+    for(auto it = S.begin() ; it != S.end() ; ){
         if(it->second == 0){
             it = S.erase(it); //  in C++11, erase() returns *next* iterator
         } else {
             ++it;  // else just increment the iterator
         }
-    }
-    return(S);
+    }   
+    return S;
 }
 
 IntegerMatrix makeindex(const spray &S){  // takes a spray, returns the matrix of indices
