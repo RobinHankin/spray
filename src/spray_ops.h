@@ -118,13 +118,13 @@ spray prod //
  ){
     spray Sout;
     mycont vsum;
-
-
     for (const auto& [v1, x1] : S1) {
         for (const auto& [v2, x2] : S2) {
-            mycont vsum;
-            vsum.reserve(v1.size());
-            std::transform(v1.begin(), v1.end(), v2.begin(), std::back_inserter(vsum), std::plus<int>()); //meat 1: powers add
+            vsum.resize(v1.size());
+            for(size_t i = 0; i < v1.size(); ++i){
+                vsum[i] = v1[i] + v2[i]; // meat 1: powers add
+            }
+            auto& coeff = Sout[vsum];
             Sout[vsum] += x1 * x2;  // meat 2: coefficients multiply
         }
     }
