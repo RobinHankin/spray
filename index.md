@@ -16,6 +16,7 @@ You can install the released version of `spray` from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
+
 # install.packages("spray")  # uncomment this to install the package
 library("spray")
 ```
@@ -25,6 +26,7 @@ library("spray")
 Base R has extensive support for multidimensional arrays. Consider
 
 ``` r
+
 a <- array(0,dim=4:12)
 a[2,2,2,2,2,2,2,2,2] <- 17
 a[3,4,2,2,7,2,3,2,3] <- 18
@@ -40,6 +42,7 @@ matrix of indices with each row corresponding to the position of a
 nonzero element, and a numeric vector of values:
 
 ``` r
+
 library("spray")
 M <- rbind(
   c(2,2,2,2,2,2,2,2,2),
@@ -61,6 +64,7 @@ discussion).
 Basic arithmetic is implemented where appropriate. If we define
 
 ``` r
+
 S2 <-spray(rbind(
   c(1,2,3,1,3,3,1,4,1),
   c(3,4,2,2,7,2,3,2,3)), c(100,-8))
@@ -73,6 +77,7 @@ S2
 then
 
 ``` r
+
 S1+S2
 #>                        val
 #>  2 2 2 2 2 2 2 2 2  =    7
@@ -87,6 +92,7 @@ One natural application for `spray` objects is multivariate polynomials.
 Defining
 
 ``` r
+
 S1 <- spray(matrix(c(0,0,0,1,0,0,1,1,1,2,0,3),ncol=3),1:4)
 S2 <- spray(matrix(c(6,-7,8,0,0,2,1,1,3),byrow=TRUE,ncol=3),c(17,11,-4))
 S1
@@ -109,6 +115,7 @@ being the coefficients. This is realised in the package using the
 method:
 
 ``` r
+
 options(polyform = TRUE)
 S1
 #> +4*x*y*z^3 +2*z^2 +3*y +z
@@ -123,6 +130,7 @@ interpretation, multiplication and addition have natural definitions as
 multivariate polynomial multiplication and addition:
 
 ``` r
+
 S1+S2
 #> +13*z^2 +3*y +z +17*x^6*y^-7*z^8
 S1*S2
@@ -141,6 +149,7 @@ function, which creates a sparse array whose multivariate polynomial
 interpretation is a single variable:
 
 ``` r
+
 x <- lone(1, 3)
 y <- lone(2, 3)
 z <- lone(3, 3)
@@ -153,6 +162,7 @@ thus illustrating the identity .
 Spray objects can be coerced to functions:
 
 ``` r
+
 S4 <- spray(cbind(1:3, 3:1), 1:3)
 f <- as.function(S4)
 f(c(1, 2))
@@ -168,6 +178,7 @@ the multivariate polynomial corresponding to
 This would be
 
 ``` r
+
 aderiv((xyz(3) + linear(1:3))^3, 1:3)
 #> +216*x +108*x^2*y
 ```

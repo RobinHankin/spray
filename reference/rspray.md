@@ -49,6 +49,7 @@ will contain fewer than `n` entries
 ## Examples
 
 ``` r
+
 rspray()
 #> 6 +8*a^2 +7*a*b +4*a*b^2*c^2 +8*a^2*b^2 +11*a^2*c +a^2*c^2
 

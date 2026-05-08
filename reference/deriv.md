@@ -64,6 +64,7 @@ Robin K. S. Hankin
 
 ``` r
 
+
 (S <- spray(matrix(sample(-2:2,15,replace=TRUE),ncol=3),addrepeats=TRUE))
 #>               val
 #>   0  0  2  =    1

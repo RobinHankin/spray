@@ -37,6 +37,7 @@ Robin K. S. Hankin
 ## Examples
 
 ``` r
+
 (S <- spray(matrix(sample(1:50), ncol=2), 10^-(1:25)))
 #>   a  b       val
 #>   6 31  =  1e-24

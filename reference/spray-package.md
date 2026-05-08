@@ -33,6 +33,7 @@ Robin K. S. Hankin
 ## Examples
 
 ``` r
+
 # define a spray using a matrix of indices and a vector of values:
 M <- matrix(sample(0:3,21,replace=TRUE),ncol=3)
 a <- spray(M,sample(7))

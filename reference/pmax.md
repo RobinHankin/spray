@@ -68,6 +68,7 @@ Robin K. S. Hankin
 ## Examples
 
 ``` r
+
 S1 <- rspray(100, vals=sample(100)-50)
 S2 <- rspray(100, vals=sample(100)-50)
 S3 <- rspray(100, vals=sample(100)-50)

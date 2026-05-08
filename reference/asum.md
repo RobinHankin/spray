@@ -54,6 +54,7 @@ Robin K. S. Hankin
 ## Examples
 
 ``` r
+
 S <- spray(matrix(sample(0:2,60,replace=TRUE),ncol=3),addrepeats=TRUE)
 S
 #>            val

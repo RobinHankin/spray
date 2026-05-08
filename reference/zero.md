@@ -30,6 +30,7 @@ better (for me).
 
 Passing a zero-row index matrix can have unexpected effects:
 
+
     > dput(spray(matrix(0,0,5),9))
     structure(list(structure(numeric(0), .Dim = c(0L, 5L)), numeric(0)), class = "spray")
 
@@ -45,6 +46,7 @@ index matrix having zero rows.
 
 Zero coefficients are discarded by the back end:
 
+
     > spray(matrix(1,1,5),0)
     empty sparse array with 5 columns
     > dput(spray(matrix(1,1,5),0))
@@ -56,6 +58,7 @@ one row but the coefficient is a length-one vector with element zero.
 The resulting `spray` object has a `NULL` index matrix \[because rows
 with zero coefficients are removed\] and a `NULL` coefficient. It is
 also permissible to pass a a zero-row matrix:
+
 
        spray(matrix(0,0,5),0)
     empty sparse array with 5 columns
@@ -70,6 +73,7 @@ arity of the spray object is lost. It is probably worth noting that
 given a zero-row index matrix, loses a length one coefficients vector,
 but complains about a length-two coefficient vector:
 
+
     > dput(spray(matrix(0,0,5),0))
     structure(list(structure(numeric(0), dim = c(0L, 5L)), numeric(0)), class = "spray")
     > dput(spray(matrix(0,0,5),3))
@@ -83,6 +87,7 @@ but complains about a length-two coefficient vector:
 ## Examples
 
 ``` r
+
 (a <- lone(1,3))
 #>  a b c     val
 #>  1 0 0  =    1

@@ -108,6 +108,7 @@ Technically, `index()` breaks `disordR` discipline.
 ## Examples
 
 ``` r
+
 S <- spray(diag(5))    # missing second argument interpreted as '1'.
 as.array(S,offbyone=TRUE) # zero indices interpreted as ones.
 #> , , 1, 1, 1

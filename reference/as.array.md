@@ -47,6 +47,7 @@ any index is less than 1.
 
 Returns an array of dimension `dim(S)`. The “meat” of the function is
 
+
         out <- array(0, dS)
         out[ind] <- coeffs(S)
 
@@ -57,6 +58,7 @@ Robin K. S. Hankin
 ## Examples
 
 ``` r
+
 (M <- matrix(sample(0:4,28,replace=TRUE),ncol=4))
 #>      [,1] [,2] [,3] [,4]
 #> [1,]    1    0    1    2

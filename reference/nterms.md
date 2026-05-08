@@ -29,6 +29,7 @@ Robin K. S. Hankin
 ## Examples
 
 ``` r
+
 (a <- rspray())
 #>            val
 #>  1 1 1  =    7

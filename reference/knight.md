@@ -32,6 +32,7 @@ add 1 to the returned spray. The vignette contains a short discussion.
 ## Examples
 
 ``` r
+
 knight()  # default 2D chess board
 #>            val
 #>  -1  2  =    1

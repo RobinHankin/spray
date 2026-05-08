@@ -35,6 +35,7 @@ function is not vectorized in the arity of its argument.
 ## Examples
 
 ``` r
+
 (S <- spray(matrix(1:6,3,2),1:3))
 #>          val
 #>  3 6  =    3
@@ -53,8 +54,8 @@ function is not vectorized in the arity of its argument.
 #>     }
 #>     return(rowSums(sweep(jj, 2, coeffs(x), "*")))
 #> }
-#> <bytecode: 0x55dd7c9696a0>
-#> <environment: 0x55dd7c9674e0>
+#> <bytecode: 0x5565ce4dda78>
+#> <environment: 0x5565ce4dfc38>
 f(2:3) == 3*2^3*3^6 + 2*2^2*3^5 + 1*2^1*3^4  # should be TRUE
 #>    X 
 #> TRUE 

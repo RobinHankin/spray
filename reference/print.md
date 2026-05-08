@@ -75,6 +75,7 @@ output might be confusing or uninformative.
 ## Examples
 
 ``` r
+
 (a <- spray(diag(3)))
 #>            val
 #>  0 0 1  =    1

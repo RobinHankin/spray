@@ -39,6 +39,7 @@ Uses Horner's method for efficiency
 ## Examples
 
 ``` r
+
 (x <- spray(matrix(1)))
 #>        val
 #>  1  =    1
