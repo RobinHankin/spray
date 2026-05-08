@@ -68,20 +68,20 @@ spray prepare(const IntegerMatrix M, const NumericVector d){
 }
 
 IntegerMatrix makeindex(const spray &S){  // takes a spray, returns the matrix of indices
-    const unsigned int ncol = S.begin()->first.size();
-    IntegerMatrix  out(S.size(),ncol);   // index
-    mycont v;
-    unsigned int row=0, col=0;
+    if(S.empty()){ return IntegerMatrix(0, 0); }
+    const int ncol = S.begin()->first.size();
+    IntegerMatrix out(S.size(), ncol);   // index
+    int row=0;
 
-    for(auto it=S.begin(); it != S.end(); ++it){
-        v = it->first;
-        col = 0;
-        for(auto ci=v.begin() ; ci != v.end() ; ++ci){
-            out(row,col++) = *ci;
+    for(const auto& term : S){
+        const auto& v = term.first;
+        int col = 0;
+        for(const auto& x : v){
+            out(row, col++) = x;
         }
-        row++;
+        ++row;
     }
-    return(out);
+    return out;
 }
 
 NumericVector makevalue(const spray &S){  // takes a spray, returns data
