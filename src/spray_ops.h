@@ -143,15 +143,13 @@ spray unit //
 
 
 // Overloading the * operator as a non-member function
-spray operator*(spray& S1, const spray& S2) {
+spray operator*(const spray& S1, const spray& S2) {
     return prod(S1,S2);
 }
 
 
 // Overloading the *= operator as a non-member function
-spray operator*=(spray& S1, const spray& S2) {
+spray& operator*=(spray& S1, const spray& S2) {
     S1 = prod(S1,S2);
     return S1;
 }
-
-
