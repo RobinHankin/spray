@@ -20,14 +20,7 @@ List spray_add
      spray S1 = prepare(M1, d1);
      spray S2 = prepare(M2, d2);
 
-     for (const auto& [v, value] : S2) {  
-         auto& entry = S1[v]; 
-         entry += value;  // the meat
-         if (entry == 0) {  
-             S1.erase(v);  
-         }  
-     }  
-     return retval(S1);
+     return retval(sum(S1,S2));
 }
 
 // [[Rcpp::export]]

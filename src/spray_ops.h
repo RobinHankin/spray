@@ -131,6 +131,21 @@ spray prod //
     return Sout;
 }    
 
+spray sum//
+(
+ spray S1, const spray &S2
+){
+    if(S2.size() > S1.size()){ return sum(spray(S2),S1);}
+    for (const auto& [v, value] : S2) {
+        auto& entry = S1[v];
+        entry += value;  // the meat
+        if (entry == 0) {
+            S1.erase(v); 
+        }
+    }
+    return S1;
+}
+
 spray unit //
 (
  unsigned int n
@@ -139,6 +154,17 @@ spray unit //
     NumericVector one(1);
     one[0] = 1;
     return prepare(M,one);
+}
+
+// Overloading the + operator as a non-member function
+spray operator+(const spray& S1, const spray& S2) {
+    return sum(S1,S2);
+}
+
+// Overloading the += operator as a non-member function
+spray& operator+=(spray& S1, const spray& S2) {
+    S1 = sum(S1,S2);
+    return S1;
 }
 
 
@@ -153,3 +179,5 @@ spray& operator*=(spray& S1, const spray& S2) {
     S1 = prod(S1,S2);
     return S1;
 }
+
+
