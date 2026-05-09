@@ -117,13 +117,14 @@ List spray_asum_include
  const IntegerVector &n
  ){
     spray S;
-    std::vector<int> v(M.ncol());
+    const int nc = M.ncol();
+    std::vector<int> v(nc);
 
     for (int i = 0; i < M.nrow(); ++i) {
         std::copy(M.row(i).begin(), M.row(i).end(), v.begin()); 
         
         for (int k : n) {
-            if (k > 0 && k <= M.ncol()) {
+            if (k > 0 && k <= nc) {
                 v[k - 1] = 0; 
             }
         }
