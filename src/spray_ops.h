@@ -14,7 +14,6 @@
 #include <utility>
 #include <iterator>
 
-
 using namespace Rcpp; 
 
 typedef std::container<signed int> mycont;  // a mycont  is a container [vector or deque] of *signed* ints.
@@ -36,7 +35,7 @@ public:
  
 typedef std::unordered_map<mycont, double , MyVecHasher > spray;
 #else 
-typedef map<mycont, double > spray;
+typedef std::map<mycont, double > spray;
 #endif
 
 spray prepare(const IntegerMatrix M, const NumericVector d){
