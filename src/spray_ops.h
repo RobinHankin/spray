@@ -1,6 +1,6 @@
 // -*- mode: C++; c-indent-level: 4; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 
-#define container vector      // Could be 'vector' or 'deque' (both work but there may be performance differences)
+
 #define USE_UNORDERED_MAP true   // set to true for unordered_map; comment out to use plain stl map.
 
 #define STRICT_R_HEADERS
@@ -16,7 +16,14 @@
 
 using namespace Rcpp; 
 
-typedef std::container<signed int> mycont;  // a mycont  is a container [vector or deque] of *signed* ints.
+// #define MYCONT_IS_DEQUE // comment out this line to use vector instead
+
+#ifdef MYCONT_IS_DEQUE
+using mycont = std::deque<int>;
+#else
+using mycont = std::vector<int>;
+#endif
+
 
 #ifdef USE_UNORDERED_MAP
 class MyVecHasher
@@ -45,7 +52,8 @@ spray prepare(const IntegerMatrix M, const NumericVector d){
     for(int i=0; i<rows ; ++i){
         if(d[i] != 0){
             IntegerMatrix::ConstRow row = M.row(i);
-            mycont v(row.begin(), row.end());
+            mycont v(row.size());
+            std::copy(row.begin(), row.end(), v.begin());
             S[std::move(v)] += d[i];
         }
     }

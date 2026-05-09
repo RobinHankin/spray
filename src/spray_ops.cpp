@@ -118,7 +118,7 @@ List spray_asum_include
  ){
     spray S;
     const int nc = M.ncol();
-    std::vector<int> v(nc);
+    mycont v(nc);
 
     for (int i = 0; i < M.nrow(); ++i) {
         std::copy(M.row(i).begin(), M.row(i).end(), v.begin()); 
@@ -142,8 +142,10 @@ List spray_asum_exclude
 ){
     spray S;
     mycont v;
+    #ifndef MYCONT_IS_DEQUE
     v.reserve(n.size());  // Pre-allocate space for efficiency
-    
+    #endif
+
     for (int i = 0; i < M.nrow(); i++) {
         v.clear();
         std::transform(n.begin(), n.end(), std::back_inserter(v),
