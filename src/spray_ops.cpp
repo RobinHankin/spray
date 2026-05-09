@@ -81,9 +81,8 @@ List spray_setter // effectively S[M] <- d; return S
 
     for (int i = 0; i < M2.nrow(); i++) {
         std::copy(M2.row(i).begin(), M2.row(i).end(), v.begin()); 
-        S1.insert({v, S2[v]});
+        S1[v] = d2[i];     // previously S1.insert({v, S2[v]});
     }
-    
     return retval(S1);
 }
 
