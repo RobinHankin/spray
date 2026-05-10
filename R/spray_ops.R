@@ -1,3 +1,4 @@
+#' @export
 "Ops.spray" <- function (e1, e2 = NULL) 
 {
     oddfunc <- function(...){stop("odd---neither argument has class spray?")}
@@ -84,6 +85,7 @@
     }
 }
 
+#' @export
 spray_negative <- function(S){
     if(is.zero(S)){
         return(S)
@@ -92,6 +94,7 @@ spray_negative <- function(S){
     }
 }
 
+#' @export
 spray_times_spray <- function(S1,S2){
     if(is.zero(S1) || is.zero(S2)){return(spray_times_scalar(S1,0))}
     stopifnot(arity(S1) == arity(S2))
@@ -101,11 +104,13 @@ spray_times_spray <- function(S1,S2){
         ),arity=arity(S1))
 }
 
+#' @export
 spray_times_scalar <- function(S,x){
     stopifnot(length(x) == 1)
     return(spraymaker(spray(index(S), x*coeffs(S)),arity=arity(S)))
 }
 
+#' @export
 spray_plus_spray <- function(S1,S2){
   stopifnot(arity(S1) == arity(S2))
   if(is.zero(S1)){
@@ -120,10 +125,12 @@ spray_plus_spray <- function(S1,S2){
         ),arity=arity(S1)))
 }
 
+#' @export
 spray_plus_scalar <- function(S,x){
     spray_plus_spray(S, x*one(S))
 }
 
+#' @export
 spray_power_scalar <- function(S,n){
   stopifnot(n == round(n))
   if(n<0){
@@ -133,6 +140,7 @@ spray_power_scalar <- function(S,n){
   }
 }
 
+#' @export
 spray_power_scalar_stla <- function(S,n){
   stopifnot(n == round(n))
   if(n<0){
@@ -142,6 +150,7 @@ spray_power_scalar_stla <- function(S,n){
   }
 }
 
+#' @export
 `spray_eq_spray` <- function(S1,S2){
     if(arity(S1) != arity(S2)){
         return(FALSE)
@@ -152,6 +161,7 @@ spray_power_scalar_stla <- function(S,n){
     }
 }
 
+#' @export
 `spray_eq_numeric` <- function(S1,x){
     if(is.constant(S1)){
         return(drop(S1) == x)

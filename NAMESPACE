@@ -10,8 +10,6 @@ import(methods)
 importFrom("utils", "head")
 importFrom("utils", "capture.output")
 
-
-
 importFrom(disordR,disord)
 importFrom(disordR,elements)
 importFrom(disordR,hash)

@@ -22,7 +22,7 @@ spray object.
 }
 \usage{
 is.constant(x)
-constant(x, drop=FALSE)
+constant(x, drop=FALSE, ...)
 constant(x) <- value
 drop(x)
 }
@@ -31,6 +31,7 @@ drop(x)
   \item{value}{Numeric value to set the constant coefficient to}
   \item{drop}{Boolean, with default \code{FALSE} meaning to return a
     spray object and \code{TRUE} meaning to return a numeric value}
+  \item{...}{Further arguments to \code{constant()}, currently ignored}
 }
 \value{
   In function \code{constant()}, return the coefficient, or a constant

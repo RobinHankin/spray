@@ -1,5 +1,17 @@
+#' @useDynLib spray, .registration=TRUE
+
+#' @import methods
+
+#' @importFrom disordR disord elements hash hashcal is.disord consistent allsame
+#' @importFrom Rcpp evalCpp
+#' @importFrom magicadiag
+#' @importFrom partitionscompositions
+#' @importFrom utils head capture.output
+#' @importFrom stringr str_squish
+
 setOldClass("spray")
 
+#' @export
 `spraymaker` <- function(L, addrepeats=FALSE, arity=ncol(L[[1]])){    # formal; this is the *only* way to create a spray object; 
     stopifnot(is_valid_spray(L))
     if(is.empty(L)){
@@ -18,6 +30,7 @@ setOldClass("spray")
     return(structure(out, class = "spray"))  # class spray is set only here
 }
 
+#' @export
 `is_valid_spray` <- function(L){  # L = list(M,x)
     stopifnot(is.list(L))
     stopifnot(length(unclass(L)) == 2)
@@ -31,8 +44,10 @@ setOldClass("spray")
     }
 }
 
+#' @export
 `is.spray` <- function(S){inherits(S, "spray")}
 
+#' @export
 `is.empty` <- function(L){
   if( is.null(L[[1]]) && is.null(L[[2]])){
     return(TRUE)
@@ -45,6 +60,7 @@ setOldClass("spray")
   }
 }
  
+#' @export
 `is.zero` <- function(x){
     if(is.spray(x)){
         return(is.empty(x))
@@ -53,6 +69,7 @@ setOldClass("spray")
     }
 }
 
+#' @export
 `spray` <- function(M,x,addrepeats=FALSE){
     if(is.vector(M)){
         M <- rbind(M)
@@ -71,12 +88,19 @@ setOldClass("spray")
     return(spraymaker(list(M, x), addrepeats=addrepeats))
 }
 
+#' @export
 `index` <- function(S){S[[1]]}    # these two functions are the only
 
+#' @export
 `coeffs` <- function(S){UseMethod("coeffs")}
+
+#' @export
 `coeffs.spray` <- function(S){drop(disord(S[[2]], h=hashcal(S)))}    # 'accessor' functions in the package
 
+#' @export
 `coeffs<-` <- function(S, value){UseMethod("coeffs<-")}
+
+#' @export
 `coeffs<-.spray` <- function(S, value){
    jj <- coeffs(S)
    value <- drop(value)
@@ -91,6 +115,7 @@ setOldClass("spray")
   spray(index(S), jj)
 }
 
+#' @export
 `as.spray` <- function(arg1, arg2, addrepeats=FALSE, offbyone=FALSE){  # tries quite hard to coerce things to a spray
     if(is.spray(arg1)){
         return(arg1)  
@@ -107,6 +132,7 @@ setOldClass("spray")
     }  
 }
 
+#' @export
 `arity` <- function(S){
     ncol(index(S))
 }
@@ -114,6 +140,7 @@ setOldClass("spray")
 setGeneric("dim")
 setGeneric("deriv")
 
+#' @export
 `dim.spray` <- function(x){
     ind <- index(x)
     if(any(ind < 0)){
@@ -123,6 +150,7 @@ setGeneric("deriv")
     }
 }
 
+#' @export
 `as.array.spray` <- function(x, offbyone=FALSE, compact=FALSE, ...){
     ind <- index(x)
     dS <- dim(x) 
@@ -146,10 +174,12 @@ setGeneric("deriv")
     return(out)
 }
 
+#' @export
 `spray_missing_accessor` <- function(S,dots){
     stop("not implemented: see inst/missing_accessor.txt for a discussion")
 }
 
+#' @export
 `[.spray` <- function(S, ...,drop=FALSE){
 
     dots <- list(...)
@@ -175,6 +205,7 @@ setGeneric("deriv")
     }
 }  
 
+#' @export
 `[<-.spray` <- function(S, index, ..., value){
 
     if(missing(index)){ # S[] <- something
@@ -206,6 +237,7 @@ setGeneric("deriv")
     return(spraymaker(spray_setter(spray::index(S), spray::coeffs(S), M, value)))
 }
 
+#' @export
 `as.function.spray` <- function(x,...){
     function(X){
         if(!is.matrix(X)){X <- rbind(X)}
@@ -218,8 +250,11 @@ setGeneric("deriv")
     }
 }
 
-`constant` <- function(x, drop=FALSE){UseMethod("constant")}
-`constant.spray` <- function(x,drop=FALSE){ # returns 'the constant (term) of x'
+#' @export
+`constant` <- function(x, drop=FALSE, ...){UseMethod("constant")}
+
+#' @export
+`constant.spray` <- function(x, drop=FALSE, ...){ # returns 'the constant (term) of x'
     M <- t(rep(0, arity(x)))
     out <- x[M, drop=TRUE]
     if(drop){
@@ -233,29 +268,47 @@ setGeneric("deriv")
     }
 }
 
+#' @export
 `constant<-` <- function(x, value){UseMethod("constant<-")}
+
+#' @export
 `constant<-.spray` <- function(x, value){ "[<-"(x, t(rep(0, arity(x))), value=value)}
 
+#' @export
 `zero` <- function(d){spray(matrix(0, 0, d), numeric(0))}
+
+#' @export
 `product` <- function(power){spray(rbind(power))}
+
+#' @export
 `homog` <- function(d, power=1){spray(partitions::compositions(power,d))}
+
+#' @export
 `linear` <- function(x, power=1){spray(diag(power, length(x)), x)}
+
+#' @export
 `lone` <- function(n, d=n){
   jj <- rep(0, d)
   jj[n] <- 1
   return(product(jj))
 }
 
+#' @export
 `xyz` <- function(d){product(rep(1, d))}
 
+#' @export
 `one` <- function(d){
   if(is.spray(d)){d <- arity(d)}
   return(spray(t(rep(0, d))))
 }
 
+#' @export
 `as.id` <- function(S){UseMethod("as.id")}
+
+#' @export
 `as.id.spray` <- function(S){spray(t(rep(0, arity(S))))}
 
+#' @export
 `ooom` <- function(S,n){
   out <- as.id(S)
   for(i in seq_len(n)){
@@ -264,6 +317,7 @@ setGeneric("deriv")
   return(out)
 }
 
+#' @export
 `printedvalue` <- function(v){
     as.numeric(
         strsplit(
@@ -277,6 +331,7 @@ setGeneric("deriv")
     )
 }
 
+#' @export
 `print_spray_matrixform` <- function(S){
     if(is.empty(S)){
         cat(paste('empty sparse array with ', arity(S), ' columns\n',sep=""))
@@ -294,6 +349,7 @@ setGeneric("deriv")
     return(invisible(S))
 }
 
+#' @export
 `print_spray_polyform` <- function(S, give=FALSE){
 
     vector_of_3vars <- c("x", "y", "z")
@@ -384,6 +440,7 @@ setGeneric("deriv")
   return(invisible(S))
 }
   
+#' @export
 `print.spray` <- function(x, ...){
   if(isTRUE(getOption("polyform", default=FALSE))){
     out <- print_spray_polyform(x)
@@ -393,10 +450,12 @@ setGeneric("deriv")
   return(invisible(out))
 }
 
+#' @export
 `asum` <- function(S, dims,drop=TRUE, ...) {UseMethod("asum")}
 
 #      M <- matrix(sample(0:2,5*29,rep=T),ncol=5)
 
+#' @export
 `process_dimensions` <- function(S, dims){
   if(is.logical(dims)){ dims <- which(dims)  }
   stopifnot(all(dims <= arity(S)))
@@ -405,6 +464,7 @@ setGeneric("deriv")
   return(dims)
 }
 
+#' @export
 `asum.spray` <- function(S, dims, drop=TRUE, ...){   # off-by-one dealt with in C++
   dims <- process_dimensions(S, dims)
   jj <- spraymaker(spray_asum_include(index(S), coeffs(S), dims))
@@ -415,11 +475,13 @@ setGeneric("deriv")
   }
 }
 
+#' @export
 `asum_inverted` <- function(S, dims){   # off-by-one dealt with in C++
   dims <- process_dimensions(S,dims)
   return(spraymaker(spray_asum_exclude(index(S), coeffs(S), dims)))
 }
 
+#' @export
 `subs` <- function(S, dims, x, drop=TRUE){
 
   dims <- process_dimensions(S, dims)
@@ -433,6 +495,7 @@ setGeneric("deriv")
   return(out)
 }
 
+#' @export
 `deriv.spray` <- function(expr, i, derivative=1, ...){
   S <- as.spray(expr)
   orders <- rep(0, arity(S))
@@ -440,6 +503,7 @@ setGeneric("deriv")
   return(aderiv(S, orders))
 }
 
+#' @export
 `aderiv` <- function(S, orders){
   orders <- round(orders)
   stopifnot(length(orders) == arity(S))
@@ -447,12 +511,19 @@ setGeneric("deriv")
   return(spraymaker(spray_deriv(index(S), coeffs(S), orders)))
 }
 
+#' @export
 `pmax` <- function(...){ UseMethod("pmax") }
+
+#' @export
 `pmax.default` <- function(..., na.rm=FALSE){ base::pmax(..., na.rm=FALSE) }
 
+#' @export
 `pmin` <- function(...){ UseMethod("pmin") }
+
+#' @export
 `pmin.default` <- function(..., na.rm=FALSE){ base::pmin(..., na.rm=FALSE) }
 
+#' @export
 `pmax.spray` <- function(x, ...) {
     if(nargs()<3){
         return(maxpair_spray(x, ...))
@@ -461,6 +532,7 @@ setGeneric("deriv")
     }
 }
 
+#' @export
 `pmin.spray` <- function(x, ...) {
     if(nargs() < 3){
         return(minpair_spray(x, ...))
@@ -469,6 +541,7 @@ setGeneric("deriv")
     }
 }
 
+#' @export
 `maxpair_spray` <- function(S1, S2){
     if(missing(S2)){ return(S1) }
     if(!is.spray(S2)){   # S2 interpreted as a scalar
@@ -489,6 +562,7 @@ setGeneric("deriv")
     }
 }
 
+#' @export
 `minpair_spray` <- function(S1, S2){
     if(missing(S2)){
         return(-maxpair_spray(-S1))
@@ -497,14 +571,17 @@ setGeneric("deriv")
     }
 }
 
+#' @export
 `rspray` <- function(n=9, vals=seq_len(n), arity=3, powers=0:2){
     return(spray(matrix(sample(powers, n*arity, replace=TRUE), ncol=arity), addrepeats=TRUE, vals))
 }
 
+#' @export
 `rsprayy` <- function(n=30, vals=seq_len(n), arity=7, powers=0:8){
     rspray(n=n, vals=seq_len(n), arity=arity, powers=powers)
 }
 
+#' @export
 `knight` <- function(d=2){
   n <- d * (d - 1)
   out <- matrix(0, n, d)
@@ -512,12 +589,16 @@ setGeneric("deriv")
   spray(rbind(out, -out, `[<-`(out, out == 1, -1),`[<-`(out, out == 2, -2)))
 }
 
+#' @export
 `king` <- function(d=2){
   out <- spray(expand.grid(replicate(d, list(c(-1L, 0L, 1L)))))
   return(out-1)
 }
 
+#' @export
 `nterms` <- function(x){ nrow(index(x)) }
+
+#' @export
 `length.spray` <- function(x){nterms(x)}
 
 setGeneric("zapsmall")
@@ -529,10 +610,12 @@ setMethod("zapsmall","ANY",function(x, digits){
     base::zapsmall(x, digits=digits)
 })
 
+#' @export
 `zap` <- function(x, digits=getOption("digits")){
   spray(index(x), base::zapsmall(coeffs(x), digits=digits))
 }
 
+#' @export
 `spraycross2` <- function(S1, S2){
     M1 <- index(S1)
     M2 <- index(S2)
@@ -541,6 +624,7 @@ setMethod("zapsmall","ANY",function(x, digits){
     spray(t(sapply(seq_len(nrow(jj)), f)), c(outer(coeffs(S1), coeffs(S2))))
 }
 
+#' @export
 `spraycross` <- function(S, ...) {
    if(nargs()<3){
      spraycross2(S, ...)
@@ -549,6 +633,7 @@ setMethod("zapsmall","ANY",function(x, digits){
    }
 }
 
+#' @export
 `is.constant` <- function(x){is.zero(x) || all(index(x)==0)}
 
 setGeneric("drop")
@@ -562,6 +647,7 @@ setMethod("drop","spray", function(x){
     }
 })
 
+#' @export
 `summary.spray` <- function(object, ...){
   out <- list(
       coeffs    = summary(coeffs(object)),
@@ -572,6 +658,7 @@ setMethod("drop","spray", function(x){
   return(out)
 }
 
+#' @export
 `print.summary.spray` <- function(x, ...){
   cat("A spray object.  Summary of coefficients: \n\n")
   print(x[[1]])
@@ -579,6 +666,7 @@ setMethod("drop","spray", function(x){
   print(x[[2]])
 }
 
+#' @export
 `as.character.spray` <- function(x, ..., split=FALSE){
     out <- print_spray_polyform(x, give=TRUE)
     if(split){
@@ -587,11 +675,13 @@ setMethod("drop","spray", function(x){
     return(out)
 }
 
+#' @export
 `spray_extract_disord` <- function(S, first){
     coeffs(S)[!first] <- 0
     return(S)
 }
 
+#' @export
 `spray_replace_disord` <- function(S, index, value){
     coeffs(S)[index] <- value
     return(S)
