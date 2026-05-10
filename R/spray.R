@@ -251,7 +251,7 @@ setGeneric("deriv")
 }
 
 #' @export
-`constant` <- function(x, drop=FALSE, ...){UseMethod("constant")}
+`constant` <- function(x, ...){UseMethod("constant")}
 
 #' @export
 `constant.spray` <- function(x, drop=FALSE, ...){ # returns 'the constant (term) of x'

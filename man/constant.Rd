@@ -22,7 +22,8 @@ spray object.
 }
 \usage{
 is.constant(x)
-constant(x, drop=FALSE, ...)
+constant(x, ...)
+\method{constant}{spray}(x, drop=FALSE, ...)
 constant(x) <- value
 drop(x)
 }
