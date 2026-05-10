@@ -8,6 +8,8 @@ spray object.
 
 ``` r
 is.constant(x)
+constant(x, ...)
+# S3 method for class 'spray'
 constant(x, drop=FALSE, ...)
 constant(x) <- value
 drop(x)
