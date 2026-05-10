@@ -11,12 +11,12 @@ Source:
 [`inst/CITATION`](https://github.com/RobinHankin/spray/blob/master/inst/CITATION)
 
 Hankin RK (????). *spray: Sparse Arrays and Multivariate Polynomials*. R
-package version 1.1-0, <https://github.com/RobinHankin/spray>.
+package version 1.1-1, <https://github.com/RobinHankin/spray>.
 
     @Manual{,
       title = {spray: Sparse Arrays and Multivariate Polynomials},
       author = {Robin K. S. Hankin},
-      note = {R package version 1.1-0},
+      note = {R package version 1.1-1},
       url = {https://github.com/RobinHankin/spray},
     }
 

@@ -8,7 +8,7 @@ spray object.
 
 ``` r
 is.constant(x)
-constant(x, drop=FALSE)
+constant(x, drop=FALSE, ...)
 constant(x) <- value
 drop(x)
 ```
@@ -27,6 +27,12 @@ drop(x)
 
   Boolean, with default `FALSE` meaning to return a spray object and
   `TRUE` meaning to return a numeric value
+
+- ...:
+
+  Further arguments to
+  [`constant()`](https://robinhankin.github.io/spray/reference/constant.html),
+  currently ignored
 
 ## Value
 
