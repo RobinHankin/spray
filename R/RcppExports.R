@@ -2,54 +2,58 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 spray_maker <- function(M, d) {
-    .Call('spray_spray_maker', PACKAGE = 'spray', M, d)
+    .Call(`_spray_spray_maker`, M, d)
 }
 
 spray_add <- function(M1, d1, M2, d2) {
-    .Call('spray_spray_add', PACKAGE = 'spray', M1, d1, M2, d2)
+    .Call(`_spray_spray_add`, M1, d1, M2, d2)
 }
 
 spray_mult <- function(M1, d1, M2, d2) {
-    .Call('spray_spray_mult', PACKAGE = 'spray', M1, d1, M2, d2)
+    .Call(`_spray_spray_mult`, M1, d1, M2, d2)
 }
 
 spray_overwrite <- function(M1, d1, M2, d2) {
-    .Call('spray_spray_overwrite', PACKAGE = 'spray', M1, d1, M2, d2)
+    .Call(`_spray_spray_overwrite`, M1, d1, M2, d2)
 }
 
 spray_accessor <- function(M, d, Mindex) {
-    .Call('spray_spray_accessor', PACKAGE = 'spray', M, d, Mindex)
+    .Call(`_spray_spray_accessor`, M, d, Mindex)
 }
 
 spray_setter <- function(M1, d1, M2, d2) {
-    .Call('spray_spray_setter', PACKAGE = 'spray', M1, d1, M2, d2)
+    .Call(`_spray_spray_setter`, M1, d1, M2, d2)
 }
 
 spray_equality <- function(M1, d1, M2, d2) {
-    .Call('spray_spray_equality', PACKAGE = 'spray', M1, d1, M2, d2)
+    .Call(`_spray_spray_equality`, M1, d1, M2, d2)
 }
 
 spray_asum_include <- function(M, d, n) {
-    .Call('spray_spray_asum_include', PACKAGE = 'spray', M, d, n)
+    .Call(`_spray_spray_asum_include`, M, d, n)
 }
 
 spray_asum_exclude <- function(M, d, n) {
-    .Call('spray_spray_asum_exclude', PACKAGE = 'spray', M, d, n)
+    .Call(`_spray_spray_asum_exclude`, M, d, n)
 }
 
 spray_deriv <- function(M, d, n) {
-    .Call('spray_spray_deriv', PACKAGE = 'spray', M, d, n)
+    .Call(`_spray_spray_deriv`, M, d, n)
 }
 
 spray_pmax <- function(M1, d1, M2, d2) {
-    .Call('spray_spray_pmax', PACKAGE = 'spray', M1, d1, M2, d2)
+    .Call(`_spray_spray_pmax`, M1, d1, M2, d2)
 }
 
 spray_power <- function(M, d, pow) {
-    .Call('spray_spray_power', PACKAGE = 'spray', M, d, pow)
+    .Call(`_spray_spray_power`, M, d, pow)
 }
 
 spray_power_stla <- function(M, d, pow) {
-    .Call('spray_spray_power', PACKAGE = 'spray', M, d, pow)
+    .Call(`_spray_spray_power_stla`, M, d, pow)
 }
 
+# Register entry points for exported C++ functions
+methods::setLoadAction(function(ns) {
+    .Call(`_spray_RcppExport_registerCCallable`)
+})

@@ -2,12 +2,19 @@
 // Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 #include <Rcpp.h>
+#include <string>
+#include <set>
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // spray_maker
 List spray_maker(const IntegerMatrix& M, const NumericVector& d);
-RcppExport SEXP spray_spray_maker(SEXP MSEXP, SEXP dSEXP) {
+RcppExport SEXP _spray_spray_maker(SEXP MSEXP, SEXP dSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -19,7 +26,7 @@ END_RCPP
 }
 // spray_add
 List spray_add(const IntegerMatrix& M1, const NumericVector& d1, const IntegerMatrix& M2, const NumericVector& d2);
-RcppExport SEXP spray_spray_add(SEXP M1SEXP, SEXP d1SEXP, SEXP M2SEXP, SEXP d2SEXP) {
+RcppExport SEXP _spray_spray_add(SEXP M1SEXP, SEXP d1SEXP, SEXP M2SEXP, SEXP d2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -33,7 +40,7 @@ END_RCPP
 }
 // spray_mult
 List spray_mult(const IntegerMatrix& M1, const NumericVector& d1, const IntegerMatrix& M2, const NumericVector& d2);
-RcppExport SEXP spray_spray_mult(SEXP M1SEXP, SEXP d1SEXP, SEXP M2SEXP, SEXP d2SEXP) {
+RcppExport SEXP _spray_spray_mult(SEXP M1SEXP, SEXP d1SEXP, SEXP M2SEXP, SEXP d2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -47,7 +54,7 @@ END_RCPP
 }
 // spray_overwrite
 List spray_overwrite(const IntegerMatrix& M1, const NumericVector& d1, const IntegerMatrix& M2, const NumericVector& d2);
-RcppExport SEXP spray_spray_overwrite(SEXP M1SEXP, SEXP d1SEXP, SEXP M2SEXP, SEXP d2SEXP) {
+RcppExport SEXP _spray_spray_overwrite(SEXP M1SEXP, SEXP d1SEXP, SEXP M2SEXP, SEXP d2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -61,7 +68,7 @@ END_RCPP
 }
 // spray_accessor
 NumericVector spray_accessor(const IntegerMatrix& M, const NumericVector& d, const IntegerMatrix& Mindex);
-RcppExport SEXP spray_spray_accessor(SEXP MSEXP, SEXP dSEXP, SEXP MindexSEXP) {
+RcppExport SEXP _spray_spray_accessor(SEXP MSEXP, SEXP dSEXP, SEXP MindexSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -74,7 +81,7 @@ END_RCPP
 }
 // spray_setter
 List spray_setter(const IntegerMatrix& M1, const NumericVector& d1, const IntegerMatrix& M2, const NumericVector& d2);
-RcppExport SEXP spray_spray_setter(SEXP M1SEXP, SEXP d1SEXP, SEXP M2SEXP, SEXP d2SEXP) {
+RcppExport SEXP _spray_spray_setter(SEXP M1SEXP, SEXP d1SEXP, SEXP M2SEXP, SEXP d2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -88,7 +95,7 @@ END_RCPP
 }
 // spray_equality
 bool spray_equality(const IntegerMatrix& M1, const NumericVector& d1, const IntegerMatrix& M2, const NumericVector& d2);
-RcppExport SEXP spray_spray_equality(SEXP M1SEXP, SEXP d1SEXP, SEXP M2SEXP, SEXP d2SEXP) {
+RcppExport SEXP _spray_spray_equality(SEXP M1SEXP, SEXP d1SEXP, SEXP M2SEXP, SEXP d2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -102,7 +109,7 @@ END_RCPP
 }
 // spray_asum_include
 List spray_asum_include(const IntegerMatrix& M, const NumericVector& d, const IntegerVector& n);
-RcppExport SEXP spray_spray_asum_include(SEXP MSEXP, SEXP dSEXP, SEXP nSEXP) {
+RcppExport SEXP _spray_spray_asum_include(SEXP MSEXP, SEXP dSEXP, SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -115,7 +122,7 @@ END_RCPP
 }
 // spray_asum_exclude
 List spray_asum_exclude(const IntegerMatrix& M, const NumericVector& d, const IntegerVector& n);
-RcppExport SEXP spray_spray_asum_exclude(SEXP MSEXP, SEXP dSEXP, SEXP nSEXP) {
+RcppExport SEXP _spray_spray_asum_exclude(SEXP MSEXP, SEXP dSEXP, SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -128,7 +135,7 @@ END_RCPP
 }
 // spray_deriv
 List spray_deriv(const IntegerMatrix& M, const NumericVector& d, const IntegerVector& n);
-RcppExport SEXP spray_spray_deriv(SEXP MSEXP, SEXP dSEXP, SEXP nSEXP) {
+RcppExport SEXP _spray_spray_deriv(SEXP MSEXP, SEXP dSEXP, SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -141,7 +148,7 @@ END_RCPP
 }
 // spray_pmax
 List spray_pmax(const IntegerMatrix& M1, const NumericVector& d1, const IntegerMatrix& M2, const NumericVector& d2);
-RcppExport SEXP spray_spray_pmax(SEXP M1SEXP, SEXP d1SEXP, SEXP M2SEXP, SEXP d2SEXP) {
+RcppExport SEXP _spray_spray_pmax(SEXP M1SEXP, SEXP d1SEXP, SEXP M2SEXP, SEXP d2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -155,7 +162,7 @@ END_RCPP
 }
 // spray_power
 List spray_power(const IntegerMatrix& M, const NumericVector& d, const NumericVector& pow);
-RcppExport SEXP spray_spray_power(SEXP MSEXP, SEXP dSEXP, SEXP powSEXP) {
+RcppExport SEXP _spray_spray_power(SEXP MSEXP, SEXP dSEXP, SEXP powSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -168,15 +175,51 @@ END_RCPP
 }
 // spray_power_stla
 List spray_power_stla(const IntegerMatrix& M, const NumericVector& d, const NumericVector& pow);
-RcppExport SEXP spray_spray_power_stla(SEXP MSEXP, SEXP dSEXP, SEXP powSEXP) {
+RcppExport SEXP _spray_spray_power_stla(SEXP MSEXP, SEXP dSEXP, SEXP powSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const IntegerMatrix& >::type M(MSEXP);
     Rcpp::traits::input_parameter< const NumericVector& >::type d(dSEXP);
     Rcpp::traits::input_parameter< const NumericVector& >::type pow(powSEXP);
-    rcpp_result_gen = Rcpp::wrap(spray_power(M, d, pow));
+    rcpp_result_gen = Rcpp::wrap(spray_power_stla(M, d, pow));
     return rcpp_result_gen;
 END_RCPP
 }
 
+// validate (ensure exported C++ functions exist before calling them)
+static int _spray_RcppExport_validate(const char* sig) { 
+    static std::set<std::string> signatures;
+    if (signatures.empty()) {
+    }
+    return signatures.find(sig) != signatures.end();
+}
+
+// registerCCallable (register entry points for exported C++ functions)
+RcppExport SEXP _spray_RcppExport_registerCCallable() { 
+    R_RegisterCCallable("spray", "_spray_RcppExport_validate", (DL_FUNC)_spray_RcppExport_validate);
+    return R_NilValue;
+}
+
+static const R_CallMethodDef CallEntries[] = {
+    {"_spray_spray_maker", (DL_FUNC) &_spray_spray_maker, 2},
+    {"_spray_spray_add", (DL_FUNC) &_spray_spray_add, 4},
+    {"_spray_spray_mult", (DL_FUNC) &_spray_spray_mult, 4},
+    {"_spray_spray_overwrite", (DL_FUNC) &_spray_spray_overwrite, 4},
+    {"_spray_spray_accessor", (DL_FUNC) &_spray_spray_accessor, 3},
+    {"_spray_spray_setter", (DL_FUNC) &_spray_spray_setter, 4},
+    {"_spray_spray_equality", (DL_FUNC) &_spray_spray_equality, 4},
+    {"_spray_spray_asum_include", (DL_FUNC) &_spray_spray_asum_include, 3},
+    {"_spray_spray_asum_exclude", (DL_FUNC) &_spray_spray_asum_exclude, 3},
+    {"_spray_spray_deriv", (DL_FUNC) &_spray_spray_deriv, 3},
+    {"_spray_spray_pmax", (DL_FUNC) &_spray_spray_pmax, 4},
+    {"_spray_spray_power", (DL_FUNC) &_spray_spray_power, 3},
+    {"_spray_spray_power_stla", (DL_FUNC) &_spray_spray_power_stla, 3},
+    {"_spray_RcppExport_registerCCallable", (DL_FUNC) &_spray_RcppExport_registerCCallable, 0},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_spray(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
+}

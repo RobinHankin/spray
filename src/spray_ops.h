@@ -15,6 +15,8 @@
 #include <iterator>
 
 using namespace Rcpp; 
+// [[Rcpp::interfaces(r, cpp)]]
+
 
 // #define MYCONT_IS_DEQUE // comment out this line to use vector instead
 
